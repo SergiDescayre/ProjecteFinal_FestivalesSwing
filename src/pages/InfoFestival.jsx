@@ -3,6 +3,7 @@ import { useEffect } from "react"
 
 import { useFestivalContext } from "../context/FestivalContext"
 
+
 const InfoFestival =  () => {
     const params = useParams()
     const {infoFestival,getFestivalByDocId} = useFestivalContext()
@@ -10,9 +11,11 @@ const InfoFestival =  () => {
         getFestivalByDocId(params.idFestival)
     })
 
-  return (
+
+
+  return ( 
     <div>{infoFestival.name}
-    <img  className="" src={infoFestival.img} alt="imgFestival" />
+
     </div>
   )
 }

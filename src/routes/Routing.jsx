@@ -16,7 +16,7 @@ const Routing = () => {
       <Route path="/addFestival" element={<AddFestival/>} />
       <Route path="/calendar" element={<Calendar/>} />
       <Route path="/myFestivals" element={<MyFestivals />} />
-      <Route path="/InfoFestival/:idFestival" element={<InfoFestival />} />
+      <Route path="/infoFestival/:idFestival" element={<InfoFestival />} />
     </Routes>
   )
 }

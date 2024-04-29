@@ -99,24 +99,24 @@ const ContexProvider = ({ children }) => {
 
     //Traer festival po IdDoc para pintar la Info
 
-    // const getFestivalByDocId = async (docId) => {
-    //     const db = getFirestore(appFirebase)
-    //     try {
-    //         const docRef = doc(db,"festivals",docId)
-    //         const docSnap = await getDoc(docRef)
+    const getFestivalByDocId = async (docId) => {
+        const db = getFirestore(appFirebase)
+        try {
+            const docRef = doc(db,"festivals",docId)
+            const docSnap = await getDoc(docRef)
 
-    //         if (docSnap.exists()) {
-    //             const data = docSnap.data()
-    //             setInfoFestival(data)
+            if (docSnap.exists()) {
+                const data = docSnap.data()
+                setInfoFestival(data)
                
-    //         } else {
-    //             console.log("No such document!");
-    //         }
+            } else {
+                console.log("No such document!");
+            }
 
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // }
+        } catch (error) {
+            console.log(error)
+        }
+    }
     
 
     //Traer festivales firebase
@@ -203,7 +203,7 @@ const ContexProvider = ({ children }) => {
                 setMessageModal, 
                 setError,
                 setFestivals,
-                //getFestivalByDocId,
+                getFestivalByDocId,
                 getFestivals,
                 setFavorites,
                 getFilterModality,

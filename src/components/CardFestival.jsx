@@ -3,6 +3,10 @@ import DateFestival from "./DateFestival";
 import ButtonAddFavorite from "./ButtonAddFavorite";
 import ButtonDeleteFest from "./ButtonDeleteFest"
 
+import { useNavigate } from "react-router-dom";
+
+import info from "../assets/info.svg"
+
 import price from "../assets/price.svg";
 import location from "../assets/location.svg";
 const CardFestival = ({
@@ -11,17 +15,25 @@ const CardFestival = ({
   showButtonAddFavorite,
 }) => {
   const auth = JSON.parse(localStorage.getItem("uid"));
+  const navigate = useNavigate()
 
+  const handleClick = () => {
+    navigate(`infoFestival/${fest.docId}`)
+  }
   return (
     <>
-      <div className="shadow-xl cursor-pointer transition duration-300 ease-in-out rounded-md min-w-60  text-orange-200 overflow-hidden ">
+      <div className="shadow-xl transition duration-300 ease-in-out rounded-md min-w-64  text-orange-200 overflow-hidden ">
         <div
-          className="h-[150px] bg-cover bg-center overflow-hidden transition duration-300 ease-in-out  "
+          className="h-[150px] bg-cover bg-center overflow-hidden transition duration-300 ease-in-out   "
           style={{ backgroundImage: "url(" + fest.img + ")" }}
         >
-          <div className="flex justify-end m-2">
-          {showButtonAddFavorite && <ButtonAddFavorite fest={fest} />}
-          {showButtonDeleteFavorite && <ButtonDeleteFav fest={fest} />}
+          <div className="flex justify-end">
+            <div className="shadow bg-zinc-900 flex flex-col items-center m-2  px-1 py-2 rounded">
+                {showButtonAddFavorite && <ButtonAddFavorite fest={fest} />}
+                {showButtonDeleteFavorite && <ButtonDeleteFav fest={fest} />}
+                <img onClick={handleClick}className="w-6 cursor-pointer" src={info} alt="" />
+            </div>
+          
           </div>
         </div>
         <div className=" bg-zinc-800">
@@ -34,7 +46,8 @@ const CardFestival = ({
             </div>
             <div className="flex items-center gap-2">
               {/* {auth===fest.userId && <ButtonDeleteFest fest={fest} />} */}
-         
+              {/* {showButtonAddFavorite && <ButtonAddFavorite fest={fest} />}
+              {showButtonDeleteFavorite && <ButtonDeleteFav fest={fest} />} */}
             </div>
           </div>
           <div className="px-3 flex flex-col gap-2 py-4">
