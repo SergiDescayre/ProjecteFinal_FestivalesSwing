@@ -13,6 +13,7 @@ const ContexProvider = ({ children }) => {
     const [messageModal, setMessageModal] = useState("")
     const [isFavorite, setIsFavorite] = useState(false)
     const [coords, setCoords] = useState([]);
+    const [isFoundFestival ,setIsFoundFestival] = useState(true)
 
 
     const getFilterModality = (modalityFilter) => {
@@ -191,6 +192,8 @@ const ContexProvider = ({ children }) => {
                 messageModal, 
                 isFavorite,
                 coords,
+                isFoundFestival ,
+                setIsFoundFestival,
                 getFavorites,
                 deleteFestival,
                 addFavorite,

@@ -10,10 +10,14 @@ import {
 import appFirebase from "../credentials";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import add from "../assets/add.svg";
+
+import Loading from "./Loading";
 
 const formAddFestival = () => {
+  
   const navigate = useNavigate();
+
+  const [uploadFestival, setUploadFestival] = useState(false)
 
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
@@ -35,6 +39,8 @@ const formAddFestival = () => {
 
   //subir imagen a storage y subir festival
   const uploadImageToStorage = async () => {
+    setUploadFestival(true)
+    
     const auth = getAuth(appFirebase);
     const storage = getStorage();
     try {
@@ -75,7 +81,11 @@ const formAddFestival = () => {
     } catch (error) {
       console.log(error);
     }
+    setUploadFestival(false)
+    
   };
+
+
 
   const addTeachers = () => {
     setListOfTeachers([...listOfTeachers, teacher]);
@@ -89,7 +99,9 @@ const formAddFestival = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+    {uploadFestival ? <Loading title={"Registrando festival"} />
+    :<div>
+    <form onSubmit={handleSubmit}>
         <div className="md:w-[600px] mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-5 ">
             <div className="w-full">
@@ -222,6 +234,9 @@ const formAddFestival = () => {
           </div>
         </div>
       </form>
+    </div>}
+    
+     
     </>
   );
 };

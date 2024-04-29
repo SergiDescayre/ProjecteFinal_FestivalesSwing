@@ -12,17 +12,21 @@ import Modal from "./Modal"
 const ButtonAddFavorite = ({ fest }) => {
   const { isLogin } = useSelector(state => state.authUser)
   const [isFavorite, setIsFavorite] = useState(false)
-  const {deleteFavorite,addFavorite} = useFestivalContext()
+  const {deleteFavorite,addFavorite,setMessageModal} = useFestivalContext()
 
   useEffect(() => {
     checkFavoriteStatus();
   }, []);
 
   const handleFavorites = (id) => {
-    setIsFavorite(!isFavorite)
     if (isLogin) {
       addFavorite(id,fest)
-    } 
+      setIsFavorite(!isFavorite)
+    } else {
+      document.getElementById('my_modal_5').showModal()
+      setMessageModal("Debes estar registrado para guardar favoritos")
+
+    }
 
     if(isFavorite) {
       deleteFavorite(id)

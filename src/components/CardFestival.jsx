@@ -16,12 +16,10 @@ const CardFestival = ({
   showButtonDeleteFavorite,
   showButtonAddFavorite,
 }) => {
-  const navigate = useNavigate();
   const [isFlipped, setIsFlipped] = useState(false);
 
   const auth = JSON.parse(localStorage.getItem("uid"))
-  console.log(auth)
-  console.log(fest.docId)
+ 
 
   const handleFlip = (e) => {
     e.preventDefault();

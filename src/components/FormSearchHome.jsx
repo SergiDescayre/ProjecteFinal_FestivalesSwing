@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useFestivalContext } from "../context/FestivalContext";
 
 const FormSearchHome = () => {
-  const { setFestivals, festivals, getFestivals,setError } = useFestivalContext();
+  const { setFestivals, festivals, getFestivals,setError,setIsFoundFestival } = useFestivalContext();
   const [city, setCity] = useState("");
   const [dataStart, setDataStart] = useState("");
   const [dataEnd, setDataEnd] = useState("");
@@ -16,16 +16,16 @@ const FormSearchHome = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     
-    console.log(new Date(dataStart).getTime())
-    console.log(new Date(dataEnd).getTime())
     const festivalFiltered = festivals.filter(
       (fest) => {
     
         if((fest.city.toLowerCase() === city.toLowerCase()|| city === "") 
         && new Date(fest.data_start) <= new Date(dataEnd)
         && new Date(fest.data_end) >= new Date(dataStart)){
+        
             return fest
         }else{
+          setIsFoundFestival(false)
           setError(`No hemos encontrado festivales en ${city} con estas fechas seleccionadas`)
         }
       }
