@@ -1,14 +1,12 @@
 import React from 'react'
-import MapFestivals from '../components/MapFestivals'
+
+import ShareEvent from '../components/ShareEvent'
 
 const Calendar = () => {
     console.log("calendar")
   return (
     <div>Calendar
-
-
-        <MapFestivals />
-
+        <ShareEvent eventTitle ={"hola"} eventUrl={"https://design2tailwind.com/blog/tailwindcss-hide-scrollbar/"}/>
     </div>
   )
 }

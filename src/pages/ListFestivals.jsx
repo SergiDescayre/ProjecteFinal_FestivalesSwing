@@ -18,9 +18,9 @@ const ListFestivals = () => {
   
   return (
     <>
-    <ListFestivalsModality title={"LINDY HOP"} modality = {lindyHop} bg={"bg-stone-300"} color={"color-zinc-900"}  />
-    <ListFestivalsModality title={"BLUES"} modality = {blues} color={"color-zinc-900"} />
-    <ListFestivalsModality title={"BALBOA"} modality = {balboa} bg={"bg-stone-300"} />
+    <ListFestivalsModality title={"LINDY HOP"} modality = {lindyHop}/>
+    <ListFestivalsModality title={"BLUES"} modality = {blues}/>
+    <ListFestivalsModality title={"BALBOA"} modality = {balboa}/>
     </>
    
   )

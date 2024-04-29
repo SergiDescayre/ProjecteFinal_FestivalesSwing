@@ -18,3 +18,10 @@ body{
   padding-bottom: 2px; 
 }
 
+::-webkit-scrollbar {
+  display: none;
+  scrollbar-width: none;
+}
+/* Estilos adicionales para Firefox */
+
+

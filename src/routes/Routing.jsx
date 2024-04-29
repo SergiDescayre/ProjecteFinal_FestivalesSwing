@@ -5,7 +5,7 @@ import ListFestivals from "../pages/ListFestivals"
 import AddFestival from "../pages/AddFestival"
 import MyFestivals from "../pages/MyFestivals"
 import InfoFestival from "../pages/InfoFestival"
-import MapFestivals from "../components/MapFestivals"
+import Calendar from "../pages/Calendar"
 
 const Routing = () => {
   return (
@@ -14,7 +14,7 @@ const Routing = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/festivales" element={<ListFestivals/>} />
       <Route path="/addFestival" element={<AddFestival/>} />
-      <Route path="/calendar" element={<MapFestivals/>} />
+      <Route path="/calendar" element={<Calendar/>} />
       <Route path="/myFestivals" element={<MyFestivals />} />
       <Route path="/InfoFestival/:idFestival" element={<InfoFestival />} />
     </Routes>

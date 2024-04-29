@@ -1,77 +1,97 @@
-import React, { useRef, useState, useEffect } from 'react';
-import CardFestival from './CardFestival';
-import { useFestivalContext } from '../context/FestivalContext';
+import React, { useRef, useState, useEffect } from "react";
+import CardFestival from "./CardFestival";
+import { useFestivalContext } from "../context/FestivalContext";
 
-import arrowLeft from "../assets/arrowLeft.svg"
-import arrowRight from "../assets/arrowRight.svg"
-import Loading from './Loading';
+
+import arrowLeft from "../assets/arrowLeft.svg";
+import arrowRight from "../assets/arrowRight.svg";
+import Loading from "./Loading";
 
 const ListFestivalsModality = ({ title, modality, bg }) => {
-    const { error , isFoundFestival } = useFestivalContext();
-    const showButtonAddFavorite = true;
-    const [scrollable, setScrollable] = useState(false);
-    const containerRef = useRef(null);
+  const { error, isFoundFestival } = useFestivalContext();
+  const showButtonAddFavorite = true;
+  const [scrollable, setScrollable] = useState(false);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(false);
+  const containerRef = useRef(null);
 
-    useEffect(() => {
-        const container = containerRef.current;
-        if (container) {
-            setScrollable(container.scrollWidth > container.clientWidth);
-        }
-    }, [modality]);
+  useEffect(() => {
+    const container = containerRef.current;
+    if (container) {
+      setScrollable(container.scrollWidth > container.clientWidth);
+      // Verificar si debe mostrar u ocultar las flechas al inicio
+      setShowLeftArrow(container.scrollLeft > 0);
+      // Verificar si debe mostrar u ocultar las flechas al final
+      setShowRightArrow(container.scrollLeft < container.scrollWidth - container.clientWidth);
+    }
+  }, [modality]);
 
-    const handleScroll = (direction) => {
-        const container = containerRef.current;
-        if (container) {
-            const scrollStep = container.clientWidth / 3;
-            if (direction === 'left') {
-                container.scrollLeft -= scrollStep;
-            } else if (direction === 'right') {
-                container.scrollLeft += scrollStep;
-            }
-        }
-    };
+  const handleScroll = (direction) => {
+    const container = containerRef.current;
+    if (container) {
+      const scrollDistance = window.innerWidth / 2; // Ajusta el valor para controlar la cantidad de desplazamiento
+      if (direction === "left") {
+        container.scrollTo({
+          left: container.scrollLeft - scrollDistance,
+          behavior: "smooth",
+        });
+      } else if (direction === "right") {
+        container.scrollTo({
+          left: container.scrollLeft + scrollDistance,
+          behavior: "smooth",
+        });
+      }
+    }
+  };
 
-    modality.sort((a, b) => new Date(a.data_start) - new Date(b.data_start));
-   
-    return (
-        <div className={`${bg}  relative pb-2 pt-6`}>
-            <div className="border-t-2 border-b-2 py-3 border-zinc-600 w-[80%] mx-auto">
-                <span className='text-2xl color-zinc-600'>
-                    {title}
-                </span>
+  modality.sort((a, b) => new Date(a.data_start) - new Date(b.data_start));
+
+  return (
+    <div className="relative pb-2 pt-6">
+      <div className="flex items-center justify-between border-t-2 border-b-2 py-3 border-zinc-600 w-[80%] mx-auto">
+        <span className="text-2xl color-zinc-600">{title}</span>
+        {scrollable &&
+        <div className="flex gap-2">
+          {showLeftArrow &&
+            <div className="cursor-pointer text-zinc-900" onClick={() => handleScroll("left")}>
+              <img className="w-6" src={arrowLeft} alt="left" />
             </div>
-            {modality.length === 0 && isFoundFestival ? <Loading title="Cargando..." />
-            : <div
-                className="relative overflow-x-auto white-space-no-wrap snap-mandatory snap-x flex  gap-10 m-5 w-[80%] mx-auto"
-                ref={containerRef}
-            >
-                {modality.length === 0 && <p className='text-red-500'> {error}</p>}
-                {modality.map(fest => (
-                    <CardFestival key={fest.id} fest={fest} showButtonAddFavorite={showButtonAddFavorite} />
-                ))}
-            </div>}
-
-            {scrollable && (
-                <>
-                    <button
-                        className="absolute top-1/2 transform -translate-y-1/2 left-[-6px] md:left-[40px] opacity-50 hover:opacity-100 py-2 px-4 rounded-l-lg"
-                        onClick={() => handleScroll('left')}
-                    >
-                        {/* Flecha a la izquierda */}
-
-                        <img src={arrowLeft} alt="" className='w-6' />
-                    </button>
-                    <button
-                        className="absolute top-1/2 transform -translate-y-1/2 right-[-6px] md:right-[40px] opacity-50 hover:opacity-100 py-2 px-4 rounded-r-lg"
-                        onClick={() => handleScroll('right')}
-                    >
-                        {/* Flecha a la derecha */}
-                        <img src={arrowRight} alt="" className='w-6' />
-                    </button>
-                </>
-            )}
+          }
+          {showRightArrow &&
+            <div className="cursor-pointer text-zinc-900" onClick={() => handleScroll("right")}>
+              <img className="w-6" src={arrowRight} alt="right" />
+            </div>
+          }
         </div>
-    );
+        }
+      </div>
+      {modality.length === 0 && isFoundFestival ? (
+        <Loading title="Cargando..." />
+      ) : (
+        <div
+          className="relative overflow-hidden overflow-x-auto white-space-no-wrap  flex  gap-10 m-5 w-[80%] mx-auto"
+          ref={containerRef}
+          onScroll={() => {
+            const container = containerRef.current;
+            // Verificar si debe mostrar u ocultar las flechas al inicio
+            setShowLeftArrow(container.scrollLeft > 0);
+            // Verificar si debe mostrar u ocultar las flechas al final
+            setShowRightArrow(container.scrollLeft < container.scrollWidth - container.clientWidth - 1);
+          }}
+        >
+          {modality.length === 0 && <p className="text-red-500"> {error}</p>}
+          {modality.map((fest) => (
+            <CardFestival
+              key={fest.id}
+              fest={fest}
+              showButtonAddFavorite={showButtonAddFavorite}
+            />
+          ))}
+        </div>
+      )}
+
+    </div>
+  );
 };
 
 export default ListFestivalsModality;

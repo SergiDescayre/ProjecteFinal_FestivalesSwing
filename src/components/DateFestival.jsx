@@ -1,20 +1,24 @@
 import React from 'react'
 
+import calendar from "../assets/calendar.svg"
+import heart from "../assets/heart.svg"
+
+
 const DateFestival = ({date}) => {
-    const months = [
-        "Ene",
-        "Feb",
-        "Mar",
-        "Abr",
-        "May",
-        "Jun",
-        "Jul",
-        "Ago",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dic"
-      ];
+  const months = [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre"
+  ];
       const arrayDate = date.split("-")
       const positionMonth = arrayDate[1]
       const dayTotal = arrayDate[2]
@@ -23,9 +27,9 @@ const DateFestival = ({date}) => {
       const month = months[(+positionMonth)-1]
 
   return (
-    <div className='flex flex-col bg-zinc-900 border text-orange-200 w-20 h-20 p-2 border-orange-100  rounded items-center'>
-      <span className='text-2xl'>{day}</span>
-      <span>{month}</span>
+    <div className='flex gap-2 '>
+      <img className='w-4' src={calendar} alt="" />
+      <span className='text-xs'>{day} de {month} de {year}</span>
     </div>
   )
 }
