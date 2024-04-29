@@ -1,0 +1,14 @@
+.dark {
+    --bg-primary: #333; /* Color de fondo principal */
+    --text-primary: #fff; /* Color del texto principal */
+    --bg-secondary: #555; /* Color de fondo secundario */
+    --text-secondary: #ccc; /* Color del texto secundario */
+  }
+  
+  /* Estilos para el tema claro */
+.light {
+    --bg-primary: #fff; /* Color de fondo principal */
+    --text-primary: #333; /* Color del texto principal */
+    --bg-secondary: #f3f4f6; /* Color de fondo secundario */
+    --text-secondary: #666; /* Color del texto secundario */
+  }
