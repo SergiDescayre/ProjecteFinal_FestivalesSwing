@@ -33,7 +33,6 @@ const ListFestivalsModality = ({ title, modality, bg }) => {
 
     modality.sort((a, b) => new Date(a.data_start) - new Date(b.data_start));
    
-    console.log(isFoundFestival)
     return (
         <div className={`${bg}  relative pb-2 pt-6`}>
             <div className="border-t-2 border-b-2 py-3 border-zinc-600 w-[80%] mx-auto">
