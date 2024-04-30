@@ -9,7 +9,8 @@ export default {
     extend: { 
       fontFamily: {
         'sans': ['Montserrat', 'sans-serif'],
-      },}
+      },
+    }
   },
   plugins: [require("daisyui")],
   daisyui: {
