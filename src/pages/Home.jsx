@@ -1,5 +1,5 @@
 import FormSearchHome from "../components/FormSearchHome";
-import ListFestivals from "../components/ListFestivals";
+import ListFestivals from "./ListFestivals";
 
 const Home = () => {
   return (
