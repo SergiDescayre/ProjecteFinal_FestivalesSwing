@@ -9,7 +9,7 @@ const Editor = () => {
   const {contentQuill,setContentQuill} = useFestivalContext()
  
   const toolbarOptions = [
-    [{ 'header': [1, 2, false] }],
+  
     ['bold', 'italic', 'underline'],
 
     ['link'],
