@@ -40,10 +40,10 @@ const CardFestival = ({
         <div className=" bg-zinc-800">
           <div className="flex items-center justify-between p-3 gap-2">
             <div>
-              <h2 className="uppercase  w-full font-semibold  ">
+              <h2 className="uppercase w-[225px]  font-semibold overflow-hidden whitespace-nowrap overflow-ellipsis  ">
                 {fest.name}
               </h2>
-              <span className="capitalize text-sm ">{fest.city}</span>
+              <span className="capitalize text-sm text-stone-200 ">{fest.city}</span>
             </div>
             <div className="flex items-center gap-2">
               {/* {auth===fest.userId && <ButtonDeleteFest fest={fest} />} */}
@@ -51,13 +51,13 @@ const CardFestival = ({
               {showButtonDeleteFavorite && <ButtonDeleteFav fest={fest} />} */}
             </div>
           </div>
-          <div className="px-3 flex flex-col gap-2 py-4">
+          <div className="px-3 flex flex-col gap-2 py-4 text-stone-200">
             <div className="flex gap-2">
               <img className="w-4" src={location} alt="" />
-              <span className="text-xs">C/ de los olmos 45</span>
+              <span className="text-xs ">C/ de los olmos 45</span>
             </div>
 
-            <DateFestival date={fest.data_start} />
+            <DateFestival date={fest.data_start}  />
             <div className="flex gap-2">
               <img className="w-4" src={price} alt="price" />
               <span className="text-xs">desde 125 €</span>

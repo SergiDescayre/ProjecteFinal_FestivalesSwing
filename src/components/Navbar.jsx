@@ -66,16 +66,16 @@ function Navbar() {
         </div>
 
         {/* Menús (centrados en dispositivos grandes, ocultos en dispositivos pequeños) */}
-        <div className="hidden md:flex flex-grow justify-center">
-          <NavLink to="/" className="text-orange-200 px-4 py-2">
+        <div className="hidden md:flex flex-grow justify-center text-stone-100">
+          <NavLink to="/" className=" px-4 py-2">
             Inicio
           </NavLink>
       
-          <NavLink to="/addfestival" className="text-orange-200 px-4 py-2">
+          <NavLink to="/addfestival" className=" px-4 py-2">
             Registrar festival
           </NavLink>
 
-          <NavLink to="/calendar" className="text-orange-200 px-4 py-2">
+          <NavLink to="/calendar" className="px-4 py-2">
             Calendario
           </NavLink>
          

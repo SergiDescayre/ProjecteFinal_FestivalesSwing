@@ -16,17 +16,19 @@ import Loading from "./Loading";
 import Editor from "./Editor"
 
 const formAddFestival = () => {
-  
+
   const navigate = useNavigate();
-  const {contentQuill} = useFestivalContext()
+  const { contentQuill } = useFestivalContext()
 
   const [uploadFestival, setUploadFestival] = useState(false)
 
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
   const [adress, setAdress] = useState("");
-  const [code,setCode] = useState("")
+  const [code, setCode] = useState("")
   const [modality, setModality] = useState([]);
+  const [minPrice,setMinPrice] = useState("")
+  const [maxPrice, setMaxPrice] = useState("")
   const [dataStart, setDataStart] = useState("");
   const [dataEnd, setDataEnd] = useState("");
   const [image, setImage] = useState("");
@@ -45,14 +47,14 @@ const formAddFestival = () => {
   //subir imagen a storage y subir festival
   const uploadImageToStorage = async () => {
     setUploadFestival(true)
-    
+
     const auth = getAuth(appFirebase);
     const storage = getStorage();
     try {
       if (image === "") {
         setUploadFestival(false)
         return alert("Debe haber una imagen");
-        
+
       }
 
       const storageRef = ref(storage, image.name);
@@ -75,7 +77,9 @@ const formAddFestival = () => {
         listOfTeachers,
         isFavorite: false,
         attend: false,
-        contentQuill
+        contentQuill,
+        minPrice,
+        maxPrice
       });
 
       // Obtener el ID del documento recién creado
@@ -101,178 +105,195 @@ const formAddFestival = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
- console.log(contentQuill)
+    console.log(contentQuill)
     // handleSaveQuill()
     uploadImageToStorage();
   };
 
   return (
     <>
-    {uploadFestival ? <Loading title={"Registrando festival"} />
-    :<div>
-    <form onSubmit={handleSubmit}>
-        <div className="md:w-[600px] mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-5 ">
-            <div className="w-full">
-              <label htmlFor="name">Nombre del festival</label>
-              <input
-                id="name"
-                className="input input-bordered w-full"
-                type="text"
-                onChange={(e) => setName(e.target.value)}
-                //required
-              />
-            </div>
-            <div className="w-full">
-              <label htmlFor="city">Ciudad</label>
-              <input
-                id="city"
-                className="input input-bordered w-full"
-                type="text"
-                onChange={(e) => setCity(e.target.value)}
-                //required
-              />
-            </div>
-          </div>
-          <div className="mt-5 flex gap-5">
-          <div className="w-full">
-          <label htmlFor="adress">Dirección</label>
-              <input
-                id="adress"
-                className="input input-bordered w-full"
-                type="text"
-                onChange={(e) => setAdress(e.target.value)}
-                //required
-              />
-          </div>
-          <div className="w-[40%]">
-          <label htmlFor="adress">Codigo Postal</label>
-              <input
-                id="adress"
-                className="input input-bordered w-full"
-                type="text"
-                onChange={(e) => setCode(e.target.value)}
-                //required
-              />
-          </div>
-             
-            </div>
-          <div className="mt-5">
-            <label>Profesores</label>
-            <div className="join w-full">
-              <input
-                className="input input-bordered join-item w-full"
-                value={teacher}
-                onChange={(e) => setTeacher(e.target.value)}
-                //required
-              />
-              <button onClick={addTeachers} className="btn join-item ">
-                Añadir
-              </button>
-            </div>
-            <div>
-              {listOfTeachers.length > 0 && (
-                <div className="flex flex-col border border-zinc-900 rounded-md mt-5 px-5 py-2 bg-zinc-100">
-                  {listOfTeachers.map((teacher, index) => (
-                    <span key={index}>{teacher}</span>
-                  ))}
+      {uploadFestival ? <Loading title={"Registrando festival"} />
+        : <div>
+          <form onSubmit={handleSubmit}>
+            <div className="md:w-[600px] mx-auto px-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-5 ">
+                <div className="w-full">
+                  <label htmlFor="name">Nombre del festival</label>
+                  <input
+                    id="name"
+                    className="input input-bordered w-full"
+                    type="text"
+                    onChange={(e) => setName(e.target.value)}
+                  //required
+                  />
                 </div>
-              )}
-            </div>
-          </div>
-
-          <div className=" mt-5 text-center">
-            <label>Modalidad/es</label>
-            <div className="flex justify-between  md:justify-around gap-2 mt-5">
-              <div className="flex flex-col items-center">
-                <span className="label-text">Lindy Hop</span>
-                <input
-                  type="checkbox"
-                  value="Lindy Hop"
-                  className="toggle toggle-sm"
-                  onChange={handleCheckBox}
-                />
+                <div className="w-full">
+                  <label htmlFor="city">Ciudad</label>
+                  <input
+                    id="city"
+                    className="input input-bordered w-full"
+                    type="text"
+                    onChange={(e) => setCity(e.target.value)}
+                  //required
+                  />
+                </div>
               </div>
-              <div className="flex flex-col items-center">
-                <span className="label-text">Blues</span>
-                <input
-                  type="checkbox"
-                  value="Blues"
-                  className="toggle toggle-sm"
-                  onChange={handleCheckBox}
-                />
+              <div className="mt-5 flex gap-5">
+                <div className="w-full">
+                  <label htmlFor="adress">Dirección</label>
+                  <input
+                    id="adress"
+                    className="input input-bordered w-full"
+                    type="text"
+                    onChange={(e) => setAdress(e.target.value)}
+                  //required
+                  />
+                </div>
+                <div className="w-[40%]">
+                  <label htmlFor="adress">Codigo Postal</label>
+                  <input
+                    id="adress"
+                    className="input input-bordered w-full"
+                    type="text"
+                    onChange={(e) => setCode(e.target.value)}
+                  //required
+                  />
+                </div>
               </div>
-              <div className="flex flex-col items-center">
-                <span className="label-text">Balboa</span>
-                <input
-                  type="checkbox"
-                  value="Balboa"
-                  className="toggle toggle-sm"
-                  onChange={handleCheckBox}
-                />
+              <div className="mt-5">
+                <label>Profesores</label>
+                <div className="join w-full">
+                  <input
+                    className="input input-bordered join-item w-full"
+                    value={teacher}
+                    onChange={(e) => setTeacher(e.target.value)}
+                  //required
+                  />
+                  <button onClick={addTeachers} className="btn join-item ">
+                    Añadir
+                  </button>
+                </div>
+                <div>
+                  {listOfTeachers.length > 0 && (
+                    <div className="flex flex-col border border-zinc-900 rounded-md mt-5 px-5 py-2 bg-zinc-100">
+                      {listOfTeachers.map((teacher, index) => (
+                        <span key={index}>{teacher}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className=" mt-5 text-center">
+                <label>Modalidad/es</label>
+                <div className="flex justify-between  md:justify-around gap-2 mt-5">
+                  <div className="flex flex-col items-center">
+                    <span className="label-text">Lindy Hop</span>
+                    <input
+                      type="checkbox"
+                      value="Lindy Hop"
+                      className="toggle toggle-sm"
+                      onChange={handleCheckBox}
+                    />
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <span className="label-text">Blues</span>
+                    <input
+                      type="checkbox"
+                      value="Blues"
+                      className="toggle toggle-sm"
+                      onChange={handleCheckBox}
+                    />
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <span className="label-text">Balboa</span>
+                    <input
+                      type="checkbox"
+                      value="Balboa"
+                      className="toggle toggle-sm"
+                      onChange={handleCheckBox}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="mt-5">
+              <label>Precio</label>
+              <div className="flex gap-5">
+                <div className="flex flex-col w-full">
+                  <label>Desde</label>
+                  <input type="text"
+                    className="input input-bordered w-full  block "
+                    onChange={(e) => setMinPrice(e.target.value)} />
+                </div>
+                <div className="flex flex-col w-full">
+                  <label>Hasta</label>
+                  <input type="text"
+                    className="input input-bordered w.full "
+                    onChange={(e) => setMaxPrice(e.target.value)} />
+                </div>
+              </div>
+              </div>
+             
+
+              <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-5  mt-5">
+                <div className="w-full">
+                  <label htmlFor="data_start">Fecha Inicio</label>
+                  <input
+                    id="data_start"
+                    className="input input-bordered w-full"
+                    type="date"
+                    onChange={(e) => setDataStart(e.target.value)}
+                  //required
+                  />
+                </div>
+                <div className="w-full">
+                  <label htmlFor="data_end">Fecha Fin</label>
+                  <input
+                    id="data_end"
+                    className="input input-bordered w-full"
+                    type="date"
+                    onChange={(e) => setDataEnd(e.target.value)}
+                  //required
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-5  mt-5">
+                <div className="w-full">
+                  <label htmlFor="image">Imagen de portada</label>
+                  <input
+                    id="image"
+                    type="file"
+                    className="file-input file-input-bordered w-full"
+                    onChange={(e) => setImage(e.target.files[0])}
+                  //required
+                  />
+                </div>
+                <div className="w-full">
+                  <label htmlFor="url">Url del festival</label>
+                  <input
+                    type="text"
+                    id="url"
+                    className="input input-bordered w-full "
+                    onChange={(e) => setUrl(e.target.value)}
+                  // required
+                  />
+                </div>
+              </div>
+              <div className="w-full mt-5">
+                <label>Descripción</label>
+                <Editor />
+              </div>
+              <div className="grid grid-cols-1 justify-items-center gap-5  mt-5">
+                <button className="btn btn-neutral w-full" onClick={handleSubmit}>
+                  Enviar
+                </button>
               </div>
             </div>
-          </div>
+          </form>
+        </div>}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-5  mt-5">
-            <div className="w-full">
-              <label htmlFor="data_start">Fecha Inicio</label>
-              <input
-                id="data_start"
-                className="input input-bordered w-full"
-                type="date"
-                onChange={(e) => setDataStart(e.target.value)}
-                //required
-              />
-            </div>
-            <div className="w-full">
-              <label htmlFor="data_end">Fecha Fin</label>
-              <input
-                id="data_end"
-                className="input input-bordered w-full"
-                type="date"
-                onChange={(e) => setDataEnd(e.target.value)}
-                //required
-              />
-            </div>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-5  mt-5">
-            <div className="w-full">
-              <label htmlFor="image">Imagen de portada</label>
-              <input
-                id="image"
-                type="file"
-                className="file-input file-input-bordered w-full"
-                onChange={(e) => setImage(e.target.files[0])}
-                //required
-              />
-            </div>
-            <div className="w-full">
-              <label htmlFor="url">Url del festival</label>
-              <input
-                type="text"
-                id="url"
-                className="input input-bordered w-full "
-                onChange={(e) => setUrl(e.target.value)}
-                // required
-              />
-            </div>
-          </div>
-          <div className="w-full mt-5">
-            <label>Descripción</label>
-            <Editor />
-            </div>
-          <div className="grid grid-cols-1 justify-items-center gap-5  mt-5">
-            <button className="btn btn-neutral w-full" onClick={handleSubmit}>
-              Enviar
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>}
-    
-     
     </>
   );
 };
