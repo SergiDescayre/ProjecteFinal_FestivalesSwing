@@ -14,7 +14,7 @@ const ContexProvider = ({ children }) => {
     const [isFavorite, setIsFavorite] = useState(false)
     const [coords, setCoords] = useState([]);
     const [isFoundFestival ,setIsFoundFestival] = useState(true)
-
+    const [contentQuill, setContentQuill] = useState('');
 
     const getFilterModality = (modalityFilter) => {
         return festivals.filter(fest=> fest.modality.includes(modalityFilter))
@@ -193,6 +193,9 @@ const ContexProvider = ({ children }) => {
                 isFavorite,
                 coords,
                 isFoundFestival ,
+                contentQuill,
+                setContentQuill,
+            
                 setIsFoundFestival,
                 getFavorites,
                 deleteFestival,

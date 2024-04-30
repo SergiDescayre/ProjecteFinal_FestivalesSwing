@@ -24,4 +24,22 @@ body{
 }
 /* Estilos adicionales para Firefox */
 
+.quill-editor {
+  border: none !important;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.ql-toolbar{
+  background-color: rgb(214, 208, 208);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+ 
+}
+
+.ql-editor{
+  background-color: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
 

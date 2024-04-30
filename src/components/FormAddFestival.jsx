@@ -10,17 +10,22 @@ import {
 import appFirebase from "../credentials";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { useFestivalContext } from "../context/FestivalContext";
 
 import Loading from "./Loading";
+import Editor from "./Editor"
 
 const formAddFestival = () => {
   
   const navigate = useNavigate();
+  const {contentQuill} = useFestivalContext()
 
   const [uploadFestival, setUploadFestival] = useState(false)
 
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
+  const [adress, setAdress] = useState("");
+  const [code,setCode] = useState("")
   const [modality, setModality] = useState([]);
   const [dataStart, setDataStart] = useState("");
   const [dataEnd, setDataEnd] = useState("");
@@ -45,7 +50,9 @@ const formAddFestival = () => {
     const storage = getStorage();
     try {
       if (image === "") {
+        setUploadFestival(false)
         return alert("Debe haber una imagen");
+        
       }
 
       const storageRef = ref(storage, image.name);
@@ -59,6 +66,8 @@ const formAddFestival = () => {
         name,
         city,
         modality,
+        adress,
+        code,
         data_start: dataStart,
         data_end: dataEnd,
         img: imageUrl,
@@ -66,6 +75,7 @@ const formAddFestival = () => {
         listOfTeachers,
         isFavorite: false,
         attend: false,
+        contentQuill
       });
 
       // Obtener el ID del documento recién creado
@@ -82,10 +92,7 @@ const formAddFestival = () => {
       console.log(error);
     }
     setUploadFestival(false)
-    
   };
-
-
 
   const addTeachers = () => {
     setListOfTeachers([...listOfTeachers, teacher]);
@@ -94,6 +101,8 @@ const formAddFestival = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+ console.log(contentQuill)
+    // handleSaveQuill()
     uploadImageToStorage();
   };
 
@@ -111,7 +120,7 @@ const formAddFestival = () => {
                 className="input input-bordered w-full"
                 type="text"
                 onChange={(e) => setName(e.target.value)}
-                required
+                //required
               />
             </div>
             <div className="w-full">
@@ -121,10 +130,33 @@ const formAddFestival = () => {
                 className="input input-bordered w-full"
                 type="text"
                 onChange={(e) => setCity(e.target.value)}
-                required
+                //required
               />
             </div>
           </div>
+          <div className="mt-5 flex gap-5">
+          <div className="w-full">
+          <label htmlFor="adress">Dirección</label>
+              <input
+                id="adress"
+                className="input input-bordered w-full"
+                type="text"
+                onChange={(e) => setAdress(e.target.value)}
+                //required
+              />
+          </div>
+          <div className="w-[40%]">
+          <label htmlFor="adress">Codigo Postal</label>
+              <input
+                id="adress"
+                className="input input-bordered w-full"
+                type="text"
+                onChange={(e) => setCode(e.target.value)}
+                //required
+              />
+          </div>
+             
+            </div>
           <div className="mt-5">
             <label>Profesores</label>
             <div className="join w-full">
@@ -132,7 +164,7 @@ const formAddFestival = () => {
                 className="input input-bordered join-item w-full"
                 value={teacher}
                 onChange={(e) => setTeacher(e.target.value)}
-                required
+                //required
               />
               <button onClick={addTeachers} className="btn join-item ">
                 Añadir
@@ -190,7 +222,7 @@ const formAddFestival = () => {
                 className="input input-bordered w-full"
                 type="date"
                 onChange={(e) => setDataStart(e.target.value)}
-                required
+                //required
               />
             </div>
             <div className="w-full">
@@ -200,7 +232,7 @@ const formAddFestival = () => {
                 className="input input-bordered w-full"
                 type="date"
                 onChange={(e) => setDataEnd(e.target.value)}
-                required
+                //required
               />
             </div>
           </div>
@@ -213,7 +245,7 @@ const formAddFestival = () => {
                 type="file"
                 className="file-input file-input-bordered w-full"
                 onChange={(e) => setImage(e.target.files[0])}
-                required
+                //required
               />
             </div>
             <div className="w-full">
@@ -223,10 +255,14 @@ const formAddFestival = () => {
                 id="url"
                 className="input input-bordered w-full "
                 onChange={(e) => setUrl(e.target.value)}
-                required
+                // required
               />
             </div>
           </div>
+          <div className="w-full mt-5">
+            <label>Descripción</label>
+            <Editor />
+            </div>
           <div className="grid grid-cols-1 justify-items-center gap-5  mt-5">
             <button className="btn btn-neutral w-full" onClick={handleSubmit}>
               Enviar

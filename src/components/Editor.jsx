@@ -2,61 +2,33 @@
 import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'; // Estilos de Quill
+import { useFestivalContext } from '../context/FestivalContext';
 
 const Editor = () => {
-  const [content, setContent] = useState('');
 
-  const handleEditorChange = (value) => {
-    setContent(value);
-  };
+  const {contentQuill,setContentQuill} = useFestivalContext()
+ 
+  const toolbarOptions = [
+    [{ 'header': [1, 2, false] }],
+    ['bold', 'italic', 'underline'],
 
-  const formats = [
-    'header',
-    { 'class': 'h1', 'tag': 'h1' },
-    { 'class': 'h2', 'tag': 'h2' },
-    { 'class': 'h3', 'tag': 'h3' },
-    { 'class': 'h4', 'tag': 'h4' },
-    { 'class': 'h5', 'tag': 'h5' },
-    { 'class': 'h6', 'tag': 'h6' }
+    ['link'],
+    ['clean'] // Elimina todas las opciones restantes excepto "Limpiar formato"
   ];
-  const modules = {
-    toolbar: [
-      [{ 'header': '1' }, { 'header': '2' }, { 'header': '3' }, { 'header': '4' }, { 'header': '5' }, { 'header': '6' }],
-      [{ 'header': 1 }, { 'header': 2 }, { 'font': [] }],
-      [{ 'size': [] }],
-      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-      [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-      ['link', 'image', 'video'],
-      ['clean']
-    ],
-    clipboard: {
-      matchVisual: false,
-    },
-  };
-
-  const addDiv = () => {
-    const div = document.getElementById("content_editor");
-    div.innerHTML = content;
-    console.log(content)
-  }
 
   return (
-    <div>
+    <div className="w-full">
       <ReactQuill
-        value={content}
-        onChange={handleEditorChange}
-        modules={modules}
-        formats={formats}
-        
+       modules={{
+          toolbar: toolbarOptions
+        }}
+        theme="snow"
+        value={contentQuill}
+        onChange={setContentQuill}
       />
-      <button onClick={addDiv}>Guardar en Firebase</button>
-    <div id="content_editor"> 
-    <h1>hola</h1>
-    <p>adios</p>
-    </div>
     </div>
   );
-}
+};
 
 
 export default Editor;
