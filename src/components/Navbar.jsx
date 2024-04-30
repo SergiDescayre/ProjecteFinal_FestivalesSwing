@@ -88,7 +88,7 @@ function Navbar() {
         {isLogin ? (
           <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className ="border-2 border-orange-200 w-8 h-8 rounded-full flex items-center justify-center">
-          <div   className=""> <span className="text-orange-200">{getUsernName(user.email)}</span></div>
+          <div className=""> <span className="text-orange-200">{getUsernName(user.email)}</span></div>
           </div>
             <div tabIndex={0} className=" flex flex-col gap-3 items-end dropdown-content z-[1] p-2 shadow bg-zinc-950 text-orange-200 rounded-box w-32 mt-10">
               <NavLink to="myFestivals">Mis festivales</NavLink>

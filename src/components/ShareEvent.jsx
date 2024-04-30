@@ -22,7 +22,7 @@ const ShareEvent = ({ eventTitle, eventUrl }) => {
   };
 
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-4 flex-wrap">
       <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onClick={shareOnTwitter}>
         Compartir en Twitter
       </button>

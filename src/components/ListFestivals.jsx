@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useFestivalContext } from "../context/FestivalContext";
 
-import ListFestivalsModality from "../components/ListFestivalsModality";
+import ListFestivalsModality from "./ListFestivalsModality";
 
 const ListFestivals = () => {
     const {getFestivals, festivals} = useFestivalContext()

@@ -27,7 +27,7 @@ const CardFestival = ({
           className="h-[150px] bg-cover bg-center overflow-hidden transition duration-300 ease-in-out   "
           style={{ backgroundImage: "url(" + fest.img + ")" }}
         >
-                  <div className="flex justify-end">
+      <div className="flex justify-end">
             <div className="shadow bg-zinc-900 flex flex-col items-center m-2  px-1 py-2 rounded">
                     {showButtonAddFavorite && <ButtonAddFavorite fest={fest} />}
               {showButtonDeleteFavorite && <ButtonDeleteFav fest={fest} />}
