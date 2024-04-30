@@ -1,28 +1,28 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body{
+body {
   background-color: #e7e5e4;
 }
 
-.container_login{
+
+.container_login {
   background-image: url("./assets/bgLogin.jpeg");
   background-position: center;
   background-size: cover;
 }
 
-.active{
-  border-bottom: 3px solid;
-  padding-bottom: 2px; 
-  color:#fed7aa
+.active {
+  color: #fed7aa;
+
 }
 
 ::-webkit-scrollbar {
   display: none;
   scrollbar-width: none;
 }
+
 /* Estilos adicionales para Firefox */
 
 .quill-editor {
@@ -31,16 +31,15 @@ body{
   box-shadow: none;
 }
 
-.ql-toolbar{
+.ql-toolbar {
   background-color: rgb(214, 208, 208);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
- 
+
 }
 
-.ql-editor{
+.ql-editor {
   background-color: white;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-

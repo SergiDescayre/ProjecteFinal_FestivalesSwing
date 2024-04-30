@@ -1,11 +1,11 @@
 import ButtonDeleteFav from "./ButtonDeleteFav";
 import DateFestival from "./DateFestival";
 import ButtonAddFavorite from "./ButtonAddFavorite";
-import ButtonDeleteFest from "./ButtonDeleteFest"
+import ButtonDeleteFest from "./ButtonDeleteFest";
 
 import { useNavigate } from "react-router-dom";
 
-import info from "../assets/info.svg"
+import info from "../assets/info.svg";
 
 import price from "../assets/price.svg";
 import location from "../assets/location.svg";
@@ -15,12 +15,11 @@ const CardFestival = ({
   showButtonAddFavorite,
 }) => {
   const auth = JSON.parse(localStorage.getItem("uid"));
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleClick = () => {
-
-    navigate(`infoFestival/${fest.docId}`)
-  }
+    navigate(`infoFestival/${fest.docId}`);
+  };
   return (
     <>
       <div className="shadow-xl transition duration-300 ease-in-out rounded-md min-w-64  text-orange-200 overflow-hidden ">
@@ -28,13 +27,17 @@ const CardFestival = ({
           className="h-[150px] bg-cover bg-center overflow-hidden transition duration-300 ease-in-out   "
           style={{ backgroundImage: "url(" + fest.img + ")" }}
         >
-          <div className="flex justify-end">
+                  <div className="flex justify-end">
             <div className="shadow bg-zinc-900 flex flex-col items-center m-2  px-1 py-2 rounded">
-                {showButtonAddFavorite && <ButtonAddFavorite fest={fest} />}
-                {showButtonDeleteFavorite && <ButtonDeleteFav fest={fest} />}
-                <img onClick={handleClick}className="w-6 cursor-pointer" src={info} alt="" />
+                    {showButtonAddFavorite && <ButtonAddFavorite fest={fest} />}
+              {showButtonDeleteFavorite && <ButtonDeleteFav fest={fest} />}
+              <img
+                onClick={handleClick}
+                className="w-6 cursor-pointer"
+                src={info}
+                alt=""
+              />
             </div>
-          
           </div>
         </div>
         <div className=" bg-zinc-800">
@@ -43,7 +46,9 @@ const CardFestival = ({
               <h2 className="uppercase w-[225px]  font-semibold overflow-hidden whitespace-nowrap overflow-ellipsis  ">
                 {fest.name}
               </h2>
-              <span className="capitalize text-sm text-stone-200 ">{fest.city}</span>
+              <span className="capitalize text-sm text-stone-200 ">
+                {fest.city}
+              </span>
             </div>
             <div className="flex items-center gap-2">
               {/* {auth===fest.userId && <ButtonDeleteFest fest={fest} />} */}
@@ -57,7 +62,7 @@ const CardFestival = ({
               <span className="text-xs ">C/ de los olmos 45</span>
             </div>
 
-            <DateFestival date={fest.data_start}  />
+            <DateFestival date={fest.data_start} />
             <div className="flex gap-2">
               <img className="w-4" src={price} alt="price" />
               <span className="text-xs">desde 125 €</span>

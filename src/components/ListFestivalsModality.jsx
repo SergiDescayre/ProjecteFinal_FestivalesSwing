@@ -48,7 +48,7 @@ const ListFestivalsModality = ({ title, modality, bg }) => {
 
   return (
     <div className="relative pb-2 pt-6">
-      <div className="flex items-center justify-between border-t-2 border-b-2 py-3 border-zinc-600 w-[80%] mx-auto">
+      <div className="flex items-center justify-between border-t-2 border-b-2 py-3 border-zinc-600 w-[80%] max-w-[1600px] mx-auto">
         <span className="text-2xl color-zinc-600">{title}</span>
         {scrollable &&
         <div className="flex gap-2">
@@ -69,7 +69,7 @@ const ListFestivalsModality = ({ title, modality, bg }) => {
         <Loading title="Cargando..." />
       ) : (
         <div
-          className="relative overflow-hidden overflow-x-auto white-space-no-wrap  flex  gap-10 m-5 w-[80%] mx-auto"
+          className="relative overflow-hidden overflow-x-auto white-space-no-wrap  flex  gap-10 m-5 w-[80%] max-w-[1600px] mx-auto"
           ref={containerRef}
           onScroll={() => {
             const container = containerRef.current;

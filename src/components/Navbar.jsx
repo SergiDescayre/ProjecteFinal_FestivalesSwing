@@ -40,6 +40,9 @@ function Navbar() {
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+    if(!menuOpen){
+      document.body.style.overflow="hidden"
+    }else document.body.style.overflow=""
   };
 
   const handleLogOut = async () => {
@@ -66,7 +69,7 @@ function Navbar() {
         </div>
 
         {/* Menús (centrados en dispositivos grandes, ocultos en dispositivos pequeños) */}
-        <div className="hidden md:flex flex-grow justify-center text-stone-100">
+        <div className="hidden md:flex flex-grow justify-center text-stone-200">
           <NavLink to="/" className=" px-4 py-2">
             Inicio
           </NavLink>
@@ -100,9 +103,6 @@ function Navbar() {
 
             </div>
           </div>
-
-
-
         ) : (
           <div className="flex flex-col ml-auto">
             <img onClick={handleLogin} src={login} alt="login" />
@@ -111,19 +111,21 @@ function Navbar() {
       </div>
 
       {/* Menús desplegables (solo visibles en dispositivos móviles) */}
-      <div className={`md:hidden ${menuOpen ? "" : "hidden"}`}>
-        <div className="flex flex-col items-center">
-          <NavLink to="/" className="text-orange-200 px-4 py-2">
+      <div className={`md:hidden ${menuOpen ? "" : "hidden"} `}>
+        <div className="flex flex-col gap-6 items-center absolute left-0 z-10 bg-zinc-950 w-full h-screen text-stone-200">
+          <NavLink to="/" onClick={toggleMenu} className=" px-4 py-2">
             Inicio
           </NavLink>
         
-          <NavLink to="/addfestival" className="text-orange-200 px-4 py-2">
+          <NavLink to="/addfestival" onClick={toggleMenu} className=" px-4 py-2">
             Registrar festival
           </NavLink>
 
-          <NavLink to="/calendar" className="text-orange-200 px-4 py-2">
+          <NavLink to="/calendar"  onClick={toggleMenu}className=" px-4 py-2">
             Calendario
           </NavLink>
+         
+          
         
       </div>
       </div>

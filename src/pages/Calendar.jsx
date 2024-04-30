@@ -3,6 +3,7 @@ import React from 'react'
 import ShareEvent from '../components/ShareEvent'
 import Editor from '../components/Editor'
 
+
 const Calendar = () => {
     console.log("calendar")
   return (
@@ -11,6 +12,7 @@ const Calendar = () => {
         <Editor />
         <h1>hola</h1>
     <p>adios</p>
+
     </div>
   )
 }
