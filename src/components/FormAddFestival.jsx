@@ -24,7 +24,7 @@ const formAddFestival = () => {
 
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
-  const [adress, setAdress] = useState("");
+  const [address, setAddress] = useState("");
   const [code, setCode] = useState("")
   const [modality, setModality] = useState([]);
   const [minPrice,setMinPrice] = useState("")
@@ -68,7 +68,7 @@ const formAddFestival = () => {
         name,
         city,
         modality,
-        adress,
+        address,
         code,
         data_start: dataStart,
         data_end: dataEnd,
@@ -140,17 +140,17 @@ const formAddFestival = () => {
               </div>
               <div className="mt-5 flex gap-5">
                 <div className="w-full">
-                  <label htmlFor="adress">Dirección</label>
+                  <label htmlFor="address">Dirección</label>
                   <input
-                    id="adress"
+                    id="address"
                     className="input input-bordered w-full"
                     type="text"
-                    onChange={(e) => setAdress(e.target.value)}
+                    onChange={(e) => setAddress(e.target.value)}
                   //required
                   />
                 </div>
                 <div className="w-[40%]">
-                  <label htmlFor="adress">Codigo Postal</label>
+                  <label htmlFor="adress">CP</label>
                   <input
                     id="adress"
                     className="input input-bordered w-full"
@@ -216,19 +216,19 @@ const formAddFestival = () => {
                   </div>
                 </div>
               </div>
-              <div className="mt-5">
+              <div className="mt-5 ">
               <label>Precio</label>
               <div className="flex gap-5">
                 <div className="flex flex-col w-full">
                   <label>Desde</label>
                   <input type="text"
-                    className="input input-bordered w-full  block "
+                    className="input input-bordered w-full "
                     onChange={(e) => setMinPrice(e.target.value)} />
                 </div>
                 <div className="flex flex-col w-full">
                   <label>Hasta</label>
                   <input type="text"
-                    className="input input-bordered w.full "
+                    className="input input-bordered w-full "
                     onChange={(e) => setMaxPrice(e.target.value)} />
                 </div>
               </div>
@@ -264,7 +264,7 @@ const formAddFestival = () => {
                   <input
                     id="image"
                     type="file"
-                    className="file-input file-input-bordered w-full"
+                    className="file-input file-input-bordered  w-full"
                     onChange={(e) => setImage(e.target.files[0])}
                   //required
                   />

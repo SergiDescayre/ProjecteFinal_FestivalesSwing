@@ -7,18 +7,16 @@ import { useEffect } from "react"
 const AddFestival = () => {
 
   const {setMessageModal} = useFestivalContext()
-  useEffect(()=>{
-    showModalIsNotLogin()
-  },[])
+  const {isLogin} = useSelector(state => state.authUser)
 
-    const {isLogin} = useSelector(state => state.authUser)
+  useEffect(()=>{
+    (JSON.parse(localStorage.getItem("uid"))) ? isLogin===true :  showModalIsNotLogin()
+  },[])
     const showModalIsNotLogin = () => {
-      if(!isLogin){
         document.getElementById("my_modal_5").showModal()
         setMessageModal("Debes estar registrado para añadir festival")
-      }
+
     }
-   
   return (
     <div>
       <Modal />
