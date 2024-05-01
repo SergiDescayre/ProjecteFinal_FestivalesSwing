@@ -195,7 +195,7 @@ const ContexProvider = ({ children }) => {
                 isFoundFestival ,
                 contentQuill,
                 setContentQuill,
-            
+                setInfoFestival,
                 setIsFoundFestival,
                 getFavorites,
                 deleteFestival,

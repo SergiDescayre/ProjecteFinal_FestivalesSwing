@@ -14,6 +14,7 @@ import { useFestivalContext } from "../context/FestivalContext";
 
 import Loading from "./Loading";
 import Editor from "./Editor"
+import { check } from "prettier";
 
 const formAddFestival = () => {
 
@@ -21,20 +22,17 @@ const formAddFestival = () => {
   const { contentQuill } = useFestivalContext()
 
   const [uploadFestival, setUploadFestival] = useState(false)
-
-  const [name, setName] = useState("");
-  const [city, setCity] = useState("");
-  const [address, setAddress] = useState("");
-  const [code, setCode] = useState("")
-  const [modality, setModality] = useState([]);
-  const [minPrice,setMinPrice] = useState("")
-  const [maxPrice, setMaxPrice] = useState("")
-  const [dataStart, setDataStart] = useState("");
-  const [dataEnd, setDataEnd] = useState("");
   const [image, setImage] = useState("");
-  const [url, setUrl] = useState("");
   const [teacher, setTeacher] = useState("");
+  const [modality, setModality] = useState([]);
   const [listOfTeachers, setListOfTeachers] = useState([]);
+
+  const [festivalInfo,setFestivalInfo] = useState({}
+)
+
+const handleChange = (e) => {
+  setFestivalInfo({...festivalInfo, [e.target.name]: e.target.value})
+}
 
   const handleCheckBox = (e) => {
     if (e.target.checked) {
@@ -42,6 +40,19 @@ const formAddFestival = () => {
     } else {
       setModality(modality.filter((item) => item !== e.target.value));
     }
+  };
+
+  const addTeachers = () => {
+    setListOfTeachers([...listOfTeachers, teacher]);
+    setTeacher("");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+console.log(contentQuill)
+    //if(modality.length <= 0) return  alert("debes introducir una modalidad")
+    uploadImageToStorage();
   };
 
   //subir imagen a storage y subir festival
@@ -64,22 +75,14 @@ const formAddFestival = () => {
       const db = getFirestore(appFirebase);
       // Añadir el documento a la colección "festivals" y obtener el ID asignado
       const docRef = await addDoc(collection(db, "festivals"), {
+        ...festivalInfo,
         userId: auth.currentUser.uid,
-        name,
-        city,
-        modality,
-        address,
-        code,
-        data_start: dataStart,
-        data_end: dataEnd,
         img: imageUrl,
-        link: url,
         listOfTeachers,
         isFavorite: false,
         attend: false,
         contentQuill,
-        minPrice,
-        maxPrice
+        modality
       });
 
       // Obtener el ID del documento recién creado
@@ -98,17 +101,7 @@ const formAddFestival = () => {
     setUploadFestival(false)
   };
 
-  const addTeachers = () => {
-    setListOfTeachers([...listOfTeachers, teacher]);
-    setTeacher("");
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(contentQuill)
-    // handleSaveQuill()
-    uploadImageToStorage();
-  };
+  
 
   return (
     <>
@@ -121,9 +114,10 @@ const formAddFestival = () => {
                   <label htmlFor="name">Nombre del festival</label>
                   <input
                     id="name"
+                    name="name"
                     className="input input-bordered w-full"
                     type="text"
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={handleChange}
                   //required
                   />
                 </div>
@@ -131,9 +125,10 @@ const formAddFestival = () => {
                   <label htmlFor="city">Ciudad</label>
                   <input
                     id="city"
+                    name="city"
                     className="input input-bordered w-full"
                     type="text"
-                    onChange={(e) => setCity(e.target.value)}
+                    onChange={handleChange}
                   //required
                   />
                 </div>
@@ -143,19 +138,21 @@ const formAddFestival = () => {
                   <label htmlFor="address">Dirección</label>
                   <input
                     id="address"
+                    name="address"
                     className="input input-bordered w-full"
                     type="text"
-                    onChange={(e) => setAddress(e.target.value)}
+                    onChange={handleChange}
                   //required
                   />
                 </div>
                 <div className="w-[40%]">
                   <label htmlFor="adress">CP</label>
                   <input
-                    id="adress"
+                    id="CP"
+                    name="CP"
                     className="input input-bordered w-full"
                     type="text"
-                    onChange={(e) => setCode(e.target.value)}
+                    onChange={handleChange}
                   //required
                   />
                 </div>
@@ -222,14 +219,16 @@ const formAddFestival = () => {
                 <div className="flex flex-col w-full">
                   <label>Desde</label>
                   <input type="text"
+                  name="minPrice"
                     className="input input-bordered w-full "
-                    onChange={(e) => setMinPrice(e.target.value)} />
+                    onChange={handleChange} />
                 </div>
                 <div className="flex flex-col w-full">
                   <label>Hasta</label>
                   <input type="text"
+                  name="maxPrice"
                     className="input input-bordered w-full "
-                    onChange={(e) => setMaxPrice(e.target.value)} />
+                    onChange={handleChange} />
                 </div>
               </div>
               </div>
@@ -240,9 +239,10 @@ const formAddFestival = () => {
                   <label htmlFor="data_start">Fecha Inicio</label>
                   <input
                     id="data_start"
+                    name="data_start"
                     className="input input-bordered w-full"
                     type="date"
-                    onChange={(e) => setDataStart(e.target.value)}
+                    onChange={handleChange}
                   //required
                   />
                 </div>
@@ -250,9 +250,10 @@ const formAddFestival = () => {
                   <label htmlFor="data_end">Fecha Fin</label>
                   <input
                     id="data_end"
+                    name= "data_end"
                     className="input input-bordered w-full"
                     type="date"
-                    onChange={(e) => setDataEnd(e.target.value)}
+                    onChange={handleChange}
                   //required
                   />
                 </div>
@@ -274,8 +275,9 @@ const formAddFestival = () => {
                   <input
                     type="text"
                     id="url"
+                    name="link"
                     className="input input-bordered w-full "
-                    onChange={(e) => setUrl(e.target.value)}
+                    onChange={handleChange}
                   // required
                   />
                 </div>

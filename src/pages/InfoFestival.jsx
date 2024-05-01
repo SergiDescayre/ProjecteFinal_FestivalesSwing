@@ -2,17 +2,16 @@ import { useParams } from "react-router-dom"
 import { useEffect } from "react"
 
 import { useFestivalContext } from "../context/FestivalContext"
-import { documentId } from "firebase/firestore"
+
 
 
 const InfoFestival =  () => {
     const params = useParams()
-    const {infoFestival,getFestivalByDocId} = useFestivalContext()
+    const {setInfoFestival,infoFestival,getFestivalByDocId} = useFestivalContext()
     useEffect(()=> {
         getFestivalByDocId(params.idFestival)
+        return () => setInfoFestival("")
     },[])
-
-    console.log(infoFestival.contentQuill)
 
   return ( 
     <div>
