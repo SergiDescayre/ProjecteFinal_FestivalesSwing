@@ -5,8 +5,10 @@ import ButtonDeleteFest from "./ButtonDeleteFest";
 
 import { useNavigate } from "react-router-dom";
 import info from "../assets/info.svg";
+
 import price from "../assets/price.svg";
 import location from "../assets/location.svg";
+
 const CardFestival = ({
   fest,
   showButtonDeleteFavorite,
@@ -20,24 +22,23 @@ const CardFestival = ({
   };
   return (
     <>
-      <div className="shadow-xl transition duration-300 ease-in-out rounded-md min-w-64  text-orange-200 overflow-hidden "
-      >
+      <div className="shadow-xl transition duration-300 ease-in-out rounded-md min-w-64  text-orange-200 overflow-hidden ">
         <div
           className="flex items-end justify-end h-[150px] bg-cover bg-center overflow-hidden transition duration-300 ease-in-out    "
           style={{ backgroundImage: "url(" + fest.img + ")" }}
         >
-              <div className="flex">
-                <div className="shadow bg-zinc-900 bg-opacity-80 m-2 px-1 py-2 rounded">
-                  {showButtonAddFavorite && <ButtonAddFavorite fest={fest} />}
-                  {showButtonDeleteFavorite && <ButtonDeleteFav fest={fest} />}
-                  <img
-                    onClick={handleClick}
-                    className="w-6 cursor-pointer"
-                    src={info}
-                    alt=""
-                  />
-                </div>
-              </div>
+          <div className="flex">
+            <div className="shadow bg-zinc-900 bg-opacity-80 m-2 px-1 py-2 rounded">
+              {showButtonAddFavorite && <ButtonAddFavorite fest={fest} />}
+              {showButtonDeleteFavorite && <ButtonDeleteFav fest={fest} />}
+              <img
+                onClick={handleClick}
+                className="w-6 cursor-pointer"
+                src={info}
+                alt=""
+              />
+            </div>
+          </div>
         </div>
         <div className=" bg-zinc-800">
           <div className="flex items-center justify-between p-3 gap-2">
