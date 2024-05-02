@@ -166,7 +166,7 @@ console.log(contentQuill)
                     onChange={(e) => setTeacher(e.target.value)}
                   //required
                   />
-                  <button onClick={addTeachers} className="btn join-item ">
+                  <button onClick={addTeachers} className="btn join-item text-zinc-900 bg-orange-200 border-none hover:bg-orange-100 ">
                     Añadir
                   </button>
                 </div>
@@ -261,12 +261,18 @@ console.log(contentQuill)
 
               <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-5  mt-5">
                 <div className="w-full">
-                  <label htmlFor="image">Imagen de portada</label>
+                  <label className="block" htmlFor="image">Imagen de portada</label>
+                  <label 
+                  htmlFor="image"
+                  className="btn w-full text-zinc-900 bg-orange-200 border-none hover:bg-orange-100"
+                  >Subir Archivo
+                  </label>
                   <input
                     id="image"
                     type="file"
-                    className="file-input file-input-bordered  w-full"
+                    className="file-input file-input-bordered  w-full hidden"
                     onChange={(e) => setImage(e.target.files[0])}
+
                   //required
                   />
                 </div>
@@ -287,7 +293,7 @@ console.log(contentQuill)
                 <Editor />
               </div>
               <div className="grid grid-cols-1 justify-items-center gap-5  mt-5">
-                <button className="btn btn-neutral w-full" onClick={handleSubmit}>
+                <button className="btn text-zinc-900 bg-orange-200 border-none hover:bg-orange-100 w-full" onClick={handleSubmit}>
                   Enviar
                 </button>
               </div>
