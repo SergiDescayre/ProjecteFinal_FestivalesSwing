@@ -14,7 +14,6 @@ import { useFestivalContext } from "../context/FestivalContext";
 
 import Loading from "./Loading";
 import Editor from "./Editor"
-import { check } from "prettier";
 
 const formAddFestival = () => {
 
@@ -27,12 +26,12 @@ const formAddFestival = () => {
   const [modality, setModality] = useState([]);
   const [listOfTeachers, setListOfTeachers] = useState([]);
 
-  const [festivalInfo,setFestivalInfo] = useState({}
-)
+  const [festivalInfo, setFestivalInfo] = useState({}
+  )
 
-const handleChange = (e) => {
-  setFestivalInfo({...festivalInfo, [e.target.name]: e.target.value})
-}
+  const handleChange = (e) => {
+    setFestivalInfo({ ...festivalInfo, [e.target.name]: e.target.value })
+  }
 
   const handleCheckBox = (e) => {
     if (e.target.checked) {
@@ -50,7 +49,7 @@ const handleChange = (e) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-console.log(contentQuill)
+    console.log(contentQuill)
     //if(modality.length <= 0) return  alert("debes introducir una modalidad")
     uploadImageToStorage();
   };
@@ -101,17 +100,15 @@ console.log(contentQuill)
     setUploadFestival(false)
   };
 
-  
-
   return (
     <>
       {uploadFestival ? <Loading title={"Registrando festival"} />
-        : <div>
+        : <div className="md:p-8 bg-zinc-950">
           <form onSubmit={handleSubmit}>
-            <div className="md:w-[600px] mx-auto px-4">
+            <div className="md:w-[700px] mx-auto px-4  bg-zinc-800 p-10 md:rounded-md">
               <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-5 ">
                 <div className="w-full">
-                  <label htmlFor="name">Nombre del festival</label>
+                  <label className="text-orange-200 " htmlFor="name">Nombre del festival</label>
                   <input
                     id="name"
                     name="name"
@@ -122,7 +119,9 @@ console.log(contentQuill)
                   />
                 </div>
                 <div className="w-full">
-                  <label htmlFor="city">Ciudad</label>
+                  <label
+                    className="text-orange-200 "
+                    htmlFor="city">Ciudad</label>
                   <input
                     id="city"
                     name="city"
@@ -135,7 +134,9 @@ console.log(contentQuill)
               </div>
               <div className="mt-5 flex gap-5">
                 <div className="w-full">
-                  <label htmlFor="address">Dirección</label>
+                  <label
+                    className="text-orange-200 "
+                    htmlFor="address">Dirección</label>
                   <input
                     id="address"
                     name="address"
@@ -146,7 +147,9 @@ console.log(contentQuill)
                   />
                 </div>
                 <div className="w-[40%]">
-                  <label htmlFor="adress">CP</label>
+                  <label
+                    className="text-orange-200 "
+                    htmlFor="adress">CP</label>
                   <input
                     id="CP"
                     name="CP"
@@ -158,7 +161,7 @@ console.log(contentQuill)
                 </div>
               </div>
               <div className="mt-5">
-                <label>Profesores</label>
+                <label className="text-orange-200 " >Profesores</label>
                 <div className="join w-full">
                   <input
                     className="input input-bordered join-item w-full"
@@ -182,10 +185,10 @@ console.log(contentQuill)
               </div>
 
               <div className=" mt-5 text-center">
-                <label>Modalidad/es</label>
+                <label className="text-orange-200 uppercase " >Modalidad/es</label>
                 <div className="flex justify-between  md:justify-around gap-2 mt-5">
                   <div className="flex flex-col items-center">
-                    <span className="label-text">Lindy Hop</span>
+                    <span className="label-text text-orange-200 mb-3">Lindy Hop</span>
                     <input
                       type="checkbox"
                       value="Lindy Hop"
@@ -194,7 +197,7 @@ console.log(contentQuill)
                     />
                   </div>
                   <div className="flex flex-col items-center">
-                    <span className="label-text">Blues</span>
+                    <span className="label-text text-orange-200 mb-3">Blues</span>
                     <input
                       type="checkbox"
                       value="Blues"
@@ -203,7 +206,7 @@ console.log(contentQuill)
                     />
                   </div>
                   <div className="flex flex-col items-center">
-                    <span className="label-text">Balboa</span>
+                    <span className="label-text text-orange-200 mb-3">Balboa</span>
                     <input
                       type="checkbox"
                       value="Balboa"
@@ -213,30 +216,34 @@ console.log(contentQuill)
                   </div>
                 </div>
               </div>
-              <div className="mt-5 ">
-              <label>Precio</label>
-              <div className="flex gap-5">
-                <div className="flex flex-col w-full">
-                  <label>Desde</label>
-                  <input type="text"
-                  name="minPrice"
-                    className="input input-bordered w-full "
-                    onChange={handleChange} />
+              <div className="mt-5">
+                <div className="text-center">
+                  <label className="text-orange-200 uppercase w-full ">Precio</label>
                 </div>
-                <div className="flex flex-col w-full">
-                  <label>Hasta</label>
-                  <input type="text"
-                  name="maxPrice"
-                    className="input input-bordered w-full "
-                    onChange={handleChange} />
+                <div className="flex gap-5">
+                  <div className="flex flex-col w-full">
+                    <label className="text-orange-200">Desde</label>
+                    <input type="text"
+                      name="minPrice"
+                      className="input input-bordered w-full "
+                      onChange={handleChange} />
+                  </div>
+                  <div className="flex flex-col w-full">
+                    <label className="text-orange-200">Hasta</label>
+                    <input type="text"
+                      name="maxPrice"
+                      className="input input-bordered w-full "
+                      onChange={handleChange} />
+                  </div>
                 </div>
               </div>
-              </div>
-             
+
 
               <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-5  mt-5">
                 <div className="w-full">
-                  <label htmlFor="data_start">Fecha Inicio</label>
+                  <label 
+                  className="text-orange-200"
+                  htmlFor="data_start">Fecha Inicio</label>
                   <input
                     id="data_start"
                     name="data_start"
@@ -247,10 +254,12 @@ console.log(contentQuill)
                   />
                 </div>
                 <div className="w-full">
-                  <label htmlFor="data_end">Fecha Fin</label>
+                  <label 
+                  className="text-orange-200"
+                  htmlFor="data_end">Fecha Fin</label>
                   <input
                     id="data_end"
-                    name= "data_end"
+                    name="data_end"
                     className="input input-bordered w-full"
                     type="date"
                     onChange={handleChange}
@@ -261,10 +270,10 @@ console.log(contentQuill)
 
               <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-5  mt-5">
                 <div className="w-full">
-                  <label className="block" htmlFor="image">Imagen de portada</label>
-                  <label 
-                  htmlFor="image"
-                  className="btn w-full text-zinc-900 bg-orange-200 border-none hover:bg-orange-100"
+                  <label className="block text-orange-200" htmlFor="image">Imagen de portada</label>
+                  <label
+                    htmlFor="image"
+                    className="btn w-full text-zinc-900 bg-orange-200 border-none hover:bg-orange-100"
                   >Subir Archivo
                   </label>
                   <input
@@ -277,7 +286,9 @@ console.log(contentQuill)
                   />
                 </div>
                 <div className="w-full">
-                  <label htmlFor="url">Url del festival</label>
+                  <label 
+                  className="text-orange-200"
+                  htmlFor="url">Url del festival</label>
                   <input
                     type="text"
                     id="url"
@@ -289,7 +300,7 @@ console.log(contentQuill)
                 </div>
               </div>
               <div className="w-full mt-5">
-                <label>Descripción</label>
+                <label className="text-orange-200">Descripción</label>
                 <Editor />
               </div>
               <div className="grid grid-cols-1 justify-items-center gap-5  mt-5">
