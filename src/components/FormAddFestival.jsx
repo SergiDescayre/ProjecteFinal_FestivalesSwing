@@ -41,17 +41,17 @@ const formAddFestival = () => {
     }
   };
 
-  const addTeachers = () => {
+  const addTeachers = (e) => {
+    e.preventDefault()
+    if(teacher=="") return
     setListOfTeachers([...listOfTeachers, teacher]);
     setTeacher("");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log(contentQuill)
-    //if(modality.length <= 0) return  alert("debes introducir una modalidad")
-    uploadImageToStorage();
+    if(modality.length <= 0) return  alert("debes introducir una modalidad")
+    //uploadImageToStorage();
   };
 
   //subir imagen a storage y subir festival
@@ -104,7 +104,7 @@ const formAddFestival = () => {
     <>
       {uploadFestival ? <Loading title={"Registrando festival"} />
         : <div className="md:p-8 bg-zinc-950">
-          <form onSubmit={handleSubmit}>
+          <form>
             <div className="md:w-[700px] mx-auto px-4  bg-zinc-800 p-10 md:rounded-md">
               <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-5 ">
                 <div className="w-full">
@@ -115,7 +115,7 @@ const formAddFestival = () => {
                     className="input input-bordered w-full"
                     type="text"
                     onChange={handleChange}
-                  //required
+                  required
                   />
                 </div>
                 <div className="w-full">
@@ -128,7 +128,7 @@ const formAddFestival = () => {
                     className="input input-bordered w-full"
                     type="text"
                     onChange={handleChange}
-                  //required
+                  required
                   />
                 </div>
               </div>
@@ -143,7 +143,7 @@ const formAddFestival = () => {
                     className="input input-bordered w-full"
                     type="text"
                     onChange={handleChange}
-                  //required
+                  required
                   />
                 </div>
                 <div className="w-[40%]">
@@ -156,7 +156,7 @@ const formAddFestival = () => {
                     className="input input-bordered w-full"
                     type="text"
                     onChange={handleChange}
-                  //required
+                  required
                   />
                 </div>
               </div>
@@ -167,7 +167,7 @@ const formAddFestival = () => {
                     className="input input-bordered join-item w-full"
                     value={teacher}
                     onChange={(e) => setTeacher(e.target.value)}
-                  //required
+                  required
                   />
                   <button onClick={addTeachers} className="btn join-item text-zinc-900 bg-orange-200 border-none hover:bg-orange-100 ">
                     Añadir
@@ -192,7 +192,7 @@ const formAddFestival = () => {
                     <input
                       type="checkbox"
                       value="Lindy Hop"
-                      className="toggle toggle-sm"
+                      className="toggle hover:bg-orange-200 bg-orange-200 border-orange-200"
                       onChange={handleCheckBox}
                     />
                   </div>
@@ -201,7 +201,7 @@ const formAddFestival = () => {
                     <input
                       type="checkbox"
                       value="Blues"
-                      className="toggle toggle-sm"
+                      className="toggle  hover:bg-orange-200 bg-orange-200 border-orange-200"
                       onChange={handleCheckBox}
                     />
                   </div>
@@ -210,7 +210,7 @@ const formAddFestival = () => {
                     <input
                       type="checkbox"
                       value="Balboa"
-                      className="toggle toggle-sm"
+                      className="toggle hover:bg-orange-200 bg-orange-200 border-orange-200"
                       onChange={handleCheckBox}
                     />
                   </div>
@@ -304,7 +304,8 @@ const formAddFestival = () => {
                 <Editor />
               </div>
               <div className="grid grid-cols-1 justify-items-center gap-5  mt-5">
-                <button className="btn text-zinc-900 bg-orange-200 border-none hover:bg-orange-100 w-full" onClick={handleSubmit}>
+                <button className="btn text-zinc-900 bg-orange-200 border-none hover:bg-orange-100 w-full"
+                 onClick={handleSubmit}>
                   Enviar
                 </button>
               </div>

@@ -16,7 +16,7 @@ const CardFestival = ({
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`infoFestival/${fest.docId}`);
+    navigate(`/infoFestival/${fest.docId}`);
   };
   return (
     <>
