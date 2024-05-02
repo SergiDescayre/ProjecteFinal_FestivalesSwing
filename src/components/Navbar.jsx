@@ -86,11 +86,12 @@ function Navbar() {
 
         {/* Icono de login (alineado a la derecha) */}
         {isLogin ? (
-          <div className="dropdown dropdown-end">
+          <div className="dropdown dropdown-hover dropdown-left">
           <div tabIndex={0} role="button" className ="border-2 border-orange-200 w-8 h-8 rounded-full flex items-center justify-center">
           <div className=""> <span className="text-orange-200">{getUsernName(user.email)}</span></div>
           </div>
-            <div tabIndex={0} className=" flex flex-col gap-3 items-end dropdown-content z-[1] p-2 shadow bg-zinc-950  text-orange-200 rounded-box w-32 mt-10">
+     
+            <div tabIndex={0} className="-mx-10 mt-8 pt-10 ml-6 flex flex-col gap-3 items-end dropdown-content  p-2 shadow bg-zinc-950 text-orange-200 rounded-md  w-32 ">
               <NavLink to="myFestivals">Mis festivales</NavLink>
               <div onClick={handleLogOut} className="cursor-pointer flex gap-2">
                 <span>Salir </span>
@@ -100,9 +101,9 @@ function Navbar() {
                   alt="logout"
                 />
               </div>
-
             </div>
           </div>
+      
         ) : (
           <div className="flex flex-col ml-auto">
             <img onClick={handleLogin} src={login} alt="login" />
@@ -112,7 +113,7 @@ function Navbar() {
 
       {/* Menús desplegables (solo visibles en dispositivos móviles) */}
       <div className={`md:hidden ${menuOpen ? "" : "hidden"} `}>
-        <div className="flex flex-col gap-6 items-center absolute left-0 z-10 bg-zinc-950 bg-opacity-90 w-full h-screen text-stone-200">
+        <div className="flex flex-col gap-6 items-center absolute left-0 z-10 bg-zinc-950 w-full h-screen text-stone-200">
           <NavLink to="/" onClick={toggleMenu} className=" px-4 py-2">
             Inicio
           </NavLink>
