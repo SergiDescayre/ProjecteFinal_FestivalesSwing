@@ -25,12 +25,12 @@ const InfoFestival = () => {
           alt=""
           className="overflow-hidden md:object-cover w-[95%] md:w-[80%] md:h-[300px]  mx-auto rounded-md  "
         />
-        {infoFestival && (
+        {/* {infoFestival && (
           <DateFestivalHorizontal
             dateStart={infoFestival.data_start}
             dateEnd={infoFestival.data_end}
           />
-        )}
+        )} */}
       </div>
       {infoFestival.name}
       <div id="content_quill">
