@@ -9,14 +9,18 @@ import ButtonDeleteFest from "../components/ButtonDeleteFest";
 import calendar from "../assets/calendar.svg";
 import price from "../assets/price.svg";
 import location from "../assets/location.svg";
+import ListFestivalsModality from "../components/ListFestivalsModality";
 
 const InfoFestival = () => {
   const params = useParams();
-
   const user = JSON.parse(localStorage.getItem("uid"));
-
-  const { setInfoFestival, infoFestival, getFestivalByDocId } =
+  const { setInfoFestival, infoFestival, getFestivalByDocId, festivals } =
     useFestivalContext();
+
+  const festivalsFiltered = festivals.filter(
+    (item) => item.docId !== infoFestival.docId
+  );
+  console.log(festivalsFiltered);
   useEffect(() => {
     getFestivalByDocId(params.idFestival);
     return () => setInfoFestival("");
@@ -33,7 +37,7 @@ const InfoFestival = () => {
               {infoFestival.name}
             </span>
           </div>
-          <div className="flex flex-col md:flex-row max-w-[1440px] mx-auto px-3">
+          <div className="flex flex-col md:flex-row w-[80%] max-w-[1440px] mx-auto px-3">
             <div>
               <img
                 src={infoFestival.img}
@@ -45,7 +49,7 @@ const InfoFestival = () => {
             <div className="flex flex-col justify-between gap-2 p-5 xl:pl-20 flex-grow ">
               <div className="flex flex-col gap-3">
                 <div className="flex justify-between">
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 items-center">
                     <img className="w-4 lg:w-6" src={location} alt="" />
                     <span className="text-xs xl:text-lg capitalize ">
                       {infoFestival.address} - {infoFestival.city} -{" "}
@@ -81,8 +85,11 @@ const InfoFestival = () => {
                   Modalidades
                 </span>
                 <ul>
-                  {infoFestival.modality.map((item) => (
-                    <li className="text-xs xl:text-xl ms-2"> -{item}</li>
+                  {infoFestival.modality.map((item, index) => (
+                    <li key={index} className="text-xs xl:text-xl ms-2">
+                      {" "}
+                      -{item}
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -91,8 +98,11 @@ const InfoFestival = () => {
                   Profesores
                 </span>
                 <ul>
-                  {infoFestival.listOfTeachers.map((item) => (
-                    <li className="text-xs xl:text-xl ms-2"> -{item}</li>
+                  {infoFestival.listOfTeachers.map((item, index) => (
+                    <li key={index} className="text-xs xl:text-xl ms-2">
+                      {" "}
+                      -{item}
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -104,6 +114,10 @@ const InfoFestival = () => {
               dangerouslySetInnerHTML={{ __html: infoFestival.contentQuill }}
             ></div> */}
           </div>
+          <ListFestivalsModality
+            title={"PODRIAN INTERESARTE"}
+            modality={festivalsFiltered}
+          />
         </div>
       )}
     </>

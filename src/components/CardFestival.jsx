@@ -41,7 +41,7 @@ const CardFestival = ({
             </div>
           </div>
         </div>
-        <div className=" bg-zinc-800">
+        <div className=" bg-zinc-900">
           <div className="flex items-center justify-between p-3 gap-2">
             <div>
               <h2 className="uppercase w-[225px]  font-semibold overflow-hidden whitespace-nowrap overflow-ellipsis  ">

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  background-color: #d4d4d8;
+  background-color: #27272a;
 }
 
 
@@ -43,4 +43,3 @@ body {
   /* border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px; */
 }
-

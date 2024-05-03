@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from "react";
 import CardFestival from "./CardFestival";
 import { useFestivalContext } from "../context/FestivalContext";
 
-
 import arrowLeft from "../assets/arrowLeft.svg";
 import arrowRight from "../assets/arrowRight.svg";
 import Loading from "./Loading";
@@ -22,7 +21,9 @@ const ListFestivalsModality = ({ title, modality, bg }) => {
       // Verificar si debe mostrar u ocultar las flechas al inicio
       setShowLeftArrow(container.scrollLeft > 0);
       // Verificar si debe mostrar u ocultar las flechas al final
-      setShowRightArrow(container.scrollLeft < container.scrollWidth - container.clientWidth);
+      setShowRightArrow(
+        container.scrollLeft < container.scrollWidth - container.clientWidth
+      );
     }
   }, [modality]);
 
@@ -48,35 +49,44 @@ const ListFestivalsModality = ({ title, modality, bg }) => {
 
   return (
     <div className="relative pb-2 pt-6">
-      <div className="flex items-center justify-between border-t-2 border-b-2 py-3 border-zinc-600 w-[80%] max-w-[1600px] mx-auto">
-        <span className="text-2xl color-zinc-600">{title}</span>
-        {scrollable &&
-        <div className="flex gap-2">
-          {showLeftArrow &&
-            <div className="cursor-pointer text-zinc-900" onClick={() => handleScroll("left")}>
-              <img className="w-6" src={arrowLeft} alt="left" />
-            </div>
-          }
-          {showRightArrow &&
-            <div className="cursor-pointer text-zinc-900" onClick={() => handleScroll("right")}>
-              <img className="w-6" src={arrowRight} alt="right" />
-            </div>
-          }
-        </div>
-        }
+      <div className="flex items-center justify-between border-t-2 border-b-2 py-3 border-orange-200 w-[80%] max-w-[1400px] mx-auto">
+        <span className="text-1xl text-zinc-200">{title}</span>
+        {scrollable && (
+          <div className="flex gap-2">
+            {showLeftArrow && (
+              <div
+                className="cursor-pointer text-zinc-900"
+                onClick={() => handleScroll("left")}
+              >
+                <img className="w-6" src={arrowLeft} alt="left" />
+              </div>
+            )}
+            {showRightArrow && (
+              <div
+                className="cursor-pointer text-zinc-900"
+                onClick={() => handleScroll("right")}
+              >
+                <img className="w-6" src={arrowRight} alt="right" />
+              </div>
+            )}
+          </div>
+        )}
       </div>
       {modality.length === 0 && isFoundFestival ? (
         <Loading title="Cargando..." />
       ) : (
         <div
-          className="relative overflow-hidden overflow-x-auto white-space-no-wrap  flex  gap-10 m-5 w-[80%] max-w-[1600px] mx-auto"
+          className="relative overflow-hidden overflow-x-auto white-space-no-wrap  flex  gap-10 m-5 w-[80%] max-w-[1400px] mx-auto"
           ref={containerRef}
           onScroll={() => {
             const container = containerRef.current;
             // Verificar si debe mostrar u ocultar las flechas al inicio
             setShowLeftArrow(container.scrollLeft > 0);
             // Verificar si debe mostrar u ocultar las flechas al final
-            setShowRightArrow(container.scrollLeft < container.scrollWidth - container.clientWidth - 1);
+            setShowRightArrow(
+              container.scrollLeft <
+                container.scrollWidth - container.clientWidth - 1
+            );
           }}
         >
           {modality.length === 0 && <p className="text-red-500"> {error}</p>}
@@ -89,7 +99,6 @@ const ListFestivalsModality = ({ title, modality, bg }) => {
           ))}
         </div>
       )}
-
     </div>
   );
 };
