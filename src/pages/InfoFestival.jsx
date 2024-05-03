@@ -13,18 +13,15 @@ import ListFestivalsModality from "../components/ListFestivalsModality";
 
 const InfoFestival = () => {
   const params = useParams();
+  console.log(params.idFestival);
   const user = JSON.parse(localStorage.getItem("uid"));
   const { setInfoFestival, infoFestival, getFestivalByDocId, festivals } =
     useFestivalContext();
 
-  const festivalsFiltered = festivals.filter(
-    (item) => item.docId !== infoFestival.docId
-  );
-  console.log(festivalsFiltered);
   useEffect(() => {
     getFestivalByDocId(params.idFestival);
     return () => setInfoFestival("");
-  }, []);
+  }, [params.idFestival]);
 
   return (
     <>
@@ -115,8 +112,8 @@ const InfoFestival = () => {
             ></div> */}
           </div>
           <ListFestivalsModality
-            title={"PODRIAN INTERESARTE"}
-            modality={festivalsFiltered}
+            title={"MÁS FESTIVALES"}
+            modality={festivals}
           />
         </div>
       )}
