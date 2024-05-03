@@ -1,7 +1,5 @@
 import React from "react";
 
-import calendar from "../assets/calendar.svg";
-
 const DateFestival = ({ date }) => {
   const months = [
     "Enero",
@@ -26,10 +24,7 @@ const DateFestival = ({ date }) => {
 
   return (
     <div className="flex gap-2 ">
-      <img className="w-4" src={calendar} alt="" />
-      <span className="text-xs">
-        {day} de {month} de {year}
-      </span>
+      {day} de {month} de {year}
     </div>
   );
 };

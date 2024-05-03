@@ -8,6 +8,7 @@ import info from "../assets/info.svg";
 
 import price from "../assets/price.svg";
 import location from "../assets/location.svg";
+import calendar from "../assets/calendar.svg";
 
 const CardFestival = ({
   fest,
@@ -62,7 +63,11 @@ const CardFestival = ({
               <span className="text-xs ">{fest.address}</span>
             </div>
 
-            <DateFestival date={fest.data_start} />
+            <div className="flex gap-2 text-xs">
+              <img className="w-4" src={calendar} alt="" />
+              <DateFestival date={fest.data_start} />
+            </div>
+
             <div className="flex gap-2">
               <img className="w-4" src={price} alt="price" />
               <span className="text-xs">{fest.minPrice} €</span>

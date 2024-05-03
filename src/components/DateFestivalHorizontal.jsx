@@ -30,6 +30,7 @@ const DateFestivalHorizontal = ({ dateStart, dateEnd }) => {
   const dayEnd = +dayTotalEnd.slice(0, 2);
   const yearEnd = arrayDateEnd[0];
   const monthEnd = months[+positionMonthEnd - 1];
+
   return (
     <div>
       {monthStart === monthEnd ? (
