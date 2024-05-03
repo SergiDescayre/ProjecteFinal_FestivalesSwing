@@ -6,7 +6,7 @@ import arrowLeft from "../assets/arrowLeft.svg";
 import arrowRight from "../assets/arrowRight.svg";
 import Loading from "./Loading";
 
-const ListFestivalsModality = ({ title, modality, bg }) => {
+const ListFestivalsModality = ({ title, modality }) => {
   const { error, isFoundFestival } = useFestivalContext();
   const showButtonAddFavorite = true;
   const [scrollable, setScrollable] = useState(false);

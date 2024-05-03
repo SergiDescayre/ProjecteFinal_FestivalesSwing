@@ -1,38 +1,43 @@
-import { useEffect, useState } from "react"
-import heart from "../assets/heart.svg"
-import heartFavorite from "../assets/heartFavorite.svg"
-import appFirebase from "../credentials"
-import { useSelector } from "react-redux"
-import { getAuth } from "firebase/auth"
-import { getFirestore, collection, addDoc, query, where, getDocs } from "firebase/firestore"
-import { useFestivalContext } from "../context/FestivalContext"
-import Modal from "./Modal"
-
+import { useEffect, useState } from "react";
+import heart from "../assets/heart.svg";
+import heartFavorite from "../assets/heartFavorite.svg";
+import appFirebase from "../credentials";
+import { useSelector } from "react-redux";
+import { getAuth } from "firebase/auth";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  query,
+  where,
+  getDocs,
+} from "firebase/firestore";
+import { useFestivalContext } from "../context/FestivalContext";
+import Modal from "./Modal";
 
 const ButtonAddFavorite = ({ fest }) => {
-  const { isLogin } = useSelector(state => state.authUser)
-  const [isFavorite, setIsFavorite] = useState(false)
-  const {deleteFavorite,addFavorite,setMessageModal} = useFestivalContext()
+  const { isLogin } = useSelector((state) => state.authUser);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const { deleteFavorite, addFavorite, setMessageModal } = useFestivalContext();
 
   useEffect(() => {
     checkFavoriteStatus();
   }, []);
 
-  const handleFavorites = (id) => {
+  const handleFavorites = (id, e) => {
+    e.stopPropagation();
     if (isLogin) {
-      addFavorite(id,fest)
-      setIsFavorite(!isFavorite)
+      addFavorite(id, fest);
+      setIsFavorite(!isFavorite);
     } else {
-      document.getElementById('my_modal_5').showModal()
-      setMessageModal("Debes estar registrado para guardar favoritos")
-
+      document.getElementById("my_modal_5").showModal();
+      setMessageModal("Debes estar registrado para guardar favoritos");
     }
 
-    if(isFavorite) {
-      deleteFavorite(id)
+    if (isFavorite) {
+      deleteFavorite(id);
     }
-  }
-  
+  };
 
   const checkFavoriteStatus = async () => {
     if (!isLogin) return; // Si el usuario no ha iniciado sesión, no hay favoritos que cargar
@@ -49,21 +54,24 @@ const ButtonAddFavorite = ({ fest }) => {
       );
 
       if (!querySnapshot.empty) {
-
-      setIsFavorite(true);
-      }else(setIsFavorite(false))
+        setIsFavorite(true);
+      } else setIsFavorite(false);
     } catch (error) {
       console.error("Error al verificar el estado del favorito:", error);
     }
   };
 
-
   return (
     <div>
       <Modal />
-      <img className="cursor-pointer" src={!isFavorite ? heart : heartFavorite} alt="favorites" onClick={() => handleFavorites(fest.docId)} />
+      <img
+        className="cursor-pointer"
+        src={!isFavorite ? heart : heartFavorite}
+        alt="favorites"
+        onClick={(e) => handleFavorites(fest.docId, e)}
+      />
     </div>
-  )
-}
+  );
+};
 
-export default ButtonAddFavorite
+export default ButtonAddFavorite;

@@ -1,13 +1,11 @@
 import { useFestivalContext } from "../context/FestivalContext";
 import Modal from "./Modal";
 
-import trash from "../assets/trash.svg";
-
 const ButtonDeleteFest = ({ fest }) => {
   const { deleteFestival, getFestivals, deleteFavorite, setMessageModal } =
     useFestivalContext();
 
-  const handleFestival = (id) => {
+  const handleDelete = (id) => {
     document.getElementById("my_modal_5").showModal();
     setMessageModal("Festival eliminado");
     deleteFestival(id);
@@ -18,8 +16,13 @@ const ButtonDeleteFest = ({ fest }) => {
   return (
     <>
       <Modal />
-      <div onClick={() => handleFestival(fest.docId)}>
-        <img src={trash} alt="trash" className="cursor-pointer" />
+      <div>
+        <button
+          onClick={() => handleDelete(fest.docId)}
+          className="btn btn-xs bg-red-200 border-none "
+        >
+          Eliminar
+        </button>
       </div>
     </>
   );

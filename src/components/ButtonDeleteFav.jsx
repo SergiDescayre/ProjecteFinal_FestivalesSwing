@@ -1,20 +1,19 @@
-import { useFestivalContext } from "../context/FestivalContext"
+import { useFestivalContext } from "../context/FestivalContext";
 
-import trash from "../assets/trash.svg"
+import trash from "../assets/trash.svg";
 
-const ButtonDeleteFav = ({fest}) => {
-   
-   const {deleteFavorite} =  useFestivalContext()
-    const handleFavorites =  (id) => {
-        deleteFavorite(id)
-    }
-    
+const ButtonDeleteFav = ({ fest }) => {
+  const { deleteFavorite } = useFestivalContext();
+  const handleFavorites = (id, e) => {
+    e.stopPropagation();
+    deleteFavorite(id);
+  };
+
   return (
-    <div onClick={() => handleFavorites(fest.id)}>
-    <img src={trash} alt="trash" className="cursor-pointer"/>
-    
-</div>
-  )
-}
+    <div onClick={(e) => handleFavorites(fest.id, e)}>
+      <img src={trash} alt="trash" className="cursor-pointer" />
+    </div>
+  );
+};
 
-export default ButtonDeleteFav
+export default ButtonDeleteFav;
