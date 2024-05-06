@@ -1,36 +1,36 @@
 import facebook from "../assets/facebook.svg";
-//import whatsApp from "../assets/whatsApp.svg";
+import whatsApp from "../assets/whatsApp.svg";
 
-const ShareEvent = () => {
+const ShareEvent = ({ fest }) => {
+  console.log(fest);
   const eventUrl = window.location.href;
-  const eventTitle = "Festivales Swing";
-  const toShare = { title: "Hola" };
-
-  const compartir = async () => {
-    if (navigator.share && navigator.canShare(shareData)) {
-      navigator.share(toShare);
-    } else {
-      console.log("No se puede compartir");
-    }
-  };
+  const eventTitle = fest.name;
+  const eventImage = fest.img;
 
   const shareOnFacebook = () => {
-    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(eventUrl)}`;
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(eventUrl)}&picture=${eventImage}`;
     window.open(facebookUrl, "_blank");
   };
 
-  // const shareOnWhatsApp = () => {
-  //   const whatsAppUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(eventTitle)}%20-%20${encodeURIComponent(eventUrl)}`;
-  //   window.open(whatsAppUrl, "_blank");
-  // };
+  const shareOnWhatsApp = () => {
+    const whatsAppUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(eventTitle)}%20-%20${encodeURIComponent(eventUrl)}`;
+    window.open(whatsAppUrl, "_blank");
+  };
 
   return (
-    <div className="flex gap-4 flex-wrap">
-      <img onClick={shareOnFacebook} src={facebook} alt="facebook" />
-      {/* <img onClick={shareOnWhatsApp} src={whatsApp} alt="whatsApp" /> */}
-      <button className="btn" onClick={compartir}>
-        Compartir
-      </button>
+    <div className="flex gap-2">
+      <img
+        className="w-9 cursor-pointer"
+        onClick={shareOnFacebook}
+        src={facebook}
+        alt="facebook"
+      />
+      <img
+        className="w-9 cursor-pointer"
+        onClick={shareOnWhatsApp}
+        src={whatsApp}
+        alt="whatsApp"
+      />
     </div>
   );
 };

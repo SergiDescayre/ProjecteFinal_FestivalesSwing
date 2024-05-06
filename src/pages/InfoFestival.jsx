@@ -10,6 +10,7 @@ import calendar from "../assets/calendar.svg";
 import price from "../assets/price.svg";
 import location from "../assets/location.svg";
 import ListFestivalsModality from "../components/ListFestivalsModality";
+import ShareEvent from "../components/ShareEvent";
 
 const InfoFestival = () => {
   const params = useParams();
@@ -50,9 +51,12 @@ const InfoFestival = () => {
 
             <div className="flex flex-col  gap-3 md:ps-6 xl:pl-20 flex-grow ">
               <div className="flex flex-col gap-3">
-                {user === infoFestival.userId && (
-                  <ButtonDeleteFest fest={infoFestival} />
-                )}
+                <div className="flex justify-between">
+                  <ShareEvent fest={infoFestival} />
+                  {user === infoFestival.userId && (
+                    <ButtonDeleteFest fest={infoFestival} />
+                  )}
+                </div>
 
                 <div className="flex gap-2 items-center">
                   <img className="w-4 lg:w-6" src={location} alt="" />
@@ -108,6 +112,7 @@ const InfoFestival = () => {
                   </ul>
                 </div>
               )}
+              <div>hola</div>
             </div>
           </div>
           <div
