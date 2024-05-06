@@ -91,8 +91,8 @@ function Navbar() {
           <div className=""> <span className="text-orange-200">{getUsernName(user.email)}</span></div>
           </div>
      
-            <div tabIndex={0} className=" aboslute z-10 -mx-10 mt-8 pt-10 ml-6 flex flex-col gap-3 items-end dropdown-content  p-2 shadow bg-zinc-950 text-orange-200 rounded-md  w-32 ">
-              <NavLink to="myFestivals">Mis festivales</NavLink>
+            <div tabIndex={0} className=" aboslute z-10 -mx-10 mt-8 pt-10 ml-6 flex flex-col gap-3 items-end dropdown-content  p-2 shadow bg-zinc-950 text-orange-200 rounded-md ">
+              <NavLink to="myFestivals">Favoritos</NavLink>
               <div onClick={handleLogOut} className="cursor-pointer flex gap-2">
                 <span>Salir </span>
                 <img

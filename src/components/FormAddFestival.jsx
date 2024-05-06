@@ -24,7 +24,7 @@ const formAddFestival = () => {
   const [teacher, setTeacher] = useState("");
   const [modality, setModality] = useState([]);
   const [listOfTeachers, setListOfTeachers] = useState([]);
-
+  
   const [festivalInfo, setFestivalInfo] = useState({});
 
   const handleChange = (e) => {
@@ -291,12 +291,20 @@ const formAddFestival = () => {
                   <label className="block text-orange-200" htmlFor="image">
                     Imagen de portada
                   </label>
-                  <label
+                  {!image 
+                  ?  <label
                     htmlFor="image"
                     className="btn w-full text-zinc-900 bg-orange-200 border-none hover:bg-orange-100"
                   >
                     Subir Archivo
                   </label>
+                  : <label
+                    htmlFor="image"
+                    className="btn w-full text-zinc-900 bg-orange-200 border-none hover:bg-orange-100"
+                  >
+                    Archivo cargado
+                  </label>}
+                 
                   <input
                     id="image"
                     type="file"
