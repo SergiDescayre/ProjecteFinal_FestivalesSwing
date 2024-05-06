@@ -37,13 +37,13 @@ const ContexProvider = ({ children }) => {
     try {
       const auth = getAuth(appFirebase).currentUser.uid;
       const db = getFirestore(appFirebase);
-      const querySnapshot = await getDocs(
-        query(
-          collection(db, "favorites"),
-          where("docId", "==", id),
-          where("idUserFavorite", "==", auth)
-        )
-      );
+      // const querySnapshot = await getDocs(
+      //   query(
+      //     collection(db, "favorites"),
+      //     where("docId", "==", id),
+      //     where("idUserFavorite", "==", auth)
+      //   )
+      // );
 
       // if (!querySnapshot.empty) {
       //   document.getElementById('my_modal_5').showModal()

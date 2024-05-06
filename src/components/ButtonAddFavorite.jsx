@@ -3,6 +3,7 @@ import heart from "../assets/heart.svg";
 import heartFavorite from "../assets/heartFavorite.svg";
 import appFirebase from "../credentials";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import {
   getFirestore,
@@ -19,6 +20,8 @@ const ButtonAddFavorite = ({ fest }) => {
   const { isLogin } = useSelector((state) => state.authUser);
   const [isFavorite, setIsFavorite] = useState(false);
   const { deleteFavorite, addFavorite, setMessageModal } = useFestivalContext();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     checkFavoriteStatus();

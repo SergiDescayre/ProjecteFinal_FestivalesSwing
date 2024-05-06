@@ -34,12 +34,6 @@ const CardFestival = ({
           <div className="shadow bg-zinc-900 bg-opacity-80 m-2  p-2 rounded-full">
             {showButtonAddFavorite && <ButtonAddFavorite fest={fest} />}
             {showButtonDeleteFavorite && <ButtonDeleteFav fest={fest} />}
-            {/* <img
-                onClick={handleClick}
-                className="w-6 cursor-pointer"
-                src={info}
-                alt=""
-              /> */}
           </div>
         </div>
       </div>
@@ -52,11 +46,6 @@ const CardFestival = ({
             <span className="capitalize text-sm text-stone-200 ">
               {fest.city}
             </span>
-          </div>
-          <div className="flex items-center gap-2">
-            {/* {auth===fest.userId && <ButtonDeleteFest fest={fest} />} */}
-            {/* {showButtonAddFavorite && <ButtonAddFavorite fest={fest} />}
-              {showButtonDeleteFavorite && <ButtonDeleteFav fest={fest} />} */}
           </div>
         </div>
         <div className="px-3 flex flex-col gap-2 py-4 text-stone-200">

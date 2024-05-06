@@ -10,7 +10,6 @@ import calendar from "../assets/calendar.svg";
 import price from "../assets/price.svg";
 import location from "../assets/location.svg";
 import ListFestivalsModality from "../components/ListFestivalsModality";
-import { info } from "autoprefixer";
 
 const InfoFestival = () => {
   const params = useParams();
@@ -41,7 +40,7 @@ const InfoFestival = () => {
             </span>
           </div>
           <div className="flex flex-col md:flex-row w-[80%] max-w-[1440px] mx-auto">
-            <div className="mb-2">
+            <div className="mb-4">
               <img
                 src={infoFestival.img}
                 alt="image"
@@ -49,7 +48,7 @@ const InfoFestival = () => {
               />
             </div>
 
-            <div className="flex flex-col justify-between gap-2 md:ps-6 xl:pl-20 flex-grow ">
+            <div className="flex flex-col  gap-3 md:ps-6 xl:pl-20 flex-grow ">
               <div className="flex flex-col gap-3">
                 {user === infoFestival.userId && (
                   <ButtonDeleteFest fest={infoFestival} />
@@ -88,24 +87,27 @@ const InfoFestival = () => {
                   {infoFestival.modality.map((item, index) => (
                     <li key={index} className="text-xs xl:text-base ms-2">
                       {" "}
-                      -{item}
+                      - {item}
                     </li>
                   ))}
                 </ul>
               </div>
-              <div>
-                <span className="block mt-5 mb-2  xl:text-xl text-orange-200">
-                  Profesores
-                </span>
-                <ul>
-                  {infoFestival.listOfTeachers.map((item, index) => (
-                    <li key={index} className="text-xs xl:text-base ms-2">
-                      {" "}
-                      -{item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+
+              {infoFestival.listOfTeachers.length > 0 && (
+                <div>
+                  <span className="block mt-5 mb-2  xl:text-xl text-orange-200">
+                    Profesores
+                  </span>
+                  <ul>
+                    {infoFestival.listOfTeachers.map((item, index) => (
+                      <li key={index} className="text-xs xl:text-base ms-2">
+                        {" "}
+                        - {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
           <div

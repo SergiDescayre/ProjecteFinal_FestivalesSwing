@@ -35,11 +35,12 @@ const DateFestivalHorizontal = ({ dateStart, dateEnd }) => {
     <div>
       {monthStart === monthEnd ? (
         <div>
-          {dayStart} a {dayEnd} de {monthStart} de {yearStart}
+          Del {dayStart} al {dayEnd} de {monthStart} de {yearStart}
         </div>
       ) : (
         <div>
-          {dayStart} de {monthStart} a {dayEnd} de {monthEnd} de {yearEnd}
+          Del {dayStart} del {monthStart} al {dayEnd} del {monthEnd} de{" "}
+          {yearEnd}
         </div>
       )}
     </div>
