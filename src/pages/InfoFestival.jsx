@@ -111,7 +111,6 @@ const InfoFestival = () => {
                   </ul>
                 </div>
               )}
-              <div>hola</div>
             </div>
           </div>
           <div

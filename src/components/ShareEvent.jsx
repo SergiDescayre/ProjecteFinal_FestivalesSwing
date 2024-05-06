@@ -1,4 +1,4 @@
-import facebook from "../assets/facebook.svg";
+import facebook from "../assets/facebook.png";
 import whatsApp from "../assets/whatsapp.png";
 
 const ShareEvent = ({ fest }) => {
@@ -20,13 +20,13 @@ const ShareEvent = ({ fest }) => {
   return (
     <div className="flex gap-2">
       <img
-        className="w-7 md:w-9 cursor-pointer"
+        className="w-5 md:w-9 cursor-pointer"
         onClick={shareOnFacebook}
         src={facebook}
         alt="facebook"
       />
       <img
-        className="w-7 md:w-9 cursor-pointer"
+        className="w-5 md:w-9 cursor-pointer"
         onClick={shareOnWhatsApp}
         src={whatsApp}
         alt="whatsApp"
