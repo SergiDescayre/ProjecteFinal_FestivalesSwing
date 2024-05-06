@@ -47,17 +47,16 @@ const InfoFestival = () => {
                 alt="image"
                 className="overflow-hidden md:object-cover md:h-[320px] md:w-[420px]  lg:w-[520px]  xl:w-[620px] xl:h-[400px]  mx-auto rounded-lg  "
               />
+              <div className="flex justify-between mt-3">
+                <ShareEvent fest={infoFestival} />
+                {user === infoFestival.userId && (
+                  <ButtonDeleteFest fest={infoFestival} />
+                )}
+              </div>
             </div>
 
             <div className="flex flex-col  gap-3 md:ps-6 xl:pl-20 flex-grow ">
               <div className="flex flex-col gap-3">
-                <div className="flex justify-between">
-                  <ShareEvent fest={infoFestival} />
-                  {user === infoFestival.userId && (
-                    <ButtonDeleteFest fest={infoFestival} />
-                  )}
-                </div>
-
                 <div className="flex gap-2 items-center">
                   <img className="w-4 lg:w-6" src={location} alt="" />
                   <span className="text-xs xl:text-base capitalize ">

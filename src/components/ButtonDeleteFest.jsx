@@ -20,7 +20,7 @@ const ButtonDeleteFest = ({ fest }) => {
       <div>
         <button
           onClick={() => handleDelete(fest.docId)}
-          className="btn btn-sm bg-red-200 border-none "
+          className="btn btn-xs md:btn-sm bg-red-200 border-none "
         >
           Eliminar
         </button>
