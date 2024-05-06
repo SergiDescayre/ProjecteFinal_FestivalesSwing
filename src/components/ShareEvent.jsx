@@ -1,39 +1,35 @@
-import React from 'react';
+import facebook from "../assets/facebook.svg";
+import whatsApp from "../assets/whatsApp.svg";
 
-const ShareEvent = ({ eventTitle, eventUrl }) => {
-  const shareOnTwitter = () => {
-    const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(eventTitle)}&url=${encodeURIComponent(eventUrl)}`;
-    window.open(tweetUrl, '_blank');
+const ShareEvent = () => {
+  const eventUrl = window.location.href;
+  const eventTitle = "Festivales Swing";
+  const toShare = { title: "Hola" };
+
+  const compartir = async () => {
+    if (navigator.share && navigator.canShare(shareData)) {
+      navigator.share(toShare);
+    } else {
+      console.log("No se puede compartir");
+    }
   };
 
   const shareOnFacebook = () => {
     const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(eventUrl)}`;
-    window.open(facebookUrl, '_blank');
-  };
-
-  const shareOnLinkedIn = () => {
-    const linkedInUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(eventUrl)}&title=${encodeURIComponent(eventTitle)}`;
-    window.open(linkedInUrl, '_blank');
+    window.open(facebookUrl, "_blank");
   };
 
   const shareOnWhatsApp = () => {
     const whatsAppUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(eventTitle)}%20-%20${encodeURIComponent(eventUrl)}`;
-    window.open(whatsAppUrl, '_blank');
+    window.open(whatsAppUrl, "_blank");
   };
 
   return (
     <div className="flex gap-4 flex-wrap">
-      <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onClick={shareOnTwitter}>
-        Compartir en Twitter
-      </button>
-      <button className="bg-blue-800 text-white px-4 py-2 rounded hover:bg-blue-900" onClick={shareOnFacebook}>
-        Compartir en Facebook
-      </button>
-      <button className="bg-blue-400 text-white px-4 py-2 rounded hover:bg-blue-500" onClick={shareOnLinkedIn}>
-        Compartir en LinkedIn
-      </button>
-      <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600" onClick={shareOnWhatsApp}>
-        Compartir en WhatsApp
+      <img onClick={shareOnFacebook} src={facebook} alt="facebook" />
+      <img onClick={shareOnWhatsApp} src={whatsApp} alt="whatsApp" />
+      <button className="btn" onClick={compartir}>
+        Compartir
       </button>
     </div>
   );
