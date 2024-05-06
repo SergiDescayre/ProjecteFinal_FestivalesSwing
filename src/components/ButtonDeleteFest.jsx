@@ -1,4 +1,5 @@
 import { useFestivalContext } from "../context/FestivalContext";
+
 import Modal from "./Modal";
 
 const ButtonDeleteFest = ({ fest }) => {
