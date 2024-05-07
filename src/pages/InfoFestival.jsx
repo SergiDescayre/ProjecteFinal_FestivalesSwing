@@ -42,11 +42,15 @@ const InfoFestival = () => {
           </div>
           <div className="flex flex-col md:flex-row w-[80%] max-w-[1440px] mx-auto">
             <div className="mb-4">
-              <img
-                src={infoFestival.img}
-                alt="image"
-                className="overflow-hidden md:object-cover md:h-[320px] md:w-[420px]  lg:w-[520px]  xl:w-[620px] xl:h-[400px]  mx-auto rounded-lg  "
-              />
+              <div className="transition duration-300 transform hover:scale-95 ease-in-out">
+                <a href={infoFestival.link} target="_blank">
+                  <img
+                    src={infoFestival.img}
+                    alt="image"
+                    className="cursor-pointer overflow-hidden md:object-cover md:h-[320px] md:w-[420px]  lg:w-[520px]  xl:w-[620px] xl:h-[400px]  mx-auto rounded-lg   "
+                  />
+                </a>
+              </div>
               <div className="flex justify-between mt-3">
                 <ShareEvent fest={infoFestival} />
                 {user === infoFestival.userId && (

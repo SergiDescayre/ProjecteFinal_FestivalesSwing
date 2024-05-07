@@ -21,15 +21,15 @@ const ButtonAddFavorite = ({ fest }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const { deleteFavorite, addFavorite, setMessageModal } = useFestivalContext();
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     checkFavoriteStatus();
   }, []);
 
   const handleFavorites = (id, e) => {
     e.stopPropagation();
+
     if (isLogin) {
+      console.log(carga);
       addFavorite(id, fest);
       setIsFavorite(!isFavorite);
     } else {
