@@ -57,6 +57,7 @@ const ContexProvider = ({ children }) => {
         isFavorite: true,
       });
       console.log("documento añadido");
+      getFavorites()
     } catch (error) {
       console.error("Error al agregar favorito:", error);
     }

@@ -18,11 +18,11 @@ import Modal from "./Modal";
 const ButtonAddFavorite = ({ fest }) => {
   const { isLogin } = useSelector((state) => state.authUser);
   const [isFavorite, setIsFavorite] = useState(false);
-  const { deleteFavorite, addFavorite, setMessageModal } = useFestivalContext();
+  const { favorites, deleteFavorite, addFavorite, setMessageModal,getFavorites } = useFestivalContext();
 
   useEffect(() => {
     checkFavoriteStatus();
-  }, []);
+  }, [favorites]);
 
   const handleFavorites = (id, e) => {
     e.stopPropagation();
@@ -30,6 +30,7 @@ const ButtonAddFavorite = ({ fest }) => {
     if (isLogin) {
       addFavorite(id, fest);
       setIsFavorite(!isFavorite);
+
     } else {
       document.getElementById("my_modal_5").showModal();
       setMessageModal("Debes estar registrado para guardar favoritos");
@@ -56,6 +57,7 @@ const ButtonAddFavorite = ({ fest }) => {
 
       if (!querySnapshot.empty) {
         setIsFavorite(true);
+      
       } else setIsFavorite(false);
     } catch (error) {
       console.error("Error al verificar el estado del favorito:", error);
