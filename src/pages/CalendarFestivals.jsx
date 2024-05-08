@@ -12,7 +12,6 @@ const CalendarFestivals = () => {
   const { festivals } = useFestivalContext()
   const localizer =  dayjsLocalizer(dayjs)
   const navigate = useNavigate()
-  console.log(festivals)
 
   const messages = {
     previous: "Anterior",
@@ -22,7 +21,6 @@ const CalendarFestivals = () => {
 };
 
   const handleEventClic =  (event) => {
-    console.log(event.id)
     navigate(`/infoFestival/${event.id}`)
   }
 
