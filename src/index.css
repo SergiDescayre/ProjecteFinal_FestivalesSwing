@@ -44,52 +44,72 @@ body {
   border-bottom-right-radius: 10px; */
 }
 
-.rbc-month-view{
-  border-radius: 0.5%!important;
+.rbc-month-view {
+  border-radius: 0.5% !important;
   border: 1px solid #fed7aa !important
 }
 
-.rbc-btn-group button{
+.rbc-btn-group button {
   background-color: #fed7aa !important;
   border: 1px solid #0a0a0a !important;
-  color:#0a0a0a !important
+  color: #0a0a0a !important
 }
 
-.rbc-active{
- background: #663e10!important;
+.rbc-active {
+  background: #663e10 !important;
 
 }
 
-.rbc-off-range-bg{
+.rbc-off-range-bg {
   background-color: #52525b !important;
 }
-.rbc-today{
-  background-color: #0a0a0a!important;
+
+.rbc-today {
+  background-color: #0a0a0a !important;
 }
 
-.rbc-event{
-  background-color: #fed7aa!important;
-  color:#0a0a0a !important;
+.rbc-event {
+  background-color: #fed7aa !important;
+  color: #0a0a0a !important;
   padding: 5px 10px !important;
 }
 
-.rbc-toolbar-label{
+.rbc-toolbar-label {
   text-align: end !important;
   font-size: 20px;
   margin: 20px 0;
-  color:#f4f4f5 !important
-}
-.rbc-day-bg{
-  color:#fed7aa!important
+  color: #f4f4f5 !important
 }
 
-.rbc-month-header{
- color:#0a0a0a !important;
- background-color: #fed7aa;
- 
+.rbc-day-bg {
+  color: #fed7aa !important
 }
-.rbc-header{
-  padding:12px 0 !important;
-  border:none !important
- 
+
+.rbc-month-header {
+  color: #0a0a0a !important;
+  background-color: #fed7aa;
+
+}
+
+.rbc-header {
+  padding: 12px 0 !important;
+  border: none !important
+}
+
+.popup {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 100;
+}
+
+.popup::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: calc(50% - 10px);
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent #ccc transparent;
 }
