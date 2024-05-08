@@ -50,13 +50,13 @@ body {
 }
 
 .rbc-btn-group button{
-  background-color: #0a0a0a !important;
-  border: 1px solid #fed7aa !important;
-  color:#fed7aa !important
+  background-color: #fed7aa !important;
+  border: 1px solid #0a0a0a !important;
+  color:#0a0a0a !important
 }
 
 .rbc-active{
-  background-color: #663e10;
+ background: #663e10!important;
 
 }
 
@@ -76,4 +76,13 @@ body {
 .rbc-toolbar-label{
   text-align: end !important;
   font-size: 20px;
+  margin: 20px 0;
+  color:#f4f4f5 !important
+}
+.rbc-day-bg{
+  color:#fed7aa!important
+}
+
+.rbc-month-header{
+ color:#f4f4f5 !important
 }
