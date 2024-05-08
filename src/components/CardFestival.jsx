@@ -1,14 +1,12 @@
 import ButtonDeleteFav from "./ButtonDeleteFav";
 import DateFestival from "./DateFestival";
 import ButtonAddFavorite from "./ButtonAddFavorite";
-import ButtonDeleteFest from "./ButtonDeleteFest";
-
 import { useNavigate } from "react-router-dom";
-import info from "../assets/info.svg";
-
 import price from "../assets/price.svg";
 import location from "../assets/location.svg";
 import calendar from "../assets/calendar.svg";
+import { useEffect } from "react";
+import { useFestivalContext } from "../context/FestivalContext";
 
 const CardFestival = ({
   fest,
@@ -17,6 +15,7 @@ const CardFestival = ({
 }) => {
   const auth = JSON.parse(localStorage.getItem("uid"));
   const navigate = useNavigate();
+  const { checkFavoriteStatus } = useFestivalContext();
 
   const handleClick = () => {
     navigate(`/infoFestival/${fest.docId}`);

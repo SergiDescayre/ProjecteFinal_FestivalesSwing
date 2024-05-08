@@ -12,24 +12,9 @@ const ShareEvent = ({ fest }) => {
     window.open(facebookUrl, "_blank");
   };
 
-  // const shareOnWhatsApp = () => {
-  //   const whatsAppUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(eventTitle)}%20-%20${encodeURIComponent(eventUrl)}`;
-  //   window.open(whatsAppUrl, "_blank");
-  // };
-
   const shareOnWhatsApp = () => {
-    // URL de la imagen por defecto
-
-    // URL de tu sitio web o recurso que deseas compartir
-
-    // Mensaje que se mostrará en WhatsApp
-    const text = encodeURIComponent("¡Echa un vistazo a esto!");
-
-    // Construyendo el enlace con metadatos enriquecidos
-    const whatsappUrl = `https://api.whatsapp.com/send?text=${text}&amp;url=${eventUrl}&amp;image=${encodeURIComponent(eventImage)}`;
-
-    // Abriendo el enlace en una nueva ventana
-    window.open(whatsappUrl, "_blank");
+    const whatsAppUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(eventTitle)}%20-%20${encodeURIComponent(eventUrl)}`;
+    window.open(whatsAppUrl, "_blank");
   };
 
   return (

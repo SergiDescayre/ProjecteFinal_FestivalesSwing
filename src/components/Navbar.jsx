@@ -7,10 +7,9 @@ import { setIsLogin } from "../features/authUserSlice";
 import { signOut, getAuth } from "firebase/auth";
 import appFirebase from "../credentials";
 
-
 import logo from "../assets/logo_ligth.png";
 import login from "../assets/login.svg";
-import logout from "../assets/logout.svg"
+import logout from "../assets/logout.svg";
 import menu from "../assets/menu.svg";
 
 // Componente de la barra de navegación
@@ -40,22 +39,21 @@ function Navbar() {
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
-    if(!menuOpen){
-      document.body.style.overflow="hidden"
-    }else document.body.style.overflow=""
+    if (!menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else document.body.style.overflow = "";
   };
 
   const handleLogOut = async () => {
     await signOut(auth);
     dispatch(setIsLogin(false));
-    localStorage.removeItem("uid")
-    navigate("/login")
-   
+    localStorage.removeItem("uid");
+    navigate("/login");
   };
 
   return (
-    <nav className="bg-zinc-950 p-4">
-      <div className="container mx-auto flex justify-between items-center">
+    <nav className="bg-zinc-950 p-4 w-full fixed">
+      <div className="container mx-auto flex justify-between items-center max-w-[1440px] lg:px-16">
         {/* Logo */}
         <div className="flex-shrink-0 lg:justify-center lg:w-auto hidden md:block">
           <img className="h-[60px]  " src={logo} alt="Logo" />
@@ -73,7 +71,7 @@ function Navbar() {
           <NavLink to="/" className=" px-4 py-2">
             Inicio
           </NavLink>
-      
+
           <NavLink to="/addfestival" className=" px-4 py-2">
             Registrar festival
           </NavLink>
@@ -81,29 +79,35 @@ function Navbar() {
           <NavLink to="/calendar" className="px-4 py-2">
             Calendario
           </NavLink>
-         
         </div>
 
         {/* Icono de login (alineado a la derecha) */}
         {isLogin ? (
           <div className="dropdown dropdown-hover dropdown-left">
-          <div tabIndex={0} role="button" className ="border-2 border-orange-200 w-8 h-8 rounded-full flex items-center justify-center">
-          <div className=""> <span className="text-orange-200">{getUsernName(user.email)}</span></div>
-          </div>
-     
-            <div tabIndex={0} className=" aboslute z-10 -mx-10 mt-8 pt-10 ml-6 flex flex-col gap-3 items-end dropdown-content  p-2 shadow bg-zinc-950 text-orange-200 rounded-md ">
+            <div
+              tabIndex={0}
+              role="button"
+              className="border-2 border-orange-200 w-8 h-8 rounded-full flex items-center justify-center"
+            >
+              <div className="">
+                {" "}
+                <span className="text-orange-200">
+                  {getUsernName(user.email)}
+                </span>
+              </div>
+            </div>
+
+            <div
+              tabIndex={0}
+              className=" aboslute z-10 -mx-10 mt-8 pt-10 ml-6 flex flex-col gap-3 items-end dropdown-content  p-2 shadow bg-zinc-950 text-orange-200 rounded-md "
+            >
               <NavLink to="myFestivals">Favoritos</NavLink>
               <div onClick={handleLogOut} className="cursor-pointer flex gap-2">
                 <span>Salir </span>
-                <img
-                  className="w-6"
-                  src={logout}
-                  alt="logout"
-                />
+                <img className="w-6" src={logout} alt="logout" />
               </div>
             </div>
           </div>
-      
         ) : (
           <div className="flex flex-col ml-auto">
             <img onClick={handleLogin} src={login} alt="login" />
@@ -117,18 +121,19 @@ function Navbar() {
           <NavLink to="/" onClick={toggleMenu} className=" px-4 py-2">
             Inicio
           </NavLink>
-        
-          <NavLink to="/addfestival" onClick={toggleMenu} className=" px-4 py-2">
+
+          <NavLink
+            to="/addfestival"
+            onClick={toggleMenu}
+            className=" px-4 py-2"
+          >
             Registrar festival
           </NavLink>
 
-          <NavLink to="/calendar"  onClick={toggleMenu}className=" px-4 py-2">
+          <NavLink to="/calendar" onClick={toggleMenu} className=" px-4 py-2">
             Calendario
           </NavLink>
-         
-          
-        
-      </div>
+        </div>
       </div>
     </nav>
   );

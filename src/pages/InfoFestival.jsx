@@ -34,9 +34,9 @@ const InfoFestival = () => {
       {!infoFestival ? (
         <Loading title={"Cargando..."} />
       ) : (
-        <div className="w-full bg-zinc-800 text-zinc-200 ">
+        <div className="w-full bg-zinc-800 text-zinc-200 max-w-[1440px] mx-auto ">
           <div className="text-center p-5">
-            <span className="text-orange-200 uppercase font-semibold mt-5 mb-3 ">
+            <span className="text-orange-200 uppercase font-semibold mt-5 mb-3 md:text-2xl xl:text-4xl x:mb-5">
               {infoFestival.name}
             </span>
           </div>

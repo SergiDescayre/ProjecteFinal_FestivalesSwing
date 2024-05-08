@@ -49,7 +49,7 @@ const ContexProvider = ({ children }) => {
       );
 
       if (!querySnapshot.empty) {
-            return;
+        return;
       }
       await addDoc(collection(db, "favorites"), {
         ...fest,
@@ -164,7 +164,6 @@ const ContexProvider = ({ children }) => {
     }
   };
 
-
   //check festivals favorites
 
   const checkFavoriteStatus = async (fest) => {
@@ -182,6 +181,7 @@ const ContexProvider = ({ children }) => {
       );
 
       if (!querySnapshot.empty) {
+        console.log(fest.docId + "esta en favoritos");
         setIsFavorite(true);
       } else setIsFavorite(false);
     } catch (error) {
@@ -239,8 +239,7 @@ const ContexProvider = ({ children }) => {
         getFestivals,
         setFavorites,
         getFilterModality,
-        checkFavoriteStatus
-      
+        checkFavoriteStatus,
       }}
     >
       {children}
