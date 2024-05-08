@@ -7,7 +7,6 @@ import { getAuth } from "firebase/auth";
 import {
   getFirestore,
   collection,
-  addDoc,
   query,
   where,
   getDocs,
