@@ -16,25 +16,28 @@ const Modal = () => {
 
   const handleClose = (e) => {
     e.stopPropagation();
+    if (!isLogin) {
+      navigate("/");
+    }
   };
 
   return (
     <dialog id="my_modal_5" className="modal modal-center">
-      <div className="modal-box bg-zinc-800">
-        <span className="py-2 text-lg text-orange-200">{messageModal}</span>
+      <div className="modal-box bg-orange-200">
+        <span className="py-2 text-lg text-zinc-900">{messageModal}</span>
         <div className="modal-action">
           <form method="dialog">
             {!isLogin && (
               <button
                 onClick={(e) => handleRegister(e)}
-                className="btn text-orange-200 btn-outline"
+                className="btn text-zinc-900 btn-outline hover:bg-orange-100 hover:text-zinc-900"
               >
                 Registrarse
               </button>
             )}
             <button
               onClick={(e) => handleClose(e)}
-              className="btn bg-orange-200 mx-3 "
+              className="btn bg-zinc-900 mx-3 text-orange-200 border-none hover:bg-zinc-700"
             >
               Cerrar
             </button>
