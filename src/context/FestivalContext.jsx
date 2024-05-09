@@ -28,12 +28,6 @@ const ContexProvider = ({ children }) => {
   const [contentQuill, setContentQuill] = useState("");
 
   const { isLogin } = useSelector((state) => state.authUser);
-
-  useEffect(() => {
-    getFavorites();
-    getFestivals();
-  }, []);
-
   const getFilterModality = (modalityFilter) => {
     return festivals.filter((fest) => fest.modality.includes(modalityFilter));
   };

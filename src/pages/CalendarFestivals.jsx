@@ -54,7 +54,7 @@ const CalendarFestivals = () => {
 
   console.log(events);
   return (
-    <div className="w-[90%] mx-auto h-screen my-10 text-orange-200 max-w-[1440px]">
+    <div className="w-[90%] mx-auto h-screen my-10 text-zinc-200 max-w-[1440px]">
       <ToggleCalendar handleCheckBox={handleCheckBox} />
       <Calendar
         localizer={localizer}
