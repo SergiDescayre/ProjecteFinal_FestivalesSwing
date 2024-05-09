@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import appFirebase from "../credentials";
 import {
   getFirestore,
@@ -29,6 +29,11 @@ const ContexProvider = ({ children }) => {
 
   const { isLogin } = useSelector((state) => state.authUser);
 
+  useEffect(() => {
+    getFavorites();
+    getFestivals();
+  }, []);
+
   const getFilterModality = (modalityFilter) => {
     return festivals.filter((fest) => fest.modality.includes(modalityFilter));
   };
@@ -57,7 +62,7 @@ const ContexProvider = ({ children }) => {
         isFavorite: true,
       });
       console.log("documento añadido");
-      getFavorites()
+      getFavorites();
     } catch (error) {
       console.error("Error al agregar favorito:", error);
     }

@@ -18,7 +18,7 @@ const AddFestival = () => {
     setMessageModal("Debes estar registrado para añadir festival");
   };
   return (
-    <div>
+    <div id="add_festival">
       <Modal />
 
       <FormAddFestival />
