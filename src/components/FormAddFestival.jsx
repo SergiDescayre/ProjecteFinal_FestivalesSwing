@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import {
   addDoc,
@@ -12,12 +12,14 @@ import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useFestivalContext } from "../context/FestivalContext";
 
+import ButtonComeBack from "./ButtonComeBack";
+
 import Loading from "./Loading";
 import Editor from "./Editor";
 
 const formAddFestival = () => {
   const navigate = useNavigate();
-  const { contentQuill } = useFestivalContext();
+  const { contentQuill, setContentQuill } = useFestivalContext();
 
   const [uploadFestival, setUploadFestival] = useState(false);
   const [image, setImage] = useState("");
@@ -27,6 +29,7 @@ const formAddFestival = () => {
 
   const [festivalInfo, setFestivalInfo] = useState({});
 
+  useEffect(() => {}, []);
   const handleChange = (e) => {
     setFestivalInfo({ ...festivalInfo, [e.target.name]: e.target.value });
   };
@@ -95,6 +98,7 @@ const formAddFestival = () => {
       console.log(error);
     }
     setUploadFestival(false);
+    setContentQuill("");
   };
 
   return (
@@ -106,6 +110,9 @@ const formAddFestival = () => {
           <div className="md:p-8 bg-zinc-950 bg-opacity-80">
             <form onSubmit={handleSubmit}>
               <div className=" md:w-[700px] mx-auto px-4  bg-zinc-800 p-10 md:rounded-md">
+                <div className="flex justify-end pb-4">
+                  <ButtonComeBack />
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-5 ">
                   <div className="w-full">
                     <label className="text-orange-200 " htmlFor="name">

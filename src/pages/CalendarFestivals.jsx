@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import ModalCalendar from "../components/ModalCalendar";
 import { useFestivalContext } from "../context/FestivalContext";
 import { Calendar, dayjsLocalizer } from "react-big-calendar";
+import { useSelector } from "react-redux";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import dayjs from "dayjs";
 import "dayjs/locale/es";
 import ToggleCalendar from "../components/ToggleCalendar";
+import ButtonComeBack from "../components/ButtonComeBack";
 
 dayjs.locale("es");
 
@@ -17,6 +19,8 @@ const CalendarFestivals = () => {
   const [festivalModal, setFestivalModal] = useState(null);
   const [festivalToShow, setFestivalToShow] = useState(festivals);
   const [events, setEvents] = useState([]);
+
+  const { isLogin } = useSelector((state) => state.authUser);
 
   useEffect(() => {
     getEvents();
@@ -52,10 +56,15 @@ const CalendarFestivals = () => {
     setEvents(events);
   };
 
-  console.log(events);
   return (
     <div className="w-[90%] mx-auto h-screen my-10 text-zinc-200 max-w-[1440px]">
-      <ToggleCalendar handleCheckBox={handleCheckBox} />
+      <div className="flex justify-between items-center">
+        {isLogin && <ToggleCalendar handleCheckBox={handleCheckBox} />}
+        <div className="pb-4">
+          <ButtonComeBack />
+        </div>
+      </div>
+
       <Calendar
         localizer={localizer}
         events={events}

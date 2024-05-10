@@ -11,6 +11,7 @@ import price from "../assets/price.svg";
 import location from "../assets/location.svg";
 import ListFestivalsModality from "../components/ListFestivalsModality";
 import ShareEvent from "../components/ShareEvent";
+import ButtonComeBack from "../components/ButtonComeBack";
 
 const InfoFestival = () => {
   const params = useParams();
@@ -35,10 +36,11 @@ const InfoFestival = () => {
         <Loading title={"Cargando..."} />
       ) : (
         <div className="w-full bg-zinc-800 text-zinc-200 max-w-[1440px] mx-auto ">
-          <div className="text-center p-5">
+          <div className="w-[80%] text-center p-5 flex items-center justify-between mx-auto">
             <span className="text-orange-200 uppercase font-semibold mt-5 mb-3 md:text-2xl xl:text-4xl x:mb-5">
               {infoFestival.name}
             </span>
+            <ButtonComeBack />
           </div>
           <div className="flex flex-col md:flex-row w-[80%] max-w-[1440px] mx-auto">
             <div className="mb-4">
@@ -121,7 +123,7 @@ const InfoFestival = () => {
             id="content_quill"
             className=" w-[80%] max-w-[1440px] mx-auto  mt-4"
           >
-            <span className="text-orange-200">Descripción</span>
+            <span className="text-orange-200 xl:text-xl">Descripción</span>
             <div
               className="text-justify mt-2 text-xs xl:text-base leading-relaxed"
               dangerouslySetInnerHTML={{ __html: infoFestival.contentQuill }}
