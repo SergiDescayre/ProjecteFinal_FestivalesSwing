@@ -82,15 +82,17 @@ const CountDawn = ({ date, docId }) => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className="grid grid-cols-4 gap-1 text-center p-3">
+    <div className="grid grid-cols-4 gap-1 text-center p-3 ">
       <div
         className={`flex flex-col p-2  ${
           lastTime ? "text-red-500" : "text-zinc-200"
         }  items-center w-18 `}
       >
         <div className="flex flex-col items-center ">
-          <span className="countdown text-2xl">{timeRemaining.days}</span>
-          <span className="text-xs text-orange-200 ">Dias</span>
+          <span className="countdown text-2xl xl:text-3xl">
+            {timeRemaining.days}
+          </span>
+          <span className="text-xs xl:text-sm text-orange-200 ">Dias</span>
         </div>
       </div>
       <div
@@ -98,30 +100,30 @@ const CountDawn = ({ date, docId }) => {
           lastTime ? "text-red-500" : "text-zinc-200"
         }  items-center w-18 `}
       >
-        <span className="countdown text-2xl">
+        <span className="countdown text-2xl xl:text-3xl">
           <span style={{ "--value": timeRemaining.hours }}></span>
         </span>
-        <span className="text-xs text-orange-200">Horas</span>
+        <span className="text-xs xl:text-sm text-orange-200">Horas</span>
       </div>
       <div
         className={`flex flex-col p-2 ${
           lastTime ? "text-red-500" : "text-zinc-200"
         }  items-center w-18 `}
       >
-        <span className="countdown text-2xl">
+        <span className="countdown text-2xl xl:text-3xl">
           <span style={{ "--value": timeRemaining.minutes }}></span>
         </span>
-        <span className="text-xs text-orange-200">Min</span>
+        <span className="text-xs xl:text-sm text-orange-200">Min</span>
       </div>
       <div
         className={`flex flex-col p-2 ${
           lastTime ? "text-red-500" : "text-zinc-200"
         }  items-center w-18 `}
       >
-        <span className="countdown text-2xl">
+        <span className="countdown text-2xl xl:text-3xl">
           <span style={{ "--value": timeRemaining.seconds }}></span>
         </span>
-        <span className="text-xs text-orange-200">Seg</span>
+        <span className="text-xs xl:text-sm text-orange-200">Seg</span>
       </div>
     </div>
   );

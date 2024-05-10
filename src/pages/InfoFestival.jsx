@@ -47,7 +47,17 @@ const InfoFestival = () => {
 
           <div className="flex flex-col md:flex-row w-[80%] max-w-[1440px] mx-auto">
             <div className="mb-4">
-              <div className="transition duration-300 transform hover:scale-95 ease-in-out">
+              <div className="relative transition duration-300 transform hover:scale-95 ease-in-out">
+                <div className="bottom-3  right-3 flex items-center  md:mt-4  gap-3 ">
+                  {user === infoFestival.userId && (
+                    <div className="absolute bottom-3 left-3">
+                      <ButtonDeleteFest fest={infoFestival} />
+                    </div>
+                  )}
+                  <div className="absolute bottom-3 right-3">
+                    <ShareEvent fest={infoFestival} />
+                  </div>
+                </div>
                 <a href={infoFestival.link} target="_blank">
                   <img
                     src={infoFestival.img}
@@ -59,12 +69,6 @@ const InfoFestival = () => {
               <div className="md:flex md:justify-between">
                 <div className="xl:pt-3">
                   <CountDawn date={infoFestival.data_start} />
-                </div>
-                <div className="flex items-center justify-between md:mt-4 md:flex-col gap-3 xl:flex-row-reverse">
-                  <ShareEvent fest={infoFestival} />
-                  {user === infoFestival.userId && (
-                    <ButtonDeleteFest fest={infoFestival} />
-                  )}
                 </div>
               </div>
             </div>
