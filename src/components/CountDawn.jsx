@@ -85,43 +85,43 @@ const CountDawn = ({ date, docId }) => {
     <div className="grid grid-cols-4 gap-1 text-center p-3">
       <div
         className={`flex flex-col p-2  ${
-          lastTime ? "text-red-500" : "text-orange-200"
+          lastTime ? "text-red-500" : "text-zinc-200"
         }  items-center w-18 `}
       >
         <div className="flex flex-col items-center ">
           <span className="countdown text-2xl">{timeRemaining.days}</span>
-          <span className="text-xs ">Dias</span>
+          <span className="text-xs text-orange-200 ">Dias</span>
         </div>
       </div>
       <div
         className={`flex flex-col p-2 ${
-          lastTime ? "text-red-500" : "text-orange-200"
+          lastTime ? "text-red-500" : "text-zinc-200"
         }  items-center w-18 `}
       >
         <span className="countdown text-2xl">
           <span style={{ "--value": timeRemaining.hours }}></span>
         </span>
-        <span className="text-xs">Horas</span>
+        <span className="text-xs text-orange-200">Horas</span>
       </div>
       <div
         className={`flex flex-col p-2 ${
-          lastTime ? "text-red-500" : "text-orange-200"
+          lastTime ? "text-red-500" : "text-zinc-200"
         }  items-center w-18 `}
       >
         <span className="countdown text-2xl">
           <span style={{ "--value": timeRemaining.minutes }}></span>
         </span>
-        <span className="text-xs">Min</span>
+        <span className="text-xs text-orange-200">Min</span>
       </div>
       <div
         className={`flex flex-col p-2 ${
-          lastTime ? "text-red-500" : "text-orange-200"
+          lastTime ? "text-red-500" : "text-zinc-200"
         }  items-center w-18 `}
       >
         <span className="countdown text-2xl">
           <span style={{ "--value": timeRemaining.seconds }}></span>
         </span>
-        <span className="text-xs">Seg</span>
+        <span className="text-xs text-orange-200">Seg</span>
       </div>
     </div>
   );
