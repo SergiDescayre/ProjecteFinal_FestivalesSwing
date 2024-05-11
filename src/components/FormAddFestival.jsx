@@ -1,14 +1,5 @@
-import { useEffect, useState } from "react";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import {
-  addDoc,
-  collection,
-  doc,
-  getFirestore,
-  updateDoc,
-} from "firebase/firestore";
-import appFirebase from "../credentials";
-import { getAuth } from "firebase/auth";
+import { useEffect } from "react";
+
 import { useNavigate } from "react-router-dom";
 import { useFestivalContext } from "../context/FestivalContext";
 
@@ -18,18 +9,29 @@ import Loading from "./Loading";
 import Editor from "./Editor";
 
 const formAddFestival = () => {
+  useEffect(() => {
+    setIsUpload(false);
+    setListOfTeachers([]);
+  }, []);
   const navigate = useNavigate();
-  const { contentQuill, setContentQuill } = useFestivalContext();
 
-  const [uploadFestival, setUploadFestival] = useState(false);
-  const [image, setImage] = useState("");
-  const [teacher, setTeacher] = useState("");
-  const [modality, setModality] = useState([]);
-  const [listOfTeachers, setListOfTeachers] = useState([]);
+  const {
+    festivalInfo,
+    setFestivalInfo,
+    uploadImageToStorage,
+    uploadFestival,
+    image,
+    teacher,
+    modality,
+    listOfTeachers,
+    setListOfTeachers,
+    setModality,
+    setTeacher,
+    setImage,
+    setIsUpload,
+    isUpload,
+  } = useFestivalContext();
 
-  const [festivalInfo, setFestivalInfo] = useState({});
-
-  useEffect(() => {}, []);
   const handleChange = (e) => {
     setFestivalInfo({ ...festivalInfo, [e.target.name]: e.target.value });
   };
@@ -53,58 +55,18 @@ const formAddFestival = () => {
     e.preventDefault();
     if (modality.length <= 0) alert("debes introducir una modalidad");
     uploadImageToStorage();
+    console.log(isUpload);
   };
-
-  //subir imagen a storage y subir festival
-  const uploadImageToStorage = async () => {
-    setUploadFestival(true);
-
-    const auth = getAuth(appFirebase);
-    const storage = getStorage();
-    try {
-      if (image === "") {
-        setUploadFestival(false);
-        return alert("Debe haber una imagen");
-      }
-
-      const storageRef = ref(storage, image.name);
-      await uploadBytes(storageRef, image);
-      const imageUrl = await getDownloadURL(storageRef);
-
-      const db = getFirestore(appFirebase);
-      // Añadir el documento a la colección "festivals" y obtener el ID asignado
-      const docRef = await addDoc(collection(db, "festivals"), {
-        ...festivalInfo,
-        userId: auth.currentUser.uid,
-        img: imageUrl,
-        listOfTeachers,
-        isFavorite: false,
-        attend: false,
-        contentQuill,
-        modality,
-      });
-
-      // Obtener el ID del documento recién creado
-      const docId = docRef.id;
-
-      // Actualizar el documento para incluir el ID
-      await updateDoc(doc(db, "festivals", docId), {
-        docId: docId,
-      });
-
-      // Redirigir a la página de festivales
-      navigate("/");
-    } catch (error) {
-      console.log(error);
-    }
-    setUploadFestival(false);
-    setContentQuill("");
-  };
+  if (isUpload) {
+    navigate("/");
+  }
 
   return (
     <>
       {uploadFestival ? (
-        <Loading title={"Registrando festival"} />
+        <div className="mt-32" style={{ height: `calc(100vh - 200px)` }}>
+          <Loading title={"Registrando festival"} />
+        </div>
       ) : (
         <div className="bg-[url('./assets/Lindy_Hop.jpeg')] bg-cover bg-no-repeat">
           <div className="md:p-8 bg-zinc-950 bg-opacity-80">

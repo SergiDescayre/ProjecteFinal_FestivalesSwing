@@ -15,7 +15,6 @@ const ButtonDeleteFest = ({ fest }) => {
     deleteFestival(id);
     getFestivals();
     deleteFavorite(id);
-    navigate("/");
   };
 
   return (

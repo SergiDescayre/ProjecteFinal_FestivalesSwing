@@ -52,7 +52,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="bg-zinc-950 p-4 w-full fixed">
+    <nav className="bg-zinc-950 p-4 w-full">
       <div className="container mx-auto flex justify-between items-center max-w-[1440px] lg:px-16">
         {/* Logo */}
         <div className="flex-shrink-0 lg:justify-center lg:w-auto hidden md:block">

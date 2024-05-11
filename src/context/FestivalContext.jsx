@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import appFirebase from "../credentials";
 import {
   getFirestore,
@@ -11,9 +12,11 @@ import {
   deleteDoc,
   addDoc,
   onSnapshot,
+  updateDoc,
 } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { useSelector } from "react-redux";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 const FestivalContext = createContext();
 
 const ContexProvider = ({ children }) => {
@@ -27,9 +30,65 @@ const ContexProvider = ({ children }) => {
   const [isFoundFestival, setIsFoundFestival] = useState(true);
   const [contentQuill, setContentQuill] = useState("");
 
+  //estats afegir festival
+  const [festivalInfo, setFestivalInfo] = useState({});
+  const [uploadFestival, setUploadFestival] = useState(false);
+  const [image, setImage] = useState("");
+  const [teacher, setTeacher] = useState("");
+  const [modality, setModality] = useState([]);
+  const [listOfTeachers, setListOfTeachers] = useState([]);
+  const [isUpload, setIsUpload] = useState(false);
+
   const { isLogin } = useSelector((state) => state.authUser);
   const getFilterModality = (modalityFilter) => {
     return festivals.filter((fest) => fest.modality.includes(modalityFilter));
+  };
+
+  //subir imagen a storage y subir festival
+  const uploadImageToStorage = async () => {
+    setUploadFestival(true);
+
+    const auth = getAuth(appFirebase);
+    const storage = getStorage();
+    try {
+      if (image === "") {
+        setUploadFestival(false);
+        return alert("Debe haber una imagen");
+      }
+
+      const storageRef = ref(storage, image.name);
+      await uploadBytes(storageRef, image);
+      const imageUrl = await getDownloadURL(storageRef);
+
+      const db = getFirestore(appFirebase);
+      // Añadir el documento a la colección "festivals" y obtener el ID asignado
+      const docRef = await addDoc(collection(db, "festivals"), {
+        ...festivalInfo,
+        userId: auth.currentUser.uid,
+        img: imageUrl,
+        listOfTeachers,
+        isFavorite: false,
+        attend: false,
+        contentQuill,
+        modality,
+      });
+
+      // Obtener el ID del documento recién creado
+      const docId = docRef.id;
+
+      // Actualizar el documento para incluir el ID
+      await updateDoc(doc(db, "festivals", docId), {
+        docId: docId,
+      });
+
+      // Redirigir a la página de festivales
+    } catch (error) {
+      console.log(error);
+    }
+    setImage("");
+    setUploadFestival(false);
+    setIsUpload(true);
+    setContentQuill("");
   };
 
   //Añadir Festival afavoritos
@@ -223,6 +282,21 @@ const ContexProvider = ({ children }) => {
         coords,
         isFoundFestival,
         contentQuill,
+        festivalInfo,
+        uploadFestival,
+        image,
+        teacher,
+        modality,
+        listOfTeachers,
+        isUpload,
+        setIsUpload,
+        setListOfTeachers,
+        setModality,
+        setTeacher,
+        setImage,
+        setUploadFestival,
+        uploadImageToStorage,
+        setFestivalInfo,
         setContentQuill,
         setInfoFestival,
         setIsFoundFestival,

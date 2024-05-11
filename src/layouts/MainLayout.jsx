@@ -43,12 +43,10 @@ const MainLayout = () => {
 
   return (
     <>
-      <div className="fixed w-full z-20">
-        <Navbar />
-      </div>
-      <div className="pt-[75px] md:pt-[90px]">
-        <Routing />
-      </div>
+      <Navbar />
+
+      <Routing />
+
       <Footer />
     </>
   );
