@@ -44,9 +44,7 @@ const MainLayout = () => {
   return (
     <>
       <Navbar />
-
       <Routing />
-
       <Footer />
     </>
   );
