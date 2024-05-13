@@ -45,7 +45,7 @@ const InfoFestival = () => {
             <ButtonComeBack />
           </div>
 
-          <div className="flex flex-col md:flex-row w-[80%] max-w-[1440px] mx-auto">
+          <div className="flex flex-col md:flex-row w-[80%] md:align-center max-w-[1440px] mx-auto">
             <div className="mb-4">
               <div className="relative transition duration-300 transform hover:scale-95 ease-in-out">
                 <div className="bottom-3  right-3 flex items-center  md:mt-4  gap-3 ">
@@ -67,12 +67,12 @@ const InfoFestival = () => {
                 </a>
               </div>
               <div className="md:flex md:justify-between">
-                <div className="xl:pt-3">
+                <div className="xl:pt-3 md:-ms-5">
                   <CountDawn date={infoFestival.data_start} />
                 </div>
               </div>
             </div>
-            <div className="flex flex-col  gap-3 md:ps-6 xl:pl-20 flex-grow ">
+            <div className="flex flex-col md:mt-4  gap-3 md:ps-6  flex-grow ">
               <div className="flex flex-col gap-3">
                 <div className="flex gap-2 items-center">
                   <img className="w-4 lg:w-6" src={location} alt="" />

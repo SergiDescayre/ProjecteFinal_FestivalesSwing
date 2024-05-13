@@ -117,22 +117,32 @@ function Navbar() {
 
       {/* Menús desplegables (solo visibles en dispositivos móviles) */}
       <div className={`md:hidden ${menuOpen ? "" : "hidden"} `}>
-        <div className="flex flex-col gap-6 items-center absolute left-0 z-10 bg-zinc-950 w-full h-screen text-stone-200">
-          <NavLink to="/" onClick={toggleMenu} className=" px-4 py-2">
-            Inicio
-          </NavLink>
+        <div className="absolute left-0 z-10 bg-zinc-950 w-full h-screen text-stone-200">
+          <div className="flex flex-col items-center h-[100%] gap-12 mt-[150px]">
+            <NavLink
+              to="/"
+              onClick={toggleMenu}
+              className=" px-4 py-2 text-2xl "
+            >
+              Inicio
+            </NavLink>
 
-          <NavLink
-            to="/addfestival"
-            onClick={toggleMenu}
-            className=" px-4 py-2"
-          >
-            Registrar festival
-          </NavLink>
+            <NavLink
+              to="/addfestival"
+              onClick={toggleMenu}
+              className=" px-4 py-2 text-2xl "
+            >
+              Registrar festival
+            </NavLink>
 
-          <NavLink to="/calendar" onClick={toggleMenu} className=" px-4 py-2">
-            Calendario
-          </NavLink>
+            <NavLink
+              to="/calendar"
+              onClick={toggleMenu}
+              className=" px-4 py-2 text-2xl"
+            >
+              Calendario
+            </NavLink>
+          </div>
         </div>
       </div>
     </nav>

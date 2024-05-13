@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
-
-import replay from "../assets/replay.svg";
+import arrowLeft from "../assets/arrowLeft.svg";
 
 const ButtonComeBack = () => {
   const navigate = useNavigate();
@@ -10,8 +9,8 @@ const ButtonComeBack = () => {
       <img
         onClick={() => navigate(-1)}
         className="w-6 md:w-7 cursor-pointer"
-        src={replay}
-        alt=""
+        src={arrowLeft}
+        alt="comeBack"
       />
     </div>
   );
