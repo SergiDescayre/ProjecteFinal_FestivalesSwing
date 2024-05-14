@@ -11,6 +11,8 @@ import logo from "../assets/logo_ligth.png";
 import login from "../assets/login.svg";
 import logout from "../assets/logout.svg";
 import menu from "../assets/menu.svg";
+import globe from "../assets/globe.svg"
+import MultiLanguages from "./MultiLanguages";
 
 // Componente de la barra de navegación
 
@@ -82,6 +84,7 @@ function Navbar() {
         </div>
 
         {/* Icono de login (alineado a la derecha) */}
+        <div className="flex items-center gap-2">
         {isLogin ? (
           <div className="dropdown dropdown-hover dropdown-left">
             <div
@@ -113,7 +116,10 @@ function Navbar() {
             <img onClick={handleLogin} src={login} alt="login" />
           </div>
         )}
+        <MultiLanguages />
       </div>
+        </div>
+       
 
       {/* Menús desplegables (solo visibles en dispositivos móviles) */}
       <div className={`md:hidden ${menuOpen ? "" : "hidden"} `}>
