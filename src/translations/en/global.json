@@ -1,0 +1,12 @@
+{
+    "navbar":{
+        "home": "home",
+        "registerFestival" : "Register festival",
+        "calendar" : "Calendar",
+        "favorites" : "favorites",
+        "logOut" : "logOut" 
+    },
+    "home":{
+        "text" : "¡¡ Feel the rhythm, live the experience !!"
+    }
+}

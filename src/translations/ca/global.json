@@ -1,0 +1,12 @@
+{
+    "navbar":{
+        "home": "Inici",
+        "registerFestival" : "Registrar festival",
+        "calendar" : "Calendari",
+        "favorites" : "favorits",
+        "logOut" : "Sortir" 
+    },
+    "home":{
+        "text" : "Sent el ritme, viu l'experiència !!"
+    }
+}

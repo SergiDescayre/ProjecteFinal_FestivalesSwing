@@ -11,12 +11,16 @@ import logo from "../assets/logo_ligth.png";
 import login from "../assets/login.svg";
 import logout from "../assets/logout.svg";
 import menu from "../assets/menu.svg";
-import globe from "../assets/globe.svg"
 import MultiLanguages from "./MultiLanguages";
+
+import { useTranslation } from "react-i18next";
 
 // Componente de la barra de navegación
 
 function Navbar() {
+
+  const {t} = useTranslation("global")
+
   const auth = getAuth(appFirebase);
 
   const dispatch = useDispatch();
@@ -30,8 +34,6 @@ function Navbar() {
     const userName = ArrayUserName[0].toUpperCase();
     return userName;
   };
-
-  getUsernName("leprtitdesca@gmail.com");
 
   const navigate = useNavigate();
 
@@ -71,20 +73,20 @@ function Navbar() {
         {/* Menús (centrados en dispositivos grandes, ocultos en dispositivos pequeños) */}
         <div className="hidden md:flex flex-grow justify-center text-stone-200">
           <NavLink to="/" className=" px-4 py-2">
-            Inicio
+            {t("navbar.home")}
           </NavLink>
 
           <NavLink to="/addfestival" className=" px-4 py-2">
-            Registrar festival
+            {t("navbar.registerFestival")}
           </NavLink>
 
           <NavLink to="/calendar" className="px-4 py-2">
-            Calendario
+           {t("navbar.calendar")}
           </NavLink>
         </div>
 
         {/* Icono de login (alineado a la derecha) */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 relative">
         {isLogin ? (
           <div className="dropdown dropdown-hover dropdown-left">
             <div
@@ -102,11 +104,11 @@ function Navbar() {
 
             <div
               tabIndex={0}
-              className=" aboslute z-10 -mx-10 mt-8 pt-10 ml-6 flex flex-col gap-3 items-end dropdown-content  p-2 shadow bg-zinc-950 text-orange-200 rounded-md "
+              className=" aboslute w-28 z-10 -mx-10 mt-8 pt-10 ml-6 flex flex-col gap-3 items-end dropdown-content  p-2 shadow bg-zinc-950 text-orange-200 rounded-md "
             >
-              <NavLink to="myFestivals">Favoritos</NavLink>
+              <NavLink to="myFestivals">{t("navbar.favorites")}</NavLink>
               <div onClick={handleLogOut} className="cursor-pointer flex gap-2">
-                <span>Salir </span>
+                <span>{t("navbar.logOut")}</span>
                 <img className="w-6" src={logout} alt="logout" />
               </div>
             </div>
@@ -130,7 +132,7 @@ function Navbar() {
               onClick={toggleMenu}
               className=" px-4 py-2 text-2xl "
             >
-              Inicio
+              {t("navbar.home")}
             </NavLink>
 
             <NavLink
@@ -138,7 +140,7 @@ function Navbar() {
               onClick={toggleMenu}
               className=" px-4 py-2 text-2xl "
             >
-              Registrar festival
+               {t("navbar.registerFestival")}
             </NavLink>
 
             <NavLink
@@ -146,7 +148,7 @@ function Navbar() {
               onClick={toggleMenu}
               className=" px-4 py-2 text-2xl"
             >
-              Calendario
+                {t("navbar.calendar")}
             </NavLink>
           </div>
         </div>
