@@ -7,6 +7,31 @@
         "logOut" : "logOut" 
     },
     "home":{
-        "text" : "¡¡ Feel the rhythm, live the experience !!"
+        "text" : "¡¡Feel the rhythm, live the experience!!"
+    },
+    "search":{
+        "where": "Where",
+        "from": "From",
+        "to": "To",
+        "search": "Search"
+    },"formAddFestival":{
+        "name": "Name of festival",
+        "city":"City",
+        "address":"Address",
+        "PC":"PC",
+        "teachers":"Teachers",
+        "add":"Add",
+        "modalities":"Modalities",
+        "price":"Price",
+        "from":"From",
+        "to":"To",
+        "dateStart":"Date start",
+        "dateEnd": "Date end",
+        "image":"Main image",
+        "url":"Url of festival",
+        "uploaddFile":"Upload file",
+        "uploadedFile":"Uploaded file",
+        "description":"Description",
+        "send":"Send"
     }
 }

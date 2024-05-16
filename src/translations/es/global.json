@@ -7,7 +7,32 @@
         "logOut" : "Salir" 
     },
     "home":{
-        "text" : "¡¡ Siente el ritmo, vive la experiencia !!"
+        "text" : "¡¡Siente el ritmo, vive la experiencia!!"
+    },
+    "search":{
+        "where": "Donde",
+        "from": "Desde",
+        "to": "Hasta",
+        "search": "Buscar"
+    },"formAddFestival":{
+        "name": "Nombre del festival",
+        "city":"Ciudad",
+        "address":"Dirección",
+        "PC":"CP",
+        "teachers":"Profesores",
+        "add":"Añadir",
+        "modalities":"Modalidades",
+        "price":"Precio",
+        "from":"Desde",
+        "to":"Hasta",
+        "dateStart":"Fecha Inicio",
+        "dateEnd": "Fecha fin",
+        "image":"Imagen principal",
+        "url":"Url del festival",
+        "uploadFile":"Subir archivo",
+        "uploadedFile":"Archivo cargado",
+        "description":"Descripción",
+        "send":"Enviar"
     }
     
 }

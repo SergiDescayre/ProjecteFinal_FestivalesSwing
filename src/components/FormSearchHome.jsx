@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useFestivalContext } from "../context/FestivalContext";
+import { useTranslation } from "react-i18next";
 
 const FormSearchHome = () => {
+  const {t} = useTranslation("global")
+
   const {
     setFestivals,
     festivals,
@@ -46,29 +49,28 @@ const FormSearchHome = () => {
         <input
           name="city"
           className="input join-item w-full md:w-40 "
-          placeholder="¿Donde?"
+          placeholder={t("search.where")}
           onChange={(e) => setCity(e.target.value)}
         />
-        <label className="bg-white p-3 w-full md:w-16 join-item">Desde:</label>
+        <label className="bg-white p-3 w-full md:w-[70px] join-item">{t("search.from")}:</label>
         <input
           id="data_start"
           className="input join-item w-full md:w-40 "
           type="date"
-          placeholder="fecha"
           onChange={(e) => setDataStart(e.target.value)}
           required
         />
-        <label className="bg-white p-3 w-full md:w-16 join-item">Hasta:</label>
+        <label className="bg-white p-3 w-full md:w-16 join-item">{t("search.to")}:</label>
         <input
           id="data_end"
           className="input join-item w-full md:w-40"
           type="date"
-          placeholder="fecha"
           onChange={(e) => setDataEnd(e.target.value)}
           required
         />
         <input
           type="submit"
+          value={t("search.search")}
           className="btn border-none join-item bg-orange-200 hover:bg-zinc-900 text-zinc-900 hover:text-orange-200 w-full md:w-28"
         />
       </div>

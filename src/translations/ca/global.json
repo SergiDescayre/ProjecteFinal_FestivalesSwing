@@ -7,6 +7,31 @@
         "logOut" : "Sortir" 
     },
     "home":{
-        "text" : "Sent el ritme, viu l'experiència !!"
+        "text" : "Sent el ritme, viu l'experiència!!"
+    },
+    "search":{
+        "where": "On",
+        "from": "Desde",
+        "to": "Fins",
+        "search": "Buscar"
+    },"formAddFestival":{
+        "name": "Nom del festival",
+        "city":"Ciutat",
+        "address":"Adreça",
+        "PC":"CP",
+        "teachers":"Professors",
+        "add":"Afegirr",
+        "modalities":"Modalitats",
+        "price":"Preu",
+        "from":"Des de",
+        "to":"Fins",
+        "dateStart":"Data inici",
+        "dateEnd": "Data fi",
+        "image":"Imatge principal",
+        "url":"Url del festival",
+        "uploadFile":"Pujar arxiu",
+        "uploadedFile":"Arxiu carregat",
+        "description":"Descripció",
+        "send":"Enviar"
     }
 }

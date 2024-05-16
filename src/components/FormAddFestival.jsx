@@ -8,12 +8,16 @@ import ButtonComeBack from "./ButtonComeBack";
 import Loading from "./Loading";
 import Editor from "./Editor";
 
+import { useTranslation } from "react-i18next";
+
 const formAddFestival = () => {
   useEffect(() => {
     setIsUpload(false);
     setListOfTeachers([]);
   }, []);
   const navigate = useNavigate();
+
+  const {t} = useTranslation("global")
 
   const {
     festivalInfo,
@@ -78,7 +82,7 @@ const formAddFestival = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-5 ">
                   <div className="w-full">
                     <label className="text-orange-200 " htmlFor="name">
-                      Nombre del festival
+                      {t("formAddFestival.name")}
                     </label>
                     <input
                       id="name"
@@ -91,7 +95,7 @@ const formAddFestival = () => {
                   </div>
                   <div className="w-full">
                     <label className="text-orange-200 " htmlFor="city">
-                      Ciudad
+                    {t("formAddFestival.city")}
                     </label>
                     <input
                       id="city"
@@ -106,7 +110,7 @@ const formAddFestival = () => {
                 <div className="mt-5 flex gap-5">
                   <div className="w-full">
                     <label className="text-orange-200 " htmlFor="address">
-                      Dirección
+                    {t("formAddFestival.address")}
                     </label>
                     <input
                       id="address"
@@ -119,7 +123,7 @@ const formAddFestival = () => {
                   </div>
                   <div className="w-[40%]">
                     <label className="text-orange-200 " htmlFor="adress">
-                      CP
+                    {t("formAddFestival.PC")}
                     </label>
                     <input
                       id="CP"
@@ -132,7 +136,7 @@ const formAddFestival = () => {
                   </div>
                 </div>
                 <div className="mt-5">
-                  <label className="text-orange-200 ">Profesores</label>
+                  <label className="text-orange-200 "> {t("formAddFestival.teachers")}</label>
                   <div className="join w-full">
                     <input
                       className="input input-bordered join-item w-full"
@@ -143,7 +147,7 @@ const formAddFestival = () => {
                       onClick={addTeachers}
                       className="btn join-item text-zinc-900 bg-orange-200 border-none hover:bg-orange-100 "
                     >
-                      Añadir
+                       {t("formAddFestival.add")}
                     </button>
                   </div>
                   <div>
@@ -159,7 +163,7 @@ const formAddFestival = () => {
 
                 <div className=" mt-5 text-center">
                   <label className="text-orange-200 uppercase ">
-                    Modalidad/es
+                  {t("formAddFestival.modalities")}
                   </label>
                   <div className="flex justify-between  md:justify-around gap-2 mt-5">
                     <div className="flex flex-col items-center">
@@ -200,12 +204,12 @@ const formAddFestival = () => {
                 <div className="mt-5">
                   <div className="text-center">
                     <label className="text-orange-200 uppercase w-full ">
-                      Precio
+                    {t("formAddFestival.price")}
                     </label>
                   </div>
                   <div className="flex gap-5">
                     <div className="flex flex-col w-full">
-                      <label className="text-orange-200">Desde</label>
+                      <label className="text-orange-200"> {t("formAddFestival.from")}</label>
                       <input
                         type="text"
                         name="minPrice"
@@ -215,7 +219,7 @@ const formAddFestival = () => {
                       />
                     </div>
                     <div className="flex flex-col w-full">
-                      <label className="text-orange-200">Hasta</label>
+                      <label className="text-orange-200"> {t("formAddFestival.to")}</label>
                       <input
                         type="text"
                         name="maxPrice"
@@ -230,7 +234,7 @@ const formAddFestival = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-5  mt-5">
                   <div className="w-full">
                     <label className="text-orange-200" htmlFor="data_start">
-                      Fecha Inicio
+                    {t("formAddFestival.dateStart")}
                     </label>
                     <input
                       id="data_start"
@@ -243,7 +247,7 @@ const formAddFestival = () => {
                   </div>
                   <div className="w-full">
                     <label className="text-orange-200" htmlFor="data_end">
-                      Fecha Fin
+                    {t("formAddFestival.dateEnd")}
                     </label>
                     <input
                       id="data_end"
@@ -259,21 +263,21 @@ const formAddFestival = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-5  mt-5">
                   <div className="w-full">
                     <label className="block text-orange-200" htmlFor="image">
-                      Imagen de portada
+                    {t("formAddFestival.image")}
                     </label>
                     {!image ? (
                       <label
                         htmlFor="image"
                         className="btn w-full text-zinc-900 bg-orange-200 border-none hover:bg-orange-100"
                       >
-                        Subir Archivo
+                         {t("formAddFestival.uploadFile")}
                       </label>
                     ) : (
                       <label
                         htmlFor="image"
                         className="btn w-full text-zinc-900 bg-orange-200 border-none hover:bg-orange-100"
                       >
-                        Archivo cargado
+                         {t("formAddFestival.uploadedFile")}
                       </label>
                     )}
 
@@ -286,7 +290,7 @@ const formAddFestival = () => {
                   </div>
                   <div className="w-full">
                     <label className="text-orange-200" htmlFor="url">
-                      Url del festival
+                    {t("formAddFestival.url")}
                     </label>
                     <input
                       type="text"
@@ -299,12 +303,12 @@ const formAddFestival = () => {
                   </div>
                 </div>
                 <div className="w-full mt-5">
-                  <label className="text-orange-200">Descripción</label>
+                  <label className="text-orange-200"> {t("formAddFestival.description")}</label>
                   <Editor />
                 </div>
                 <div className="grid grid-cols-1 justify-items-center gap-5  mt-5">
                   <button className="btn text-zinc-900 bg-orange-200 border-none hover:bg-orange-100 w-full">
-                    Enviar
+                  {t("formAddFestival.send")}
                   </button>
                 </div>
               </div>
