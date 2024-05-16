@@ -1,51 +1,76 @@
 {
-    "navbar":{
-        "home": "Inici",
-        "registerFestival" : "Registrar festival",
-        "calendar" : "Calendari",
-        "favorites" : "favorits",
-        "logOut" : "Sortir" 
-    },
-    "home":{
-        "text" : "Sent el ritme, viu l'experiència!!"
-    },
-    "search":{
-        "where": "On",
-        "from": "Desde",
-        "to": "Fins",
-        "search": "Buscar"
-    },"formAddFestival":{
-        "name": "Nom del festival",
-        "city":"Ciutat",
-        "address":"Adreça",
-        "PC":"CP",
-        "teachers":"Professors",
-        "add":"Afegirr",
-        "modalities":"Modalitats",
-        "price":"Preu",
-        "from":"Des de",
-        "to":"Fins",
-        "dateStart":"Data inici",
-        "dateEnd": "Data fi",
-        "image":"Imatge principal",
-        "url":"Url del festival",
-        "uploadFile":"Pujar arxiu",
-        "uploadedFile":"Arxiu carregat",
-        "description":"Descripció",
-        "send":"Enviar"
-    },
-    "months" : {
-        "January": "Gener",
-        "February": "Febrer",
-        "March": "Març",
-        "April": "Abril",
-        "May": "Maig",
-        "June": "Juny",
-        "July": "Juliol",
-        "August": "Agost",
-        "September": "Setembre",
-        "October": "Octubre",
-        "November": "Novembre",
-        "December": "Desembre"
-    }
+  "navbar": {
+    "home": "Inici",
+    "registerFestival": "Registrar festival",
+    "calendar": "Calendari",
+    "favorites": "favorits",
+    "logOut": "Sortir"
+  },
+  "home": {
+    "text": "Sent el ritme, viu l'experiència!!"
+  },
+  "search": {
+    "where": "On",
+    "from": "Desde",
+    "to": "Fins",
+    "search": "Buscar"
+  },
+  "formAddFestival": {
+    "name": "Nom del festival",
+    "city": "Ciutat",
+    "address": "Adreça",
+    "PC": "CP",
+    "teachers": "Professors",
+    "add": "Afegirr",
+    "modalities": "Modalitats",
+    "price": "Preu",
+    "from": "Des de",
+    "to": "Fins",
+    "dateStart": "Data inici",
+    "dateEnd": "Data fi",
+    "image": "Imatge principal",
+    "url": "Url del festival",
+    "uploadFile": "Pujar arxiu",
+    "uploadedFile": "Arxiu carregat",
+    "description": "Descripció",
+    "send": "Enviar"
+  },
+  "months": {
+    "January": "Gener",
+    "February": "Febrer",
+    "March": "Març",
+    "April": "Abril",
+    "May": "Maig",
+    "June": "Juny",
+    "July": "Juliol",
+    "August": "Agost",
+    "September": "Setembre",
+    "October": "Octubre",
+    "November": "Novembre",
+    "December": "Desembre"
+  },
+  "date": {
+    "th": "",
+    "of": "de",
+    "from": "De",
+    "to": "al"
+  },
+  "infoFestival": {
+    "from": "Des de",
+    "to": "Fins",
+    "modalities": "Modalitats",
+    "teachers": "Professors",
+    "description": "Descripció",
+    "moreFestivals": "MÉS FESTIVALS",
+    "delete": "Eliminar festival"
+  },
+  "countDown": {
+    "days": "Dies",
+    "hours": "Hores",
+    "minutes": "Min",
+    "seconds": "Seg"
+  },
+  "calendar": {
+    "language": "ca"
+  }
 }

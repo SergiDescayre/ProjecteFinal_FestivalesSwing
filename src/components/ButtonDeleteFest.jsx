@@ -2,7 +2,7 @@ import { useFestivalContext } from "../context/FestivalContext";
 
 import Modal from "./Modal";
 
-const ButtonDeleteFest = ({ fest }) => {
+const ButtonDeleteFest = ({ fest, title }) => {
   const { deleteFestival, getFestivals, deleteFavorite, setMessageModal } =
     useFestivalContext();
 
@@ -22,7 +22,7 @@ const ButtonDeleteFest = ({ fest }) => {
           onClick={() => handleDelete(fest.docId)}
           className="btn btn-xs md:btn-sm bg-red-200 border-none "
         >
-          Eliminar
+          {title}
         </button>
       </div>
     </>

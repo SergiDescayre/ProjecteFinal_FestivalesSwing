@@ -1,20 +1,7 @@
 import React from "react";
+import { months } from "../data/months";
 
 const DateFestival = ({ date }) => {
-  const months = [
-    "Enero",
-    "Febrero",
-    "Marzo",
-    "Abril",
-    "Mayo",
-    "Junio",
-    "Julio",
-    "Agosto",
-    "Septiembre",
-    "Octubre",
-    "Noviembre",
-    "Diciembre",
-  ];
   const arrayDate = date.split("-");
   const positionMonth = arrayDate[1];
   const dayTotal = arrayDate[2];

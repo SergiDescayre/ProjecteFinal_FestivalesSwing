@@ -39,6 +39,9 @@ const ContexProvider = ({ children }) => {
   const [listOfTeachers, setListOfTeachers] = useState([]);
   const [isUpload, setIsUpload] = useState(false);
 
+  //Idioma calendari
+  const [language, setLanguage] = useState("es");
+
   const { isLogin } = useSelector((state) => state.authUser);
   const getFilterModality = (modalityFilter) => {
     return festivals.filter((fest) => fest.modality.includes(modalityFilter));
@@ -289,6 +292,8 @@ const ContexProvider = ({ children }) => {
         modality,
         listOfTeachers,
         isUpload,
+        language,
+        setLanguage,
         setIsUpload,
         setListOfTeachers,
         setModality,

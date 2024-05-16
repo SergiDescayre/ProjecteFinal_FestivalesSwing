@@ -7,13 +7,16 @@ import { useSelector } from "react-redux";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import dayjs from "dayjs";
 import "dayjs/locale/es";
+import "dayjs/locale/en";
+import "dayjs/locale/ca";
 import ToggleCalendar from "../components/ToggleCalendar";
 import ButtonComeBack from "../components/ButtonComeBack";
-
-dayjs.locale("es");
+import { useTranslation } from "react-i18next";
 
 const CalendarFestivals = () => {
-  const { festivals, favorites, getFavorites } = useFestivalContext();
+  const { t } = useTranslation;
+
+  const { festivals, favorites, getFavorites, language } = useFestivalContext();
   const localizer = dayjsLocalizer(dayjs);
 
   const [festivalModal, setFestivalModal] = useState(null);
@@ -25,7 +28,8 @@ const CalendarFestivals = () => {
   useEffect(() => {
     getEvents();
     getFavorites();
-  }, [festivalToShow]);
+    dayjs.locale(language);
+  }, [festivalToShow, language]);
 
   const messages = {
     previous: "Anterior",

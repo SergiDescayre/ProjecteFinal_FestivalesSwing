@@ -14,7 +14,10 @@ import ShareEvent from "../components/ShareEvent";
 import ButtonComeBack from "../components/ButtonComeBack";
 import CountDawn from "../components/CountDawn";
 
+import { useTranslation } from "react-i18next";
+
 const InfoFestival = () => {
+  const { t } = useTranslation("global");
   const params = useParams();
   console.log(params.idFestival);
   const user = JSON.parse(localStorage.getItem("uid"));
@@ -30,7 +33,6 @@ const InfoFestival = () => {
     getFestivalByDocId(params.idFestival);
     return () => setInfoFestival("");
   }, [params.idFestival]);
-  console.log(infoFestival);
 
   return (
     <>
@@ -51,7 +53,10 @@ const InfoFestival = () => {
                 <div className="bottom-3  right-3 flex items-center  md:mt-4  gap-3 ">
                   {user === infoFestival.userId && (
                     <div className="absolute bottom-3 left-3">
-                      <ButtonDeleteFest fest={infoFestival} />
+                      <ButtonDeleteFest
+                        fest={infoFestival}
+                        title={t("infoFestival.delete")}
+                      />
                     </div>
                   )}
                   <div className="absolute bottom-3 right-3">
@@ -93,15 +98,15 @@ const InfoFestival = () => {
                 <div className="flex gap-2">
                   <img className="w-4 lg:w-6" src={price} alt="price" />
                   <span className="text-xs xl:text-base ">
-                    Desde {infoFestival.minPrice} € hasta{" "}
-                    {infoFestival.maxPrice} €
+                    {t("infoFestival.from")} {infoFestival.minPrice} €{" "}
+                    {t("infoFestival.to")} {infoFestival.maxPrice} €
                   </span>
                 </div>
               </div>
 
               <div>
                 <span className="block mt-5 mb-2  xl:text-xl text-orange-200">
-                  Modalidades
+                  {t("infoFestival.modalities")}
                 </span>
                 <ul>
                   {infoFestival.modality.map((item, index) => (
@@ -116,7 +121,7 @@ const InfoFestival = () => {
               {infoFestival.listOfTeachers.length > 0 && (
                 <div>
                   <span className="block mt-5 mb-2  xl:text-xl text-orange-200">
-                    Profesores
+                    {t("infoFestival.teachers")}
                   </span>
                   <ul>
                     {infoFestival.listOfTeachers.map((item, index) => (
@@ -134,14 +139,16 @@ const InfoFestival = () => {
             id="content_quill"
             className=" w-[80%] max-w-[1440px] mx-auto  mt-4"
           >
-            <span className="text-orange-200 xl:text-xl">Descripción</span>
+            <span className="text-orange-200 xl:text-xl">
+              {t("infoFestival.description")}
+            </span>
             <div
               className="text-justify mt-2 text-xs xl:text-base leading-relaxed"
               dangerouslySetInnerHTML={{ __html: infoFestival.contentQuill }}
             ></div>
           </div>
           <ListFestivalsModality
-            title={"MÁS FESTIVALES"}
+            title={t("infoFestival.moreFestivals")}
             modality={festivals.filter(
               (item) => item.docId !== infoFestival.docId
             )}

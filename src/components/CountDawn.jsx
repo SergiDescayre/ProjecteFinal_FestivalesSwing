@@ -9,8 +9,10 @@ import {
 import { useEffect, useState } from "react";
 import appFirebase from "../credentials";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const CountDawn = ({ date, docId }) => {
+  const { t } = useTranslation("global");
   const firestore = getFirestore(appFirebase);
   const navigate = useNavigate();
 
@@ -92,7 +94,9 @@ const CountDawn = ({ date, docId }) => {
           <span className="countdown text-2xl xl:text-3xl">
             {timeRemaining.days}
           </span>
-          <span className="text-xs xl:text-sm text-orange-200 ">Dias</span>
+          <span className="text-xs xl:text-sm text-orange-200 ">
+            {t("countDown.days")}
+          </span>
         </div>
       </div>
       <div
@@ -103,7 +107,9 @@ const CountDawn = ({ date, docId }) => {
         <span className="countdown text-2xl xl:text-3xl">
           <span style={{ "--value": timeRemaining.hours }}></span>
         </span>
-        <span className="text-xs xl:text-sm text-orange-200">Horas</span>
+        <span className="text-xs xl:text-sm text-orange-200">
+          {t("countDown.hours")}
+        </span>
       </div>
       <div
         className={`flex flex-col p-2 ${
@@ -113,7 +119,9 @@ const CountDawn = ({ date, docId }) => {
         <span className="countdown text-2xl xl:text-3xl">
           <span style={{ "--value": timeRemaining.minutes }}></span>
         </span>
-        <span className="text-xs xl:text-sm text-orange-200">Min</span>
+        <span className="text-xs xl:text-sm text-orange-200">
+          {t("countDown.minutes")}
+        </span>
       </div>
       <div
         className={`flex flex-col p-2 ${
@@ -123,7 +131,9 @@ const CountDawn = ({ date, docId }) => {
         <span className="countdown text-2xl xl:text-3xl">
           <span style={{ "--value": timeRemaining.seconds }}></span>
         </span>
-        <span className="text-xs xl:text-sm text-orange-200">Seg</span>
+        <span className="text-xs xl:text-sm text-orange-200">
+          {t("countDown.seconds")}
+        </span>
       </div>
     </div>
   );

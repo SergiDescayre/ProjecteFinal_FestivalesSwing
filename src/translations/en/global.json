@@ -1,58 +1,76 @@
 {
-    "navbar":{
-        "home": "home",
-        "registerFestival" : "Register festival",
-        "calendar" : "Calendar",
-        "favorites" : "favorites",
-        "logOut" : "logOut" 
-    },
-    "home":{
-        "text" : "¡¡Feel the rhythm, live the experience!!"
-    },
-    "search":{
-        "where": "Where",
-        "from": "From",
-        "to": "To",
-        "search": "Search"
-    },
-    "formAddFestival":{
-        "name": "Name of festival",
-        "city":"City",
-        "address":"Address",
-        "PC":"PC",
-        "teachers":"Teachers",
-        "add":"Add",
-        "modalities":"Modalities",
-        "price":"Price",
-        "from":"From",
-        "to":"To",
-        "dateStart":"Date start",
-        "dateEnd": "Date end",
-        "image":"Main image",
-        "url":"Url of festival",
-        "uploaddFile":"Upload file",
-        "uploadedFile":"Uploaded file",
-        "description":"Description",
-        "send":"Send"
-    },
-    "months": {
-        "January": "January",
-        "February": "February",
-        "March": "March",
-        "April": "April",
-        "May": "May",
-        "June": "June",
-        "July": "July",
-        "August": "August",
-        "September": "September",
-        "October": "October",
-        "November": "November",
-        "December": "December"
-    },
-    "date":{
-        "th": "th",
-        "of": "of",
-        "from" : "From",
-        "to" : "to" 
-    }
+  "navbar": {
+    "home": "home",
+    "registerFestival": "Register festival",
+    "calendar": "Calendar",
+    "favorites": "favorites",
+    "logOut": "logOut"
+  },
+  "home": {
+    "text": "¡¡Feel the rhythm, live the experience!!"
+  },
+  "search": {
+    "where": "Where",
+    "from": "From",
+    "to": "To",
+    "search": "Search"
+  },
+  "formAddFestival": {
+    "name": "Name of festival",
+    "city": "City",
+    "address": "Address",
+    "PC": "PC",
+    "teachers": "Teachers",
+    "add": "Add",
+    "modalities": "Modalities",
+    "price": "Price",
+    "from": "From",
+    "to": "To",
+    "dateStart": "Date start",
+    "dateEnd": "Date end",
+    "image": "Main image",
+    "url": "Url of festival",
+    "uploaddFile": "Upload file",
+    "uploadedFile": "Uploaded file",
+    "description": "Description",
+    "send": "Send"
+  },
+  "months": {
+    "January": "January",
+    "February": "February",
+    "March": "March",
+    "April": "April",
+    "May": "May",
+    "June": "June",
+    "July": "July",
+    "August": "August",
+    "September": "September",
+    "October": "October",
+    "November": "November",
+    "December": "December"
+  },
+  "date": {
+    "th": "th",
+    "of": "of",
+    "from": "From",
+    "to": "to"
+  },
+  "infoFestival": {
+    "from": "From",
+    "to": "to",
+    "modalities": "Modalities",
+    "teachers": "Teachers",
+    "description": "Description",
+    "moreFestivals": "MORE FESTIVALS",
+    "delete": "Delete festival"
+  },
+  "countDown": {
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Min",
+    "seconds": "Sec"
+  },
+  "calendar": {
+    "language": "en"
+  }
 }
