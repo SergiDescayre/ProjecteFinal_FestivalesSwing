@@ -1,20 +1,22 @@
-import React from "react";
+import { useTranslation } from "react-i18next";
 
 const DateFestivalHorizontal = ({ dateStart, dateEnd }) => {
+
+const {t} = useTranslation("global")
   const months = [
-    "Enero",
-    "Febrero",
-    "Marzo",
-    "Abril",
-    "Mayo",
-    "Junio",
-    "Julio",
-    "Agosto",
-    "Septiembre",
-    "Octubre",
-    "Noviembre",
-    "Diciembre",
-  ];
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+];
   const arrayDateStart = dateStart.split("-");
   const positionMonthStart = arrayDateStart[1];
   const dayTotalStart = arrayDateStart[2];
@@ -35,12 +37,11 @@ const DateFestivalHorizontal = ({ dateStart, dateEnd }) => {
     <div>
       {monthStart === monthEnd ? (
         <div>
-          Del {dayStart} al {dayEnd} de {monthStart} de {yearStart}
+          {t("date.from")} {dayStart}{t("date.th")} {t("date.to")} {dayEnd}{t("date.th")} {t("date.of")} {monthStart}, {yearStart}
         </div>
       ) : (
         <div>
-          Del {dayStart} del {monthStart} al {dayEnd} del {monthEnd} de{" "}
-          {yearEnd}
+        {t("date.from")} {dayStart}{t("date.th")} {t("date.of")} {monthStart} {t("date.to")} {dayEnd} {t("date.of")} {monthEnd},  {yearEnd}
         </div>
       )}
     </div>

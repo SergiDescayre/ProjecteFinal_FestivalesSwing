@@ -33,5 +33,19 @@
         "uploadedFile":"Arxiu carregat",
         "description":"Descripció",
         "send":"Enviar"
+    },
+    "months" : {
+        "January": "Gener",
+        "February": "Febrer",
+        "March": "Març",
+        "April": "Abril",
+        "May": "Maig",
+        "June": "Juny",
+        "July": "Juliol",
+        "August": "Agost",
+        "September": "Setembre",
+        "October": "Octubre",
+        "November": "Novembre",
+        "December": "Desembre"
     }
 }
