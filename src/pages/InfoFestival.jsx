@@ -19,7 +19,6 @@ import { useTranslation } from "react-i18next";
 const InfoFestival = () => {
   const { t } = useTranslation("global");
   const params = useParams();
-  console.log(params.idFestival);
   const user = JSON.parse(localStorage.getItem("uid"));
   const {
     setInfoFestival,

@@ -30,7 +30,7 @@
     "dateEnd": "Date end",
     "image": "Main image",
     "url": "Url of festival",
-    "uploaddFile": "Upload file",
+    "uploadFile": "Upload file",
     "uploadedFile": "Uploaded file",
     "description": "Description",
     "send": "Send"
@@ -72,5 +72,18 @@
   },
   "calendar": {
     "language": "en"
+  },
+  "login": {
+    "login": "Login",
+    "register": "Register",
+    "noAccount": "Don't you have an account?",
+    "yesAccount": "Do you have an account?"
+  },
+  "loginError": {
+    "emailNoValid": "The email is not valid",
+    "emailUse": "The email is in use",
+    "password": "Minimum password length of 6 characters",
+    "errorEmailPassword": "The email or password is incorrect",
+    "emptyInputs": "You must fill in all fields"
   }
 }

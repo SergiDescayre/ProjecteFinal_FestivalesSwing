@@ -22,20 +22,36 @@ const CalendarFestivals = () => {
   const [festivalModal, setFestivalModal] = useState(null);
   const [festivalToShow, setFestivalToShow] = useState(festivals);
   const [events, setEvents] = useState([]);
+  const [messages, setMessages] = useState({});
 
   const { isLogin } = useSelector((state) => state.authUser);
 
   useEffect(() => {
+    createMessages();
     getEvents();
     getFavorites();
     dayjs.locale(language);
   }, [festivalToShow, language]);
 
-  const messages = {
-    previous: "Anterior",
-    next: "Siguiente",
-    today: "Hoy",
-    month: "Mes",
+  const createMessages = () => {
+    if (language === "es")
+      setMessages({
+        previous: "Anterior",
+        next: "Siguiente",
+        today: "Hoy",
+      });
+    if (language === "ca")
+      setMessages({
+        previous: "Anterior",
+        next: "Seguent",
+        today: "Avui",
+      });
+    if (language === "en")
+      setMessages({
+        previous: "Previous",
+        next: "Next",
+        today: "Today",
+      });
   };
 
   const handleEventClic = (event) => {

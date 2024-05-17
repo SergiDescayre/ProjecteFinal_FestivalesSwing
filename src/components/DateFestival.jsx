@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useTransition } from "react";
 import { months } from "../data/months";
+import { useTranslation } from "react-i18next";
 
 const DateFestival = ({ date }) => {
+  const { t } = useTranslation("global");
   const arrayDate = date.split("-");
   const positionMonth = arrayDate[1];
   const dayTotal = arrayDate[2];
@@ -11,7 +13,8 @@ const DateFestival = ({ date }) => {
 
   return (
     <div className="flex gap-2 ">
-      {day} de {month} de {year}
+      {day}
+      {t("date.th")} {t("date.of")} {t(`months.${month}`)}, {year}
     </div>
   );
 };

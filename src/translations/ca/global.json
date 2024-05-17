@@ -72,5 +72,18 @@
   },
   "calendar": {
     "language": "ca"
+  },
+  "login": {
+    "login": "Inicia sessió",
+    "register": "Registre",
+    "noAccount": "¿No tens compte?",
+    "yesAccount": "¿Tens compte?"
+  },
+  "loginError": {
+    "emailNoValid": "El correo electrònic no es vàlid",
+    "emailUse": "El correu electrònic està en ús",
+    "password": "Contrasenya mínima de 6 caràcters",
+    "errorEmailPassword": "El correu electrònic o la contrasenya són incorrectes",
+    "emptyInputs": "Has d'omplir tots els camps"
   }
 }

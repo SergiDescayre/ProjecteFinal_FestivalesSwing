@@ -40,7 +40,7 @@ const ContexProvider = ({ children }) => {
   const [isUpload, setIsUpload] = useState(false);
 
   //Idioma calendari
-  const [language, setLanguage] = useState("es");
+  const [language, setLanguage] = useState("");
 
   const { isLogin } = useSelector((state) => state.authUser);
   const getFilterModality = (modalityFilter) => {
@@ -117,7 +117,6 @@ const ContexProvider = ({ children }) => {
         idUserFavorite: auth,
         isFavorite: true,
       });
-      console.log("documento añadido");
       getFavorites();
     } catch (error) {
       console.error("Error al agregar favorito:", error);
@@ -140,7 +139,6 @@ const ContexProvider = ({ children }) => {
       // Para cada documento encontrado, eliminarlo
       querySnapshot.forEach(async (doc) => {
         await deleteDoc(doc.ref);
-        console.log(`Documento eliminado con ID: ${doc.id}`);
       });
     } catch (error) {
       console.error("Error al eliminar documentos:", error);
@@ -163,7 +161,6 @@ const ContexProvider = ({ children }) => {
       // Para cada documento encontrado, eliminarlo
       querySnapshot.forEach(async (doc) => {
         await deleteDoc(doc.ref);
-        console.log(`Documento eliminado con ID: ${doc.id}`);
       });
     } catch (error) {
       console.error("Error al eliminar documentos:", error);
@@ -182,7 +179,6 @@ const ContexProvider = ({ children }) => {
         const data = docSnap.data();
         setInfoFestival(data);
       } else {
-        console.log("No such document!");
       }
     } catch (error) {
       console.log(error);
@@ -243,7 +239,6 @@ const ContexProvider = ({ children }) => {
       );
 
       if (!querySnapshot.empty) {
-        console.log(fest.docId + "esta en favoritos");
         setIsFavorite(true);
       } else setIsFavorite(false);
     } catch (error) {

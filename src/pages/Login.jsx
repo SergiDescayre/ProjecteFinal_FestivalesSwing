@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import appFirebase from "../credentials";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -20,6 +21,7 @@ import logoLigth from "../assets/logo_ligth.png";
 
 const Login = () => {
   const auth = getAuth(appFirebase);
+  const { t } = useTranslation("global");
   useEffect(() => {
     //document.querySelector("nav").style.display="none"
     document.querySelector("footer").style.display = "none";
@@ -52,7 +54,7 @@ const Login = () => {
     e.preventDefault();
     dispatch(setAuthUser(user));
     if (user.email === "" || user.password === "") {
-      setError("Debes rellenar todos los campos");
+      setError(t("loginError.emptyInputs"));
       return;
     } else {
       setError("");
@@ -66,13 +68,13 @@ const Login = () => {
       } catch (error) {
         switch (error.code) {
           case "auth/weak-password":
-            setError("Contraseña mínima de 6 caracteres");
+            setError(t("loginError.password"));
             break;
           case "auth/invalid-email":
-            setError("Email no valido");
+            setError(t("loginError.emailNoValid"));
             break;
           case "auth/email-already-in-use":
-            setError("El email ya está en uso");
+            setError(t("loginError.emailUse"));
             break;
           // Manejar otros casos de error según sea necesario
         }
@@ -85,11 +87,11 @@ const Login = () => {
       } catch (error) {
         switch (error.code) {
           case "auth/invalid-email":
-            setError("Email no valido");
+            setError(t("loginError.emailNoValid"));
 
             break;
           case "auth/invalid-credential":
-            setError("El email o la contraseña son incorrectas");
+            setError(t("loginError.errorEmailPassword"));
             break;
         }
       }
@@ -151,18 +153,18 @@ const Login = () => {
                 />
               </label>
               <button className="btn border-none bg-stone-950 hover:bg-stone-700 text-orange-200">
-                {!isRegister ? "Inicia sesión" : "Registro"}
+                {!isRegister ? t("login.login") : t("login.register")}
               </button>
             </form>
             <div className="grid grid-cols-2 items-center mt-5">
               <p className="text-orange-200">
-                {!isRegister ? "¿No tienes cuenta?" : "¿Ya tienes cuenta?"}
+                {!isRegister ? t("login.noAccount") : t("login.yesAccount")}
               </p>
               <button
                 onClick={handleIsRegister}
                 className=" btn border-none bg-stone-950 hover:bg-stone-700 text-orange-200"
               >
-                {!isRegister ? "Registro" : "Inicia sesión"}
+                {!isRegister ? t("login.register") : t("login.login")}
               </button>
             </div>
           </div>

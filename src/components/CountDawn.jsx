@@ -66,7 +66,6 @@ const CountDawn = ({ date, docId }) => {
       // Para cada documento encontrado, eliminarlo
       querySnapshot.forEach(async (doc) => {
         await deleteDoc(doc.ref);
-        console.log(`Documento eliminado con ID: ${doc.id}`);
       });
     } catch (error) {
       console.error("Error al eliminar documentos:", error);

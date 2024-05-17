@@ -2,7 +2,6 @@ import facebook from "../assets/facebook.png";
 import whatsApp from "../assets/whatsapp.png";
 
 const ShareEvent = ({ fest }) => {
-  console.log(fest);
   const eventUrl = window.location.href;
   const eventTitle = fest.name;
   const eventImage = fest.img;

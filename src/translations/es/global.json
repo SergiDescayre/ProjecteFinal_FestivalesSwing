@@ -72,5 +72,18 @@
   },
   "calendar": {
     "language": "es"
+  },
+  "login": {
+    "login": "Inicia sesión",
+    "register": "Registro",
+    "noAccount": "¿No tienes cuenta?",
+    "yesAccount": "¿Tienes cuenta?"
+  },
+  "loginError": {
+    "emailNoValid": "El correo electrónico no es válido",
+    "emailUse": "El correo electrónico está en uso",
+    "password": "Contraseña mínima de 6 caracteres",
+    "errorEmailPassword": "El email o la contraseña son incorrectas",
+    "emptyInputs": "Debes rellenar todos los campos"
   }
 }
