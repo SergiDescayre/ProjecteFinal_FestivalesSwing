@@ -85,5 +85,9 @@
     "password": "Contraseña mínima de 6 caracteres",
     "errorEmailPassword": "El email o la contraseña son incorrectas",
     "emptyInputs": "Debes rellenar todos los campos"
+  },
+  "noFestival": {
+    "noFestival": "No hay festivales disponibles en {{city}} en las fechas seleccionadas",
+    "noCity": "No hay festivales disponibles en las fechas seleccionadas"
   }
 }

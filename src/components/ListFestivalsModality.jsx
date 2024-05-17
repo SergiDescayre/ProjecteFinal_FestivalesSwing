@@ -5,9 +5,10 @@ import { useFestivalContext } from "../context/FestivalContext";
 import arrowLeft from "../assets/arrowLeft.svg";
 import arrowRight from "../assets/arrowRight.svg";
 import Loading from "./Loading";
+import NotMatchesFestival from "./NotMatchesFestival";
 
 const ListFestivalsModality = ({ title, modality }) => {
-  const { error, isFoundFestival } = useFestivalContext();
+  const { isFoundFestival } = useFestivalContext();
   const showButtonAddFavorite = true;
   const [scrollable, setScrollable] = useState(false);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
@@ -89,7 +90,7 @@ const ListFestivalsModality = ({ title, modality }) => {
             );
           }}
         >
-          {modality.length === 0 && <p className="text-red-500"> {error}</p>}
+          {modality.length === 0 && <NotMatchesFestival />}
           {modality.map((fest) => (
             <CardFestival
               key={fest.id}

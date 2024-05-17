@@ -85,5 +85,9 @@
     "password": "Contrasenya mínima de 6 caràcters",
     "errorEmailPassword": "El correu electrònic o la contrasenya són incorrectes",
     "emptyInputs": "Has d'omplir tots els camps"
+  },
+  "noFestival": {
+    "noFestival": "No hem trobat festivals disponibles a {{city}} en les dates seleccionades",
+    "noCity": "No hem trobat festivals disponibles en les dates seleccionades"
   }
 }

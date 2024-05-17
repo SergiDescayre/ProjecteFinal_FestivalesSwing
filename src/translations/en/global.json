@@ -85,5 +85,9 @@
     "password": "Minimum password length of 6 characters",
     "errorEmailPassword": "The email or password is incorrect",
     "emptyInputs": "You must fill in all fields"
+  },
+  "noFestival": {
+    "noFestival": "There are no festivals available in {{city}} on these selected dates",
+    "noCity": "There are no festivals available on these selected dates"
   }
 }

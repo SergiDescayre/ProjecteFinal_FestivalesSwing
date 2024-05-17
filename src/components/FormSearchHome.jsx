@@ -3,7 +3,7 @@ import { useFestivalContext } from "../context/FestivalContext";
 import { useTranslation } from "react-i18next";
 
 const FormSearchHome = () => {
-  const {t} = useTranslation("global")
+  const { t } = useTranslation("global");
 
   const {
     setFestivals,
@@ -35,9 +35,11 @@ const FormSearchHome = () => {
         return fest;
       } else {
         setIsFoundFestival(false);
-        setError(
-          `No hemos encontrado festivales en ${city} con estas fechas seleccionadas`
-        );
+        if (city === "") {
+          setError(t("noFestival.noCity"));
+        } else {
+          setError(t("noFestival.noFestival", { city }));
+        }
       }
     });
     setFestivals(festivalFiltered);
@@ -52,7 +54,9 @@ const FormSearchHome = () => {
           placeholder={t("search.where")}
           onChange={(e) => setCity(e.target.value)}
         />
-        <label className="bg-white p-3 w-full md:w-[70px] join-item">{t("search.from")}:</label>
+        <label className="bg-white p-3 w-full md:w-[70px] join-item">
+          {t("search.from")}:
+        </label>
         <input
           id="data_start"
           className="input join-item w-full md:w-40 "
@@ -60,7 +64,9 @@ const FormSearchHome = () => {
           onChange={(e) => setDataStart(e.target.value)}
           required
         />
-        <label className="bg-white p-3 w-full md:w-16 join-item">{t("search.to")}:</label>
+        <label className="bg-white p-3 w-full md:w-16 join-item">
+          {t("search.to")}:
+        </label>
         <input
           id="data_end"
           className="input join-item w-full md:w-40"

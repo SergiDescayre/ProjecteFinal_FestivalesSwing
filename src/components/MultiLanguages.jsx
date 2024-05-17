@@ -41,7 +41,7 @@ const MultiLanguages = () => {
               return (
                 <img
                   onClick={() => handleLanguage(flag.language)}
-                  className={`${flag.isActive ? "border-2 rounded-full border-orange-200 m-1" : "m-1"} `}
+                  className={`${flag.isActive ? "border-2 rounded-full border-orange-200 m-1" : "m-1"} cursor-pointer `}
                   width={32}
                   key={index}
                   src={flag.img}
