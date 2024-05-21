@@ -1,27 +1,16 @@
-import {
-  collection,
-  deleteDoc,
-  getDocs,
-  getFirestore,
-  query,
-  where,
-} from "firebase/firestore";
 import { useEffect, useState } from "react";
-import appFirebase from "../credentials";
-import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useFestivalContext } from "../context/FestivalContext";
 
 const CountDawn = ({ date, docId }) => {
   const { t } = useTranslation("global");
-  const firestore = getFirestore(appFirebase);
-  const navigate = useNavigate();
+  const { deleteFestival, deleteFavorite } = useFestivalContext();
 
   // Fecha de finalización del countdown
   const endDate = new Date(date).getTime();
   // Estado para almacenar el tiempo restante
   const [timeRemaining, setTimeRemaining] = useState(calculateTimeRemaining());
   const [lastTime, setLastTime] = useState(false);
-  const [deleteFest, setDeleteFest] = useState(false);
 
   // Función para calcular el tiempo restante
   function calculateTimeRemaining() {
@@ -42,6 +31,8 @@ const CountDawn = ({ date, docId }) => {
     };
   }
 
+  console.log(timeRemaining.days);
+
   const showLastTime = () => {
     if (timeRemaining && timeRemaining.days === 0) {
       setLastTime(true);
@@ -49,39 +40,25 @@ const CountDawn = ({ date, docId }) => {
   };
 
   const deletePastFestivals = () => {
-    if (timeRemaining.distance < 0) {
-      deleteFestival();
+    if (timeRemaining.hours < 0) {
+      deleteFestival(docId);
+      deleteFavorite(docId);
     }
   };
-  const deleteFestival = async () => {
-    try {
-      const q = query(
-        collection(firestore, "festivals"),
-        where("docId", "==", docId)
-      );
 
-      // Obtener documentos que cumplen con la condición
-      const querySnapshot = await getDocs(q);
-
-      // Para cada documento encontrado, eliminarlo
-      querySnapshot.forEach(async (doc) => {
-        await deleteDoc(doc.ref);
-      });
-    } catch (error) {
-      console.error("Error al eliminar documentos:", error);
-    }
-  };
+  useEffect(() => {
+    deletePastFestivals();
+  }, [timeRemaining.hours]);
 
   // Función para actualizar el tiempo restante cada segundo
   useEffect(() => {
     showLastTime();
-    deletePastFestivals();
     const interval = setInterval(() => {
       setTimeRemaining(calculateTimeRemaining());
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [timeRemaining.days]);
   return (
     <div className="grid grid-cols-4 gap-1 text-center p-3 ">
       <div

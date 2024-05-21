@@ -69,7 +69,10 @@ const InfoFestival = () => {
               </div>
               <div className="md:flex md:justify-between">
                 <div className="xl:pt-3 md:-ms-5">
-                  <CountDawn date={infoFestival.data_start} />
+                  <CountDawn
+                    date={infoFestival.data_start}
+                    docId={infoFestival.docId}
+                  />
                 </div>
               </div>
             </div>

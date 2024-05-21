@@ -47,7 +47,7 @@ const FormSearchHome = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="join w-[80%] mx-auto  join-vertical  md:join-horizontal  flex items-center justify-center pb-10">
+      <div className="join w-[80%] mx-auto  join-vertical  md:join-horizontal  flex items-center justify-center pb-28 md:pb-10">
         <input
           name="city"
           className="input join-item w-full md:w-40 "
@@ -77,7 +77,7 @@ const FormSearchHome = () => {
         <input
           type="submit"
           value={t("search.search")}
-          className="btn border-none join-item bg-primary hover:bg-dark75 text-zinc-900 hover:text-primary w-full md:w-28"
+          className="btn border-none join-item bg-primary hover:bg-dark75 text-dark75 hover:text-primary w-full md:w-28"
         />
       </div>
     </form>
