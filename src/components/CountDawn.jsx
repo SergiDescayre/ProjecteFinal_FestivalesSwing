@@ -86,51 +86,51 @@ const CountDawn = ({ date, docId }) => {
     <div className="grid grid-cols-4 gap-1 text-center p-3 ">
       <div
         className={`flex flex-col p-2  ${
-          lastTime ? "text-red-500" : "text-zinc-200"
+          lastTime ? "text-red-500" : "text-secondary"
         }  items-center w-18 `}
       >
         <div className="flex flex-col items-center ">
           <span className="countdown text-2xl xl:text-3xl">
             {timeRemaining.days}
           </span>
-          <span className="text-xs xl:text-sm text-orange-200 ">
+          <span className="text-xs xl:text-sm text-primary ">
             {t("countDown.days")}
           </span>
         </div>
       </div>
       <div
         className={`flex flex-col p-2 ${
-          lastTime ? "text-red-500" : "text-zinc-200"
+          lastTime ? "text-red-500" : "text-secondary"
         }  items-center w-18 `}
       >
         <span className="countdown text-2xl xl:text-3xl">
           <span style={{ "--value": timeRemaining.hours }}></span>
         </span>
-        <span className="text-xs xl:text-sm text-orange-200">
+        <span className="text-xs xl:text-sm text-primary">
           {t("countDown.hours")}
         </span>
       </div>
       <div
         className={`flex flex-col p-2 ${
-          lastTime ? "text-red-500" : "text-zinc-200"
+          lastTime ? "text-red-500" : "text-secondary"
         }  items-center w-18 `}
       >
         <span className="countdown text-2xl xl:text-3xl">
           <span style={{ "--value": timeRemaining.minutes }}></span>
         </span>
-        <span className="text-xs xl:text-sm text-orange-200">
+        <span className="text-xs xl:text-sm text-primary">
           {t("countDown.minutes")}
         </span>
       </div>
       <div
         className={`flex flex-col p-2 ${
-          lastTime ? "text-red-500" : "text-zinc-200"
+          lastTime ? "text-red-500" : "text-secondary"
         }  items-center w-18 `}
       >
         <span className="countdown text-2xl xl:text-3xl">
           <span style={{ "--value": timeRemaining.seconds }}></span>
         </span>
-        <span className="text-xs xl:text-sm text-orange-200">
+        <span className="text-xs xl:text-sm text-primary">
           {t("countDown.seconds")}
         </span>
       </div>

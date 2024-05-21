@@ -18,7 +18,7 @@ const Modal = () => {
 
   const { isLogin } = useSelector((state) => state.authUser);
 
-  const {t} =useTranslation("global")
+  const { t } = useTranslation("global");
 
   const navigate = useNavigate();
 
@@ -41,14 +41,14 @@ const Modal = () => {
             {!isLogin && (
               <button
                 onClick={(e) => handleRegister(e)}
-                className="btn text-zinc-900 btn-outline hover:bg-orange-200 hover:text-zinc-900"
+                className="btn text-zinc-900 btn-outline hover:bg-primary hover:text-zinc-900"
               >
                 {t("modal.register")}
               </button>
             )}
             <button
               onClick={(e) => handleClose(e)}
-              className="btn bg-zinc-900 mx-3 text-orange-200 border-none hover:bg-zinc-700"
+              className="btn bg-dark75 mx-3 text-primary border-none hover:bg-zinc-700"
             >
               {t("modal.close")}
             </button>

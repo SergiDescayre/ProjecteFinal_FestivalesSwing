@@ -101,7 +101,7 @@ const Login = () => {
   return (
     <section className="container_login flex justify-center items-center h-screen ">
       <div className="bg-zinc-800 bg-opacity-60 w-screen h-screen flex justify-center items-center">
-        <div className=" w-screen flex flex-col justify-around h-screen  md:card md:h-[700px]  bg-zinc-900  px-5 md:w-[500px] md:px-10 ">
+        <div className=" w-screen flex flex-col justify-around h-screen  md:card md:h-[700px]  bg-dark75  px-5 md:w-[500px] md:px-10 ">
           <div>
             <img src={logoLigth} alt="logo" className=" mx-auto" />
           </div>
@@ -152,17 +152,17 @@ const Login = () => {
                   onChange={handleChange}
                 />
               </label>
-              <button className="btn border-none bg-stone-950 hover:bg-stone-700 text-orange-200">
+              <button className="btn border-none bg-stone-950 hover:bg-stone-700 text-primary">
                 {!isRegister ? t("login.login") : t("login.register")}
               </button>
             </form>
             <div className="grid grid-cols-2 items-center mt-5">
-              <p className="text-orange-200">
+              <p className="text-primary">
                 {!isRegister ? t("login.noAccount") : t("login.yesAccount")}
               </p>
               <button
                 onClick={handleIsRegister}
-                className=" btn border-none bg-stone-950 hover:bg-stone-700 text-orange-200"
+                className=" btn border-none bg-stone-950 hover:bg-stone-700 text-primary"
               >
                 {!isRegister ? t("login.register") : t("login.login")}
               </button>
@@ -170,7 +170,7 @@ const Login = () => {
           </div>
 
           <div
-            className={` min-h-12 border-2 rounded-lg border-orange-200  text-orange-200 flex justify-center items-center mt-10 ${
+            className={` min-h-12 border-2 rounded-lg border-orange-200  text-primary flex justify-center items-center mt-10 ${
               error ? "visile " : "invisible"
             }`}
           >

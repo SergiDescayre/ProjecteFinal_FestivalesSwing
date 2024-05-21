@@ -77,7 +77,7 @@ const FormSearchHome = () => {
         <input
           type="submit"
           value={t("search.search")}
-          className="btn border-none join-item bg-orange-200 hover:bg-zinc-900 text-zinc-900 hover:text-orange-200 w-full md:w-28"
+          className="btn border-none join-item bg-primary hover:bg-dark75 text-zinc-900 hover:text-primary w-full md:w-28"
         />
       </div>
     </form>

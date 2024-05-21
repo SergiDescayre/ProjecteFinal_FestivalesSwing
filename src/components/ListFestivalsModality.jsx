@@ -51,7 +51,7 @@ const ListFestivalsModality = ({ title, modality }) => {
   return (
     <div className="relative pb-2 pt-6">
       <div className="flex items-center justify-between border-t-2 border-b-2 py-3 border-orange-200 w-[80%] max-w-[1400px] mx-auto">
-        <span className="text-1xl text-zinc-200">{title}</span>
+        <span className="text-1xl text-secondary">{title}</span>
         {scrollable && (
           <div className="flex gap-2">
             {showLeftArrow && (

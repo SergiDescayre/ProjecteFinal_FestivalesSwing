@@ -20,12 +20,8 @@ const InfoFestival = () => {
   const { t } = useTranslation("global");
   const params = useParams();
   const user = JSON.parse(localStorage.getItem("uid"));
-  const {
-    setInfoFestival,
-    infoFestival,
-    getFestivalByDocId,
-    festivals,
-  } = useFestivalContext();
+  const { setInfoFestival, infoFestival, getFestivalByDocId, festivals } =
+    useFestivalContext();
 
   useEffect(() => {
     getFestivalByDocId(params.idFestival);
@@ -39,9 +35,9 @@ const InfoFestival = () => {
           <Loading title={"Cargando..."} />
         </div>
       ) : (
-        <div className="w-full bg-zinc-800 text-zinc-200 max-w-[1440px] mx-auto ">
+        <div className="w-full bg-zinc-800 text-secondary max-w-[1440px] mx-auto ">
           <div className="w-[80%] text-center flex items-center justify-between mx-auto">
-            <span className="text-orange-200 uppercase font-semibold mt-5 mb-3 md:text-2xl xl:text-4xl x:mb-5">
+            <span className="text-primary uppercase font-semibold mt-5 mb-3 md:text-2xl xl:text-4xl x:mb-5">
               {infoFestival.name}
             </span>
             <ButtonComeBack />
@@ -49,7 +45,7 @@ const InfoFestival = () => {
 
           <div className="flex flex-col md:flex-row w-[80%] md:align-center max-w-[1440px] mx-auto">
             <div className="mb-4">
-              <div className="relative transition duration-300 transform hover:scale-95 ease-in-out">
+              <div className="relative transition duration-300 ease-in-out">
                 <div className="bottom-3  right-3 flex items-center  md:mt-4  gap-3 ">
                   {user === infoFestival.userId && (
                     <div className="absolute bottom-3 left-3">
@@ -67,7 +63,7 @@ const InfoFestival = () => {
                   <img
                     src={infoFestival.img}
                     alt="image"
-                    className="cursor-pointer overflow-hidden md:object-cover md:h-[320px] md:w-[420px]  lg:w-[520px]  xl:w-[620px] xl:h-[400px]  mx-auto rounded-lg   "
+                    className="cursor-pointer overflow-hidden md:object-cover md:h-[320px] md:w-[420px]  lg:w-[520px]  xl:w-[620px] xl:h-[400px]  mx-auto rounded-lg border-2 border-transparent hover:border-2 hover:border-secondary   "
                   />
                 </a>
               </div>
@@ -105,7 +101,7 @@ const InfoFestival = () => {
               </div>
 
               <div>
-                <span className="block mt-5 mb-2  xl:text-xl text-orange-200">
+                <span className="block mt-5 mb-2  xl:text-xl text-primary">
                   {t("infoFestival.modalities")}
                 </span>
                 <ul>
@@ -120,7 +116,7 @@ const InfoFestival = () => {
 
               {infoFestival.listOfTeachers.length > 0 && (
                 <div>
-                  <span className="block mt-5 mb-2  xl:text-xl text-orange-200">
+                  <span className="block mt-5 mb-2  xl:text-xl text-primary">
                     {t("infoFestival.teachers")}
                   </span>
                   <ul>
@@ -139,7 +135,7 @@ const InfoFestival = () => {
             id="content_quill"
             className=" w-[80%] max-w-[1440px] mx-auto  mt-4"
           >
-            <span className="text-orange-200 xl:text-xl">
+            <span className="text-primary xl:text-xl">
               {t("infoFestival.description")}
             </span>
             <div

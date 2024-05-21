@@ -77,7 +77,7 @@ const CalendarFestivals = () => {
   };
 
   return (
-    <div className="w-[90%] mx-auto h-screen my-10 text-zinc-200 max-w-[1440px]">
+    <div className="w-[90%] mx-auto h-screen my-10 text-secondary max-w-[1440px]">
       <div className="flex justify-between items-center">
         <div className={`${!isLogin ? "invisible" : "visible"} `}>
           <ToggleCalendar handleCheckBox={handleCheckBox} />

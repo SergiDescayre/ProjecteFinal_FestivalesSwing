@@ -9,7 +9,7 @@ const ToggleCalendar = ({ handleCheckBox }) => {
       <input
         type="checkbox"
         value="Lindy Hop"
-        className="toggle hover:bg-orange-200 bg-orange-200 border-orange-200 "
+        className="toggle hover:bg-primary bg-primary border-orange-200 "
         onChange={handleCheck}
       />
       <span>Favoritos</span>

@@ -17,7 +17,7 @@ const ShareEvent = ({ fest }) => {
   };
 
   return (
-    <div className="flex gap-2 bg-zinc-900 p-2 rounded-lg bg-opacity-80 ">
+    <div className="flex gap-2 bg-dark75 p-2 rounded-lg bg-opacity-80 ">
       <img
         className="w-5 h-5 md:w-7 md:h-7 cursor-pointer"
         onClick={shareOnFacebook}
