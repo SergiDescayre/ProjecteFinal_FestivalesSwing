@@ -22,7 +22,7 @@ const FestivalContext = createContext();
 const ContexProvider = ({ children }) => {
   const [festivals, setFestivals] = useState([]);
   const [favorites, setFavorites] = useState([]);
-  const [infoFestival, setInfoFestival] = useState(null);
+  const [infoFestival, setInfoFestival] = useState(false);
   const [error, setError] = useState("");
   const [messageModal, setMessageModal] = useState("");
   const [isFavorite, setIsFavorite] = useState(false);

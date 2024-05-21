@@ -10,7 +10,7 @@
     "text": "¡¡Feel the rhythm, live the experience!!"
   },
   "search": {
-    "where": "Where",
+    "where": "¿Where?",
     "from": "From",
     "to": "To",
     "search": "Search"
@@ -89,5 +89,12 @@
   "noFestival": {
     "noFestival": "There are no festivals available in {{city}} on these selected dates",
     "noCity": "There are no festivals available on these selected dates"
-  }
+  },
+  "modal": {
+    "saveFavorites": "You must be registered to save to favorites",
+    "register": "Register",
+    "close": "Close",
+    "addFestival": "You must be registered to add festivals",
+    "deleteFestival": "Festival deleted"
+}
 }

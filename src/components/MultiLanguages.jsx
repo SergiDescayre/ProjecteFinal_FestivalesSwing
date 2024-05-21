@@ -37,18 +37,17 @@ const MultiLanguages = () => {
       {isVisible && (
         <div className="text-orange-200  ">
           <div className="flex flex-col md:flex-row justify-center absolute top-[70px] right-0 z-20 gap-2 md:w-[170px] bg-zinc-900 rounded">
-            {languages.map((flag, index) => {
-              return (
+            {languages.map((flag, index) => (
                 <img
                   onClick={() => handleLanguage(flag.language)}
-                  className={`${flag.isActive ? "border-2 rounded-full border-orange-200 m-1" : "m-1"} cursor-pointer `}
+                  className={`${flag.isActive ? "border-2 rounded-full border-orange-200 m-1" : "m-1"} cursor-pointer  hover:rotate-180 hover:transition duration-0 hover:duration-700 ease-in-out  `}
                   width={32}
                   key={index}
                   src={flag.img}
                   alt={flag.language}
                 />
-              );
-            })}
+              
+      ))}
           </div>
         </div>
       )}

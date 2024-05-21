@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useFestivalContext } from "../context/FestivalContext";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Modal = () => {
   useEffect(() => {
@@ -16,6 +17,8 @@ const Modal = () => {
   const { messageModal } = useFestivalContext();
 
   const { isLogin } = useSelector((state) => state.authUser);
+
+  const {t} =useTranslation("global")
 
   const navigate = useNavigate();
 
@@ -40,14 +43,14 @@ const Modal = () => {
                 onClick={(e) => handleRegister(e)}
                 className="btn text-zinc-900 btn-outline hover:bg-orange-200 hover:text-zinc-900"
               >
-                Registrarse
+                {t("modal.register")}
               </button>
             )}
             <button
               onClick={(e) => handleClose(e)}
               className="btn bg-zinc-900 mx-3 text-orange-200 border-none hover:bg-zinc-700"
             >
-              Cerrar
+              {t("modal.close")}
             </button>
           </form>
         </div>

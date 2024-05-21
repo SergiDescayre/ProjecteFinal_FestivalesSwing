@@ -4,6 +4,7 @@ import heartFavorite from "../assets/heartFavorite.svg";
 import appFirebase from "../credentials";
 import { useSelector } from "react-redux";
 import { getAuth } from "firebase/auth";
+import { useTranslation } from "react-i18next";
 import {
   getFirestore,
   collection,
@@ -18,7 +19,7 @@ const ButtonAddFavorite = ({ fest }) => {
   const { isLogin } = useSelector((state) => state.authUser);
   const [isFavorite, setIsFavorite] = useState(false);
   const { favorites, deleteFavorite, addFavorite, setMessageModal,getFavorites } = useFestivalContext();
-
+  const {t} = useTranslation("global")
   useEffect(() => {
     checkFavoriteStatus();
   }, [favorites]);
@@ -32,7 +33,7 @@ const ButtonAddFavorite = ({ fest }) => {
 
     } else {
       document.getElementById("my_modal_5").showModal();
-      setMessageModal("Debes estar registrado para guardar favoritos");
+      setMessageModal(t("modal.saveFavorites"));
     }
 
     if (isFavorite) {

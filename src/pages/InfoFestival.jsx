@@ -25,7 +25,6 @@ const InfoFestival = () => {
     infoFestival,
     getFestivalByDocId,
     festivals,
-    deleteFestival,
   } = useFestivalContext();
 
   useEffect(() => {
@@ -36,7 +35,9 @@ const InfoFestival = () => {
   return (
     <>
       {!infoFestival ? (
-        <Loading title={"Cargando..."} />
+        <div className="h-screen">
+          <Loading title={"Cargando..."} />
+        </div>
       ) : (
         <div className="w-full bg-zinc-800 text-zinc-200 max-w-[1440px] mx-auto ">
           <div className="w-[80%] text-center flex items-center justify-between mx-auto">

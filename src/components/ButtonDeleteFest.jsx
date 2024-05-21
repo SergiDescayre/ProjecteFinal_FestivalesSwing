@@ -1,14 +1,16 @@
 import { useFestivalContext } from "../context/FestivalContext";
+import { useTranslation } from "react-i18next";
 
 import Modal from "./Modal";
 
 const ButtonDeleteFest = ({ fest, title }) => {
+  const {t} = useTranslation("global")
   const { deleteFestival, getFestivals, deleteFavorite, setMessageModal } =
     useFestivalContext();
 
   const handleDelete = (id) => {
     document.getElementById("my_modal_5").showModal();
-    setMessageModal("Festival eliminado");
+    setMessageModal(t("modal.deleteFestival"));
     deleteFestival(id);
     getFestivals();
     deleteFavorite(id);

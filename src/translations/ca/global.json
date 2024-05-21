@@ -10,7 +10,7 @@
     "text": "Sent el ritme, viu l'experiència!!"
   },
   "search": {
-    "where": "On",
+    "where": "On?",
     "from": "Desde",
     "to": "Fins",
     "search": "Buscar"
@@ -89,5 +89,12 @@
   "noFestival": {
     "noFestival": "No hem trobat festivals disponibles a {{city}} en les dates seleccionades",
     "noCity": "No hem trobat festivals disponibles en les dates seleccionades"
-  }
+  },
+  "modal": {
+    "saveFavorites": "Has d'estar registrat per desar a favorits",
+    "register": "Registrar-se",
+    "close": "Tancar",
+    "addFestival": "Has d'estar registrat per afegir festivals",
+    "deleteFestival": "Festival eliminat"
+}
 }
