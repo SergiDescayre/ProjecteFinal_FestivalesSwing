@@ -9,6 +9,7 @@ import NotMatchesFestival from "./NotMatchesFestival";
 
 const ListFestivalsModality = ({ title, modality }) => {
   const showButtonAddFavorite = true;
+  const { isFoundFestival } = useFestivalContext();
   const [scrollable, setScrollable] = useState(false);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(false);
@@ -72,7 +73,7 @@ const ListFestivalsModality = ({ title, modality }) => {
           </div>
         )}
       </div>
-      {modality.length === 0 ? (
+      {modality.length === 0 && isFoundFestival ? (
         <Loading title="Cargando..." />
       ) : (
         <div
