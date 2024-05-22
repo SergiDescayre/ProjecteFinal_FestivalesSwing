@@ -71,7 +71,9 @@
     "seconds": "Seg"
   },
   "calendar": {
-    "language": "es"
+    "language": "es",
+    "favorites" : "Favoritos",
+    "all" : "Todos"
   },
   "login": {
     "login": "Inicia sesión",

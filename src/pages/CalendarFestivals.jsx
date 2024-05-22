@@ -13,6 +13,7 @@ import ToggleCalendar from "../components/ToggleCalendar";
 import ButtonComeBack from "../components/ButtonComeBack";
 import { useTranslation } from "react-i18next";
 
+
 const CalendarFestivals = () => {
   const { t } = useTranslation;
 
@@ -95,6 +96,7 @@ const CalendarFestivals = () => {
         onSelectEvent={handleEventClic}
       />
       <ModalCalendar event={festivalModal} />
+     
     </div>
   );
 };

@@ -71,7 +71,9 @@
     "seconds": "Seg"
   },
   "calendar": {
-    "language": "ca"
+    "language": "ca",
+    "favorites" : "Favorits",
+    "all" : "Tots"
   },
   "login": {
     "login": "Inicia sessió",
@@ -96,5 +98,6 @@
     "close": "Tancar",
     "addFestival": "Has d'estar registrat per afegir festivals",
     "deleteFestival": "Festival eliminat"
+  
 }
 }
