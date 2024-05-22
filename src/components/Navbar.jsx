@@ -86,6 +86,7 @@ function Navbar() {
 
         {/* Icono de login (alineado a la derecha) */}
         <div className="flex items-center gap-2 relative">
+          <MultiLanguages />
           {isLogin ? (
             <div className="dropdown dropdown-hover dropdown-left">
               <div
@@ -120,7 +121,6 @@ function Navbar() {
               <img onClick={handleLogin} src={login} alt="login" />
             </div>
           )}
-          <MultiLanguages />
         </div>
       </div>
 

@@ -7,6 +7,7 @@ import { useFestivalContext } from "../context/FestivalContext.jsx";
 const MultiLanguages = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { setLanguage } = useFestivalContext();
+  const [initials, setInitials] = useState("CA");
 
   const { i18n } = useTranslation("global");
 
@@ -16,6 +17,7 @@ const MultiLanguages = () => {
 
   const handleLanguage = (language) => {
     setLanguage(language);
+    setInitials(language);
 
     i18n.changeLanguage(language);
     languages.map((lang) =>
@@ -28,12 +30,15 @@ const MultiLanguages = () => {
 
   return (
     <div>
-      <img
-        onClick={handleClick}
-        className="w-9 cursor-pointer"
-        src={globe}
-        alt="languages"
-      />
+      <div className="flex items-center gap-2">
+        <span className="text-primary uppercase">{initials}</span>
+        <img
+          onClick={handleClick}
+          className="w-9 cursor-pointer"
+          src={globe}
+          alt="languages"
+        />
+      </div>
       {isVisible && (
         <div className="text-primary  ">
           <div className="flex flex-col md:flex-row justify-center absolute top-[70px] right-0 z-20 gap-2 md:w-[170px] bg-dark75 rounded">

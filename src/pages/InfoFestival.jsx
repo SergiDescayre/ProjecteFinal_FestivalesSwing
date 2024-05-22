@@ -31,7 +31,7 @@ const InfoFestival = () => {
   return (
     <>
       {!infoFestival ? (
-        <div className="h-screen">
+        <div className="min-h-[950px]">
           <Loading title={"Cargando..."} />
         </div>
       ) : (
