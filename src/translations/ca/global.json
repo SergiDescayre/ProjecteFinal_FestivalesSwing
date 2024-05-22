@@ -100,5 +100,9 @@
     "close": "Tancar",
     "addFestival": "Has d'estar registrat per afegir festivals",
     "deleteFestival": "Festival eliminat"
+  },
+  "favorites": {
+    "noFavorites": "No tens favorits desats",
+    "add": "Afegir"
   }
 }

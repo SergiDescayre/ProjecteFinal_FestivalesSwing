@@ -1,10 +1,12 @@
 import { useFestivalContext } from "../context/FestivalContext";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 import Modal from "./Modal";
 
 const ButtonDeleteFest = ({ fest, title }) => {
-  const {t} = useTranslation("global")
+  const navigate = useNavigate();
+  const { t } = useTranslation("global");
   const { deleteFestival, getFestivals, deleteFavorite, setMessageModal } =
     useFestivalContext();
 
@@ -14,6 +16,7 @@ const ButtonDeleteFest = ({ fest, title }) => {
     deleteFestival(id);
     getFestivals();
     deleteFavorite(id);
+    //navigate("/");
   };
 
   return (

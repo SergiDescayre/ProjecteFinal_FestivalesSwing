@@ -100,5 +100,9 @@
     "close": "Close",
     "addFestival": "You must be registered to add festivals",
     "deleteFestival": "Festival deleted"
+  },
+  "favorites": {
+    "noFavorites": "You have no favorites saved",
+    "add": "Add"
   }
 }

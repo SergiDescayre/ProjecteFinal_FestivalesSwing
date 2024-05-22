@@ -39,8 +39,6 @@ const formAddFestival = () => {
     isUpload,
   } = useFestivalContext();
 
-  console.log(image);
-
   const handleChange = (e) => {
     setFestivalInfo({ ...festivalInfo, [e.target.name]: e.target.value });
   };
