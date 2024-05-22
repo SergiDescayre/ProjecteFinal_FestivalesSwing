@@ -31,7 +31,7 @@ const CountDawn = ({ date, docId }) => {
     };
   }
 
-  console.log(timeRemaining.days);
+  
 
   const showLastTime = () => {
     if (timeRemaining && timeRemaining.days === 0) {
@@ -39,16 +39,16 @@ const CountDawn = ({ date, docId }) => {
     }
   };
 
-  const deletePastFestivals = () => {
-    if (timeRemaining.hours < 0) {
-      deleteFestival(docId);
-      deleteFavorite(docId);
-    }
-  };
+  // const deletePastFestivals = () => {
+  //   if (timeRemaining.hours < 0) {
+  //     deleteFestival(docId);
+  //     deleteFavorite(docId);
+  //   }
+  // };
 
-  useEffect(() => {
-    deletePastFestivals();
-  }, [timeRemaining.hours]);
+  // useEffect(() => {
+  //   deletePastFestivals();
+  // }, [timeRemaining.hours]);
 
   // Función para actualizar el tiempo restante cada segundo
   useEffect(() => {
