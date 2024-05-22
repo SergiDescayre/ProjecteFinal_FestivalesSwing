@@ -33,7 +33,9 @@
     "uploadFile": "Upload file",
     "uploadedFile": "Uploaded file",
     "description": "Description",
-    "send": "Send"
+    "send": "Send",
+    "noModality": "You must specify a modality.",
+    "noImage": "You must upload an image"
   },
   "months": {
     "January": "January",
@@ -72,8 +74,8 @@
   },
   "calendar": {
     "language": "en",
-    "favorites" : "Favorites",
-    "all" : "All"
+    "favorites": "Favorites",
+    "all": "All"
   },
   "login": {
     "login": "Login",
@@ -98,5 +100,5 @@
     "close": "Close",
     "addFestival": "You must be registered to add festivals",
     "deleteFestival": "Festival deleted"
-}
+  }
 }

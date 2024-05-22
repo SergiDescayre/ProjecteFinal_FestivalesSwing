@@ -54,11 +54,6 @@ const ContexProvider = ({ children }) => {
     const auth = getAuth(appFirebase);
     const storage = getStorage();
     try {
-      if (image === "") {
-        setUploadFestival(false);
-        return alert("Debe haber una imagen");
-      }
-
       const storageRef = ref(storage, image.name);
       await uploadBytes(storageRef, image);
       const imageUrl = await getDownloadURL(storageRef);

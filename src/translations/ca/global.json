@@ -33,7 +33,9 @@
     "uploadFile": "Pujar arxiu",
     "uploadedFile": "Arxiu carregat",
     "description": "Descripció",
-    "send": "Enviar"
+    "send": "Enviar",
+    "noModality": "Has d'indicar una modalitat",
+    "noImage": "Has de pujar una imatge"
   },
   "months": {
     "January": "Gener",
@@ -72,8 +74,8 @@
   },
   "calendar": {
     "language": "ca",
-    "favorites" : "Favorits",
-    "all" : "Tots"
+    "favorites": "Favorits",
+    "all": "Tots"
   },
   "login": {
     "login": "Inicia sessió",
@@ -98,6 +100,5 @@
     "close": "Tancar",
     "addFestival": "Has d'estar registrat per afegir festivals",
     "deleteFestival": "Festival eliminat"
-  
-}
+  }
 }

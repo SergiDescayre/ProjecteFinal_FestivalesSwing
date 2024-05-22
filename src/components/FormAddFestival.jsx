@@ -7,6 +7,7 @@ import ButtonComeBack from "./ButtonComeBack";
 
 import Loading from "./Loading";
 import Editor from "./Editor";
+import Modal from "./Modal";
 
 import { useTranslation } from "react-i18next";
 
@@ -14,6 +15,7 @@ const formAddFestival = () => {
   useEffect(() => {
     setIsUpload(false);
     setListOfTeachers([]);
+    setModality([]);
   }, []);
   const navigate = useNavigate();
 
@@ -32,9 +34,12 @@ const formAddFestival = () => {
     setModality,
     setTeacher,
     setImage,
+    setMessageModal,
     setIsUpload,
     isUpload,
   } = useFestivalContext();
+
+  console.log(image);
 
   const handleChange = (e) => {
     setFestivalInfo({ ...festivalInfo, [e.target.name]: e.target.value });
@@ -57,8 +62,13 @@ const formAddFestival = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (modality.length <= 0) alert("debes introducir una modalidad");
-    uploadImageToStorage();
+    if (modality.length <= 0) {
+      document.getElementById("my_modal_5").showModal();
+      setMessageModal(t("formAddFestival.noModality"));
+    } else if (!image) {
+      document.getElementById("my_modal_5").showModal();
+      setMessageModal(t("formAddFestival.noImage"));
+    } else uploadImageToStorage();
   };
   if (isUpload) {
     navigate("/");
@@ -66,6 +76,7 @@ const formAddFestival = () => {
 
   return (
     <>
+      <Modal />
       {uploadFestival ? (
         <div className="mt-32" style={{ height: `calc(100vh - 200px)` }}>
           <Loading title={"Registrando festival"} />

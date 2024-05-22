@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useFestivalContext } from "../context/FestivalContext";
+import { useNavigate } from "react-router-dom";
 
 const CountDawn = ({ date, docId }) => {
+  const navigate = useNavigate();
   const { t } = useTranslation("global");
   const { deleteFestival, deleteFavorite } = useFestivalContext();
 
@@ -31,28 +33,23 @@ const CountDawn = ({ date, docId }) => {
     };
   }
 
-  
-
   const showLastTime = () => {
     if (timeRemaining && timeRemaining.days === 0) {
       setLastTime(true);
     }
   };
-
-  // const deletePastFestivals = () => {
-  //   if (timeRemaining.hours < 0) {
-  //     deleteFestival(docId);
-  //     deleteFavorite(docId);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   deletePastFestivals();
-  // }, [timeRemaining.hours]);
+  const deletePastFestivals = () => {
+    deleteFestival(docId);
+    deleteFavorite(docId);
+    navigate("/");
+  };
 
   // Función para actualizar el tiempo restante cada segundo
   useEffect(() => {
     showLastTime();
+    if (timeRemaining.days === -1) {
+      deletePastFestivals();
+    }
     const interval = setInterval(() => {
       setTimeRemaining(calculateTimeRemaining());
     }, 1000);

@@ -33,7 +33,9 @@
     "uploadFile": "Subir archivo",
     "uploadedFile": "Archivo cargado",
     "description": "Descripción",
-    "send": "Enviar"
+    "send": "Enviar",
+    "noModality": "Debes indicar una modalidad",
+    "noImage": "Debes subir una imagen"
   },
   "months": {
     "January": "Enero",
@@ -72,8 +74,8 @@
   },
   "calendar": {
     "language": "es",
-    "favorites" : "Favoritos",
-    "all" : "Todos"
+    "favorites": "Favoritos",
+    "all": "Todos"
   },
   "login": {
     "login": "Inicia sesión",
@@ -92,11 +94,11 @@
     "noFestival": "No hay festivales disponibles en {{city}} en las fechas seleccionadas",
     "noCity": "No hay festivales disponibles en las fechas seleccionadas"
   },
-  "modal" : {
-    "saveFavorites" : "Debes estar registrado para guardar favoritos",
-    "register" : "Registrarse",
-    "close" : "Cerrar",
-    "addFestival" : "Debes estar registrado para añadir festival",
-    "deleteFestival" : "Festival eliminado"
+  "modal": {
+    "saveFavorites": "Debes estar registrado para guardar favoritos",
+    "register": "Registrarse",
+    "close": "Cerrar",
+    "addFestival": "Debes estar registrado para añadir festival",
+    "deleteFestival": "Festival eliminado"
   }
 }

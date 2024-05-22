@@ -29,7 +29,9 @@ const Modal = () => {
 
   const handleClose = (e) => {
     e.stopPropagation();
-    navigate(-1);
+    if (!isLogin) {
+      navigate("/");
+    }
   };
 
   return (

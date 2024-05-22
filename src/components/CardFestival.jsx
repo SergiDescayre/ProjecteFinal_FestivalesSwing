@@ -23,11 +23,9 @@ const CardFestival = ({
       className="cursor-pointer shadow-xl  ease-in-out rounded-md min-w-64 border-2 border-transparent  text-primary overflow-hidden hover:border-2 hover:border-secondary"
     >
       <div
-        className="relative flex items-end justify-end h-[180px] bg-cover bg-center"
+        className="relative flex items-end justify-end h-[170px] bg-cover bg-center"
         style={{ backgroundImage: "url(" + fest.img + ")" }}
       >
-        <div className="-z-0 clip absolute bottom-[-2px] min-w-full h-6 bg-dark75"></div>
-
         <div className="flex">
           <div className="shadow bg-dark75 bg-opacity-80 m-2  p-2 rounded-full">
             {showButtonAddFavorite && <ButtonAddFavorite fest={fest} />}
