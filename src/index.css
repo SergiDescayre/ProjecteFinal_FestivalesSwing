@@ -79,7 +79,7 @@ body {
 }
 
 .rbc-toolbar-label {
-  text-align: end !important;
+  text-align: center !important;
   font-size: 20px;
   margin: 20px 0;
   color: #e4e4e7 !important
@@ -102,6 +102,33 @@ body {
 
 .rbc-month-row {
   height: 20px;
+}
+
+.rbc-show-more {
+  color: #fed7aa !important;
+  background-color: transparent !important;
+}
+
+.rbc-time-content {
+  display: none !important;
+  border: none;
+
+}
+
+.rbc-time-view {
+  border: none !important
+}
+
+.rbc-time-header-content {
+  border: none !important;
+}
+
+.rbc-label .rbc-time-header-gutter {
+  margin: 0;
+}
+
+.rbc-event-continues-after {
+  border-radius: 5px !important;
 }
 
 .clip {

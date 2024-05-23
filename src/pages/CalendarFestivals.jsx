@@ -13,7 +13,6 @@ import ToggleCalendar from "../components/ToggleCalendar";
 import ButtonComeBack from "../components/ButtonComeBack";
 import { useTranslation } from "react-i18next";
 
-
 const CalendarFestivals = () => {
   const { t } = useTranslation;
 
@@ -40,18 +39,24 @@ const CalendarFestivals = () => {
         previous: "Anterior",
         next: "Siguiente",
         today: "Hoy",
+        month: "Mes",
+        day: "Dia",
       });
     if (language === "ca")
       setMessages({
         previous: "Anterior",
         next: "Seguent",
         today: "Avui",
+        month: "Mes",
+        day: "Dia",
       });
     if (language === "en")
       setMessages({
         previous: "Previous",
         next: "Next",
         today: "Today",
+        month: "Month",
+        day: "Day",
       });
   };
 
@@ -91,12 +96,11 @@ const CalendarFestivals = () => {
       <Calendar
         localizer={localizer}
         events={events}
-        views={["month"]}
+        views={["month", "day"]}
         messages={messages}
         onSelectEvent={handleEventClic}
       />
       <ModalCalendar event={festivalModal} />
-     
     </div>
   );
 };
