@@ -1,26 +1,23 @@
 // src/Editor.js
-import React, { useState } from 'react';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css'; // Estilos de Quill
-import { useFestivalContext } from '../context/FestivalContext';
+import React, { useState } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css"; // Estilos de Quill
+import { useFestivalContext } from "../context/FestivalContext";
 
 const Editor = () => {
+  const { contentQuill, setContentQuill } = useFestivalContext();
 
-  const {contentQuill,setContentQuill} = useFestivalContext()
- 
   const toolbarOptions = [
-  
-    ['bold', 'italic', 'underline'],
-
-    ['link'],
-    ['clean'] // Elimina todas las opciones restantes excepto "Limpiar formato"
+    ["bold", "italic", "underline"],
+    ["link"],
+    ["clean"], // Elimina todas las opciones restantes excepto "Limpiar formato"
   ];
 
   return (
     <div className="w-full">
       <ReactQuill
-       modules={{
-          toolbar: toolbarOptions
+        modules={{
+          toolbar: toolbarOptions,
         }}
         theme="snow"
         value={contentQuill}
@@ -29,6 +26,5 @@ const Editor = () => {
     </div>
   );
 };
-
 
 export default Editor;

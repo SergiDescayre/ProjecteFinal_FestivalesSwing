@@ -14,7 +14,7 @@ const MyFestivals = () => {
   }, []);
 
   return (
-    <div className="min-h-[800px] w-[80%] max-w-[1440px] mx-auto">
+    <div className="min-h-[975px] w-[80%] max-w-[1440px] mx-auto">
       <div className="flex items-center justify-end mt-7">
         <ButtonComeBack />
       </div>

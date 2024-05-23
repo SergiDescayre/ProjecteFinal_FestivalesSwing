@@ -10,6 +10,10 @@ import Editor from "./Editor";
 import Modal from "./Modal";
 
 import { useTranslation } from "react-i18next";
+import InputAddFestival from "./InputAddFestival";
+import InputAddTeacher from "./InputAddTeacher";
+import InputAddModalities from "./InputAddModalities";
+import InputAddImage from "./InputAddImage";
 
 const formAddFestival = () => {
   useEffect(() => {
@@ -41,6 +45,7 @@ const formAddFestival = () => {
 
   const handleChange = (e) => {
     setFestivalInfo({ ...festivalInfo, [e.target.name]: e.target.value });
+    console.log(festivalInfo);
   };
 
   const handleCheckBox = (e) => {
@@ -56,6 +61,11 @@ const formAddFestival = () => {
     if (teacher == "") return;
     setListOfTeachers([...listOfTeachers, teacher]);
     setTeacher("");
+  };
+
+  const deleteTeacher = (teacher) => {
+    const newTeachers = listOfTeachers.filter((item) => item !== teacher);
+    setListOfTeachers(newTeachers);
   };
 
   const handleSubmit = (e) => {
@@ -77,7 +87,7 @@ const formAddFestival = () => {
       <Modal />
       {uploadFestival ? (
         <div className="mt-32" style={{ height: `calc(100vh - 200px)` }}>
-          <Loading title={"Registrando festival"} />
+          <Loading title={t("loading.register")} />
         </div>
       ) : (
         <div className="bg-[url('./assets/Lindy_Hop.jpeg')] bg-cover bg-no-repeat">
@@ -88,236 +98,93 @@ const formAddFestival = () => {
                   <ButtonComeBack />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-5 ">
-                  <div className="w-full">
-                    <label className="text-primary " htmlFor="name">
-                      {t("formAddFestival.name")}
-                    </label>
-                    <input
-                      id="name"
-                      name="name"
-                      className="input input-bordered w-full"
-                      type="text"
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  <div className="w-full">
-                    <label className="text-primary " htmlFor="city">
-                      {t("formAddFestival.city")}
-                    </label>
-                    <input
-                      id="city"
-                      name="city"
-                      className="input input-bordered w-full"
-                      type="text"
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
+                  <InputAddFestival
+                    type={"text"}
+                    label={"name"}
+                    name={"name"}
+                    handleChange={handleChange}
+                  />
+
+                  <InputAddFestival
+                    type={"text"}
+                    label={"city"}
+                    name={"city"}
+                    handleChange={handleChange}
+                  />
                 </div>
                 <div className="mt-5 flex gap-5">
-                  <div className="w-full">
-                    <label className="text-primary " htmlFor="address">
-                      {t("formAddFestival.address")}
-                    </label>
-                    <input
-                      id="address"
-                      name="address"
-                      className="input input-bordered w-full"
-                      type="text"
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  <div className="w-[40%]">
-                    <label className="text-primary " htmlFor="adress">
-                      {t("formAddFestival.PC")}
-                    </label>
-                    <input
-                      id="CP"
-                      name="CP"
-                      className="input input-bordered w-full"
-                      type="text"
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                </div>
-                <div className="mt-5">
-                  <label className="text-primary ">
-                    {" "}
-                    {t("formAddFestival.teachers")}
-                  </label>
-                  <div className="join w-full">
-                    <input
-                      className="input input-bordered join-item w-full"
-                      value={teacher}
-                      onChange={(e) => setTeacher(e.target.value)}
-                    />
-                    <button
-                      onClick={addTeachers}
-                      className="btn join-item text-zinc-900 bg-primary border-none hover:bg-orange-100 "
-                    >
-                      {t("formAddFestival.add")}
-                    </button>
-                  </div>
-                  <div>
-                    {listOfTeachers.length > 0 && (
-                      <div className="flex flex-col border border-zinc-900 rounded-md mt-5 px-5 py-2 bg-zinc-100">
-                        {listOfTeachers.map((teacher, index) => (
-                          <span key={index}>{teacher}</span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                  <InputAddFestival
+                    type={"text"}
+                    label={"address"}
+                    name={"address"}
+                    handleChange={handleChange}
+                  />
+                  <InputAddFestival
+                    type={"text"}
+                    label={"PC"}
+                    name={"CP"}
+                    handleChange={handleChange}
+                  />
                 </div>
 
-                <div className=" mt-5 text-center">
-                  <label className="text-primary uppercase ">
-                    {t("formAddFestival.modalities")}
-                  </label>
-                  <div className="flex justify-between  md:justify-around gap-2 mt-5">
-                    <div className="flex flex-col items-center">
-                      <span className="label-text text-primary mb-3">
-                        Lindy Hop
-                      </span>
-                      <input
-                        type="checkbox"
-                        value="Lindy Hop"
-                        className="toggle hover:bg-primary bg-primary border-orange-200"
-                        onChange={handleCheckBox}
-                      />
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <span className="label-text text-primary mb-3">
-                        Blues
-                      </span>
-                      <input
-                        type="checkbox"
-                        value="Blues"
-                        className="toggle  hover:bg-primary bg-primary border-orange-200"
-                        onChange={handleCheckBox}
-                      />
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <span className="label-text text-primary mb-3">
-                        Balboa
-                      </span>
-                      <input
-                        type="checkbox"
-                        value="Balboa"
-                        className="toggle hover:bg-primary bg-primary border-orange-200"
-                        onChange={handleCheckBox}
-                      />
-                    </div>
-                  </div>
-                </div>
+                <InputAddTeacher
+                  teacher={teacher}
+                  addTeachers={addTeachers}
+                  setTeacher={setTeacher}
+                  deleteTeacher={deleteTeacher}
+                  listOfTeachers={listOfTeachers}
+                />
+
+                <InputAddModalities handleCheckBox={handleCheckBox} />
+
                 <div className="mt-5">
                   <div className="text-center">
                     <label className="text-primary uppercase w-full ">
                       {t("formAddFestival.price")}
                     </label>
                   </div>
-                  <div className="flex gap-5 mt-4">
-                    <div className="flex flex-col w-full">
-                      <label className="text-primary">
-                        {" "}
-                        {t("formAddFestival.from")}
-                      </label>
-                      <input
-                        type="text"
-                        name="minPrice"
-                        className="input input-bordered w-full "
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                    <div className="flex flex-col w-full">
-                      <label className="text-primary">
-                        {" "}
-                        {t("formAddFestival.to")}
-                      </label>
-                      <input
-                        type="text"
-                        name="maxPrice"
-                        className="input input-bordered w-full "
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-5  mt-5">
-                  <div className="w-full">
-                    <label className="text-primary" htmlFor="data_start">
-                      {t("formAddFestival.dateStart")}
-                    </label>
-                    <input
-                      id="data_start"
-                      name="data_start"
-                      className="input input-bordered w-full"
-                      type="date"
-                      onChange={handleChange}
-                      required
+                  <div className="flex gap-5">
+                    <InputAddFestival
+                      type={"text"}
+                      label={"from"}
+                      name={"minPrice"}
+                      handleChange={handleChange}
                     />
-                  </div>
-                  <div className="w-full">
-                    <label className="text-primary" htmlFor="data_end">
-                      {t("formAddFestival.dateEnd")}
-                    </label>
-                    <input
-                      id="data_end"
-                      name="data_end"
-                      className="input input-bordered w-full"
-                      type="date"
-                      onChange={handleChange}
-                      required
+
+                    <InputAddFestival
+                      type={"text"}
+                      label={"to"}
+                      name={"maxPrice"}
+                      handleChange={handleChange}
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-5  mt-5">
-                  <div className="w-full">
-                    <label className="block text-primary" htmlFor="image">
-                      {t("formAddFestival.image")}
-                    </label>
-                    {!image ? (
-                      <label
-                        htmlFor="image"
-                        className="btn w-full text-zinc-900 bg-primary border-none hover:bg-orange-100"
-                      >
-                        {t("formAddFestival.uploadFile")}
-                      </label>
-                    ) : (
-                      <label
-                        htmlFor="image"
-                        className="btn w-full text-zinc-900 bg-primary border-none hover:bg-orange-100"
-                      >
-                        {t("formAddFestival.uploadedFile")}
-                      </label>
-                    )}
+                <div className="grid col-1 gap-5 mt-5 md:flex">
+                  <InputAddFestival
+                    type={"date"}
+                    label={"dateStart"}
+                    name={"data_start"}
+                    handleChange={handleChange}
+                  />
 
-                    <input
-                      id="image"
-                      type="file"
-                      className="file-input file-input-bordered  w-full hidden"
-                      onChange={(e) => setImage(e.target.files[0])}
-                    />
-                  </div>
-                  <div className="w-full">
-                    <label className="text-primary" htmlFor="url">
-                      {t("formAddFestival.url")}
-                    </label>
-                    <input
-                      type="text"
-                      id="url"
-                      name="link"
-                      className="input input-bordered w-full "
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
+                  <InputAddFestival
+                    type={"date"}
+                    label={"dateEnd"}
+                    name={"data_end"}
+                    handleChange={handleChange}
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-5  mt-5">
+                  <InputAddImage image={image} setImage={setImage} />
+
+                  <InputAddFestival
+                    type={"text"}
+                    label={"url"}
+                    name={"link"}
+                    handleChange={handleChange}
+                  />
                 </div>
                 <div className="w-full mt-5">
                   <label className="text-primary">

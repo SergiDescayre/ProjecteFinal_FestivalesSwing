@@ -32,7 +32,7 @@ const InfoFestival = () => {
     <>
       {!infoFestival ? (
         <div className="min-h-[950px]">
-          <Loading title={"Cargando..."} />
+          <Loading title={t("loading.loading")} />
         </div>
       ) : (
         <div className="w-full bg-zinc-800 text-secondary max-w-[1440px] mx-auto ">

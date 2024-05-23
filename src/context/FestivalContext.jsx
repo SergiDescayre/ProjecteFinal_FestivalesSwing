@@ -1,6 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import appFirebase from "../credentials";
+import { createContext, useContext, useState } from "react";
 import {
   getFirestore,
   collection,
@@ -17,12 +15,14 @@ import {
 import { getAuth } from "firebase/auth";
 import { useSelector } from "react-redux";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+import appFirebase from "../credentials";
+
 const FestivalContext = createContext();
 
-const ContexProvider = ({ children }) => {
+const ContextProvider = ({ children }) => {
   const [festivals, setFestivals] = useState([]);
   const [favorites, setFavorites] = useState([]);
-  const [infoFestival, setInfoFestival] = useState(false);
+  const [infoFestival, setInfoFestival] = useState(null);
   const [error, setError] = useState("");
   const [messageModal, setMessageModal] = useState("");
   const [isFavorite, setIsFavorite] = useState(false);
@@ -30,24 +30,25 @@ const ContexProvider = ({ children }) => {
   const [isFoundFestival, setIsFoundFestival] = useState(true);
   const [contentQuill, setContentQuill] = useState("");
 
-  //estats afegir festival
+  // State for adding festival
   const [festivalInfo, setFestivalInfo] = useState({});
   const [uploadFestival, setUploadFestival] = useState(false);
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
   const [teacher, setTeacher] = useState("");
   const [modality, setModality] = useState([]);
   const [listOfTeachers, setListOfTeachers] = useState([]);
   const [isUpload, setIsUpload] = useState(false);
 
-  //Idioma calendari
+  // Language for calendar
   const [language, setLanguage] = useState("");
 
   const { isLogin } = useSelector((state) => state.authUser);
+
   const getFilterModality = (modalityFilter) => {
     return festivals.filter((fest) => fest.modality.includes(modalityFilter));
   };
 
-  //subir imagen a storage y subir festival
+  // Upload image to storage and add festival
   const uploadImageToStorage = async () => {
     setUploadFestival(true);
 
@@ -59,7 +60,6 @@ const ContexProvider = ({ children }) => {
       const imageUrl = await getDownloadURL(storageRef);
 
       const db = getFirestore(appFirebase);
-      // Añadir el documento a la colección "festivals" y obtener el ID asignado
       const docRef = await addDoc(collection(db, "festivals"), {
         ...festivalInfo,
         userId: auth.currentUser.uid,
@@ -71,30 +71,23 @@ const ContexProvider = ({ children }) => {
         modality,
       });
 
-      // Obtener el ID del documento recién creado
-      const docId = docRef.id;
-
-      // Actualizar el documento para incluir el ID
-      await updateDoc(doc(db, "festivals", docId), {
-        docId: docId,
+      await updateDoc(doc(db, "festivals", docRef.id), {
+        docId: docRef.id,
       });
 
-      // Redirigir a la página de festivales
+      setImage(null);
+      setUploadFestival(false);
+      setIsUpload(true);
+      setContentQuill("");
     } catch (error) {
-      console.log(error);
+      console.error("Error uploading image and adding festival:", error);
     }
-    setImage("");
-    setUploadFestival(false);
-    setIsUpload(true);
-    setContentQuill("");
   };
 
-  //Añadir Festival afavoritos
-
+  // Add festival to favorites
   const addFavorite = async (id, fest) => {
     const auth = JSON.parse(localStorage.getItem("uid"));
     try {
-      const auth = getAuth(appFirebase).currentUser.uid;
       const db = getFirestore(appFirebase);
       const querySnapshot = await getDocs(
         query(
@@ -104,123 +97,102 @@ const ContexProvider = ({ children }) => {
         )
       );
 
-      if (!querySnapshot.empty) {
-        return;
+      if (querySnapshot.empty) {
+        await addDoc(collection(db, "favorites"), {
+          ...fest,
+          idUserFavorite: auth,
+          isFavorite: true,
+        });
+        getFavorites();
       }
-      await addDoc(collection(db, "favorites"), {
-        ...fest,
-        idUserFavorite: auth,
-        isFavorite: true,
-      });
-      getFavorites();
     } catch (error) {
-      console.error("Error al agregar favorito:", error);
+      console.error("Error adding favorite:", error);
     }
   };
 
-  //Eliminar festival de firebase
-
+  // Delete festival from Firestore
   const deleteFestival = async (id) => {
-    const firestore = getFirestore(appFirebase);
+    const db = getFirestore(appFirebase);
     try {
-      const q = query(
-        collection(firestore, "festivals"),
-        where("docId", "==", id)
-      );
-
-      // Obtener documentos que cumplen con la condición
+      const q = query(collection(db, "festivals"), where("docId", "==", id));
       const querySnapshot = await getDocs(q);
-
-      // Para cada documento encontrado, eliminarlo
       querySnapshot.forEach(async (doc) => {
         await deleteDoc(doc.ref);
       });
     } catch (error) {
-      console.error("Error al eliminar documentos:", error);
+      console.error("Error deleting festival:", error);
     }
   };
 
-  //Eliminar festival de favoritos
-
+  // Delete favorite festival from Firestore
   const deleteFavorite = async (id) => {
-    const firestore = getFirestore(appFirebase);
+    const db = getFirestore(appFirebase);
     try {
-      const q = query(
-        collection(firestore, "favorites"),
-        where("id", "==", id)
-      );
-
-      // Obtener documentos que cumplen con la condición
+      const q = query(collection(db, "favorites"), where("id", "==", id));
       const querySnapshot = await getDocs(q);
-
-      // Para cada documento encontrado, eliminarlo
       querySnapshot.forEach(async (doc) => {
         await deleteDoc(doc.ref);
       });
     } catch (error) {
-      console.error("Error al eliminar documentos:", error);
+      console.error("Error deleting favorite:", error);
     }
   };
 
-  //Traer festival po IdDoc para pintar la Info
-
+  // Get festival by document ID
   const getFestivalByDocId = async (docId) => {
     const db = getFirestore(appFirebase);
     try {
       const docRef = doc(db, "festivals", docId);
       const docSnap = await getDoc(docRef);
-
       if (docSnap.exists()) {
-        const data = docSnap.data();
-        setInfoFestival(data);
+        setInfoFestival(docSnap.data());
       } else {
+        console.log("No such document!");
       }
     } catch (error) {
-      console.log(error);
+      console.error("Error getting festival by docId:", error);
     }
   };
 
-  //Traer festivales firebase
-
+  // Get all festivals
   const getFestivals = async () => {
-    // Obtener una referencia a la base de datos Firestore
     const db = getFirestore(appFirebase);
-
-    // Recuperar una colección de documentos
-    const querySnapshot = await getDocs(collection(db, "festivals"));
-    const arrayFestivals = [];
-
-    // Iterar sobre los documentos y acceder a los datos
-    querySnapshot.forEach((doc) => {
-      arrayFestivals.push({ id: doc.id, ...doc.data() });
-    });
-    setFestivals(arrayFestivals);
+    try {
+      const querySnapshot = await getDocs(collection(db, "festivals"));
+      const arrayFestivals = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setFestivals(arrayFestivals);
+    } catch (error) {
+      console.error("Error getting festivals:", error);
+    }
   };
 
-  // Traer Favoritos de firebase
-
+  // Get all favorite festivals
   const getFavorites = async () => {
     const auth = JSON.parse(localStorage.getItem("uid"));
     try {
       const db = getFirestore(appFirebase);
-      const favoritesRef = collection(db, "favorites");
-      const q = query(favoritesRef, where("idUserFavorite", "==", auth));
+      const q = query(
+        collection(db, "favorites"),
+        where("idUserFavorite", "==", auth)
+      );
       onSnapshot(q, (snapshot) => {
-        const favoritesData = [];
-        snapshot.forEach((doc) => {
-          favoritesData.push({ id: doc.id, ...doc.data() });
-        });
+        const favoritesData = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
         setFavorites(favoritesData);
       });
     } catch (error) {
-      console.error("Error al cargar favoritos:", error);
+      console.error("Error getting favorites:", error);
     }
   };
 
-  //check festivals favorites
-
+  // Check if festival is favorite
   const checkFavoriteStatus = async (fest) => {
-    if (!isLogin) return; // Si el usuario no ha iniciado sesión, no hay favoritos que cargar
+    if (!isLogin) return;
 
     try {
       const auth = getAuth(appFirebase).currentUser.uid;
@@ -233,41 +205,36 @@ const ContexProvider = ({ children }) => {
         )
       );
 
-      if (!querySnapshot.empty) {
-        setIsFavorite(true);
-      } else setIsFavorite(false);
+      setIsFavorite(!querySnapshot.empty);
     } catch (error) {
-      console.error("Error al verificar el estado del favorito:", error);
+      console.error("Error checking favorite status:", error);
     }
   };
 
-  // Petición para obtener cordenadas de las ciudades
-
+  // Get coordinates of cities
   const getCoords = async () => {
     const apiKey = "52bec998662d67728032b9a8a722ee73";
     try {
-      const newArray = [];
-      await Promise.all(
+      const newArray = await Promise.all(
         festivals.map(async (city) => {
           const response = await fetch(
             `https://api.openweathermap.org/data/2.5/weather?q=${city.city}&appid=${apiKey}`
           );
-          const data = await response.json();
-          newArray.push(data);
+          return response.json();
         })
       );
       setCoords(newArray);
       localStorage.setItem("coords", JSON.stringify(newArray));
     } catch (error) {
-      console.log(error);
+      console.error("Error getting coordinates:", error);
     }
   };
 
   return (
     <FestivalContext.Provider
       value={{
-        favorites,
         festivals,
+        favorites,
         infoFestival,
         error,
         messageModal,
@@ -316,6 +283,6 @@ const ContexProvider = ({ children }) => {
   );
 };
 
-export default ContexProvider;
+export default ContextProvider;
 
 export const useFestivalContext = () => useContext(FestivalContext);

@@ -104,5 +104,9 @@
   "favorites": {
     "noFavorites": "No tienes favoritos guardados",
     "add": "Añadir"
+  },
+  "loading": {
+    "loading": "Cargando...",
+    "register": "Registrando festival"
   }
 }

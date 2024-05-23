@@ -21,7 +21,7 @@
     "address": "Adreça",
     "PC": "CP",
     "teachers": "Professors",
-    "add": "Afegirr",
+    "add": "Afegir",
     "modalities": "Modalitats",
     "price": "Preu",
     "from": "Des de",
@@ -104,5 +104,9 @@
   "favorites": {
     "noFavorites": "No tens favorits desats",
     "add": "Afegir"
+  },
+  "loading": {
+    "loading": "Carregant...",
+    "register": "Registrant festival"
   }
 }
