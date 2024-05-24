@@ -42,9 +42,6 @@ function Navbar() {
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
-    // if (!menuOpen) {
-    //   document.body.style.overflow = "hidden";
-    // } else document.body.style.overflow = "";
   };
 
   const handleLogOut = async () => {

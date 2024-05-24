@@ -4,26 +4,26 @@ import { useFestivalContext } from "../context/FestivalContext";
 import ListFestivalsModality from "../components/ListFestivalsModality";
 
 const ListFestivals = () => {
-    const {getFestivals, festivals} = useFestivalContext()
-    useEffect(() => {
-        getFestivals()
-    }, [])
+  const { getFestivals, festivals } = useFestivalContext();
+  useEffect(() => {
+    getFestivals();
+  }, []);
 
+  const lindyHop = festivals.filter((fest) =>
+    fest.modality.includes("Lindy Hop")
+  );
 
-    const lindyHop = festivals.filter(fest => fest.modality.includes("Lindy Hop"))
+  const balboa = festivals.filter((fest) => fest.modality.includes("Balboa"));
 
-    const balboa = festivals.filter(fest => fest.modality.includes("Balboa"))
+  const blues = festivals.filter((fest) => fest.modality.includes("Blues"));
 
-    const blues = festivals.filter(fest => fest.modality.includes("Blues"))
-  
   return (
     <>
-    <ListFestivalsModality title={"LINDY HOP"} modality = {lindyHop}/>
-    <ListFestivalsModality title={"BLUES"} modality = {blues}/>
-    <ListFestivalsModality title={"BALBOA"} modality = {balboa}/>
+      <ListFestivalsModality title={"LINDY HOP"} modality={lindyHop} />
+      <ListFestivalsModality title={"BLUES"} modality={blues} />
+      <ListFestivalsModality title={"BALBOA"} modality={balboa} />
     </>
-   
-  )
-}
+  );
+};
 
-export default ListFestivals
+export default ListFestivals;

@@ -13,7 +13,7 @@ import Footer from "../components/Footer";
 import { useFestivalContext } from "../context/FestivalContext";
 
 const MainLayout = () => {
-  const { getFestivals } = useFestivalContext();
+  const { getFestivals, festivals } = useFestivalContext();
 
   useEffect(() => {
     getFestivals();

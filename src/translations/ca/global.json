@@ -52,10 +52,9 @@
     "December": "Desembre"
   },
   "date": {
-    "th": "",
-    "of": "de",
-    "from": "De",
-    "to": "al"
+    "longDate": "Del {{dayStart}} de {{monthStart}} al {{dayEnd}} de {{monthEnd}} de {{yearStart}}",
+    "shortDate": "Del {{dayStart}} al {{dayEnd}} de {{monthStart}} de {{yearStart}}",
+    "cardDate": "{{dayStart}} de {{monthStart}} de {{yearStart}}"
   },
   "infoFestival": {
     "from": "Des de",

@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import CardFestival from "./CardFestival";
 import { useFestivalContext } from "../context/FestivalContext";
+import { useTranslation } from "react-i18next";
 
 import arrowLeft from "../assets/arrowLeft.svg";
 import arrowRight from "../assets/arrowRight.svg";
@@ -8,6 +9,7 @@ import Loading from "./Loading";
 import NotMatchesFestival from "./NotMatchesFestival";
 
 const ListFestivalsModality = ({ title, modality }) => {
+  const { t } = useTranslation("global");
   const showButtonAddFavorite = true;
   const { isFoundFestival } = useFestivalContext();
   const [scrollable, setScrollable] = useState(false);
@@ -18,38 +20,40 @@ const ListFestivalsModality = ({ title, modality }) => {
   useEffect(() => {
     const container = containerRef.current;
     if (container) {
-      setScrollable(container.scrollWidth > container.clientWidth);
-      // Verificar si debe mostrar u ocultar las flechas al inicio
-      setShowLeftArrow(container.scrollLeft > 0);
-      // Verificar si debe mostrar u ocultar las flechas al final
-      setShowRightArrow(
-        container.scrollLeft < container.scrollWidth - container.clientWidth
-      );
+      updateArrowVisibility(container);
     }
   }, [modality]);
+
+  const updateArrowVisibility = (container) => {
+    setScrollable(container.scrollWidth > container.clientWidth);
+    setShowLeftArrow(container.scrollLeft > 0);
+    setShowRightArrow(
+      container.scrollLeft < container.scrollWidth - container.clientWidth
+    );
+  };
 
   const handleScroll = (direction) => {
     const container = containerRef.current;
     if (container) {
-      const scrollDistance = window.innerWidth / 2; // Ajusta el valor para controlar la cantidad de desplazamiento
-      if (direction === "left") {
-        container.scrollTo({
-          left: container.scrollLeft - scrollDistance,
-          behavior: "smooth",
-        });
-      } else if (direction === "right") {
-        container.scrollTo({
-          left: container.scrollLeft + scrollDistance,
-          behavior: "smooth",
-        });
-      }
+      const scrollDistance = window.innerWidth / 2;
+      container.scrollTo({
+        left:
+          container.scrollLeft +
+          (direction === "left" ? -scrollDistance : scrollDistance),
+        behavior: "smooth",
+      });
     }
+  };
+
+  const handleContainerScroll = () => {
+    const container = containerRef.current;
+    updateArrowVisibility(container);
   };
 
   modality.sort((a, b) => new Date(a.data_start) - new Date(b.data_start));
 
   return (
-    <div className="relative pb-2 pt-6">
+    <div className="pb-2 pt-6">
       <div className="flex items-center justify-between border-t-2 border-b-2 py-3 border-orange-200 w-[80%] max-w-[1400px] mx-auto">
         <span className="text-1xl text-secondary">{title}</span>
         {scrollable && (
@@ -74,21 +78,12 @@ const ListFestivalsModality = ({ title, modality }) => {
         )}
       </div>
       {modality.length === 0 && isFoundFestival ? (
-        <Loading title="Cargando..." />
+        <Loading title={t("loading.loading")} />
       ) : (
         <div
-          className="relative overflow-hidden overflow-x-auto white-space-no-wrap  flex  gap-10 m-5 w-[80%] max-w-[1400px] mx-auto"
+          className="overflow-hidden overflow-x-auto white-space-no-wrap flex gap-10 m-5 w-[80%] max-w-[1400px] mx-auto"
           ref={containerRef}
-          onScroll={() => {
-            const container = containerRef.current;
-            // Verificar si debe mostrar u ocultar las flechas al inicio
-            setShowLeftArrow(container.scrollLeft > 0);
-            // Verificar si debe mostrar u ocultar las flechas al final
-            setShowRightArrow(
-              container.scrollLeft <
-                container.scrollWidth - container.clientWidth - 1
-            );
-          }}
+          onScroll={handleContainerScroll}
         >
           {modality.length === 0 && <NotMatchesFestival />}
           {modality.map((fest) => (

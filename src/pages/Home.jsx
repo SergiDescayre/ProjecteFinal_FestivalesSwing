@@ -14,11 +14,8 @@ const Home = () => {
             <span className="leading-[50px] text-4xl text-primary m-9 md:text-center md:text-5xl">
               {t("home.text")}
             </span>
-            {/* <span className="text-2xl ml-9 text-stone-100 mb-9 md:text-center md:text-3xl">Festivales que despiertan tu pasión. </span> */}
           </div>
-          <div className="z-0">
-            <FormSearchHome />
-          </div>
+          <FormSearchHome />
         </div>
       </div>
 

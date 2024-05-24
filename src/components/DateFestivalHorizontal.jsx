@@ -4,36 +4,33 @@ import { months } from "../data/months";
 const DateFestivalHorizontal = ({ dateStart, dateEnd }) => {
   const { t } = useTranslation("global");
 
-  const arrayDateStart = dateStart.split("-");
-  const positionMonthStart = arrayDateStart[1];
-  const dayTotalStart = arrayDateStart[2];
+  dateStart = new Date(dateStart);
 
-  const dayStart = +dayTotalStart.slice(0, 2);
-  const yearStart = arrayDateStart[0];
-  const monthStart = months[+positionMonthStart - 1];
+  const dayStart = dateStart.getDate();
+  const monthStart = t(`months.${months[dateStart.getMonth() + 1]}`);
+  const yearStart = dateStart.getFullYear();
 
-  const arrayDateEnd = dateEnd.split("-");
-  const positionMonthEnd = arrayDateEnd[1];
-  const dayTotalEnd = arrayDateEnd[2];
+  dateEnd = new Date(dateEnd);
 
-  const dayEnd = +dayTotalEnd.slice(0, 2);
-  const yearEnd = arrayDateEnd[0];
-  const monthEnd = months[+positionMonthEnd - 1];
+  const dayEnd = dateEnd.getDate();
+  const monthEnd = t(`months.${months[dateEnd.getMonth() + 1]}`);
+  const yearEnd = dateEnd.getFullYear();
 
   return (
     <div>
       {monthStart === monthEnd ? (
         <div>
-          {dayStart}
-          {t("date.th")} {t("date.to")} {dayEnd}
-          {t("date.th")} {t("date.of")} {t(`months.${monthStart}`)}, {yearStart}
+          {t("date.shortDate", { dayStart, dayEnd, monthStart, yearStart })}
         </div>
       ) : (
         <div>
-          {dayStart}
-          {t("date.th")} {t("date.of")} {t(`months.${monthStart}`)}{" "}
-          {t("date.to")} {dayEnd} {t("date.of")} {t(`months.${monthEnd}`)},
-          {yearEnd}
+          {t("date.longDate", {
+            dayStart,
+            monthStart,
+            dayEnd,
+            monthEnd,
+            yearStart,
+          })}
         </div>
       )}
     </div>

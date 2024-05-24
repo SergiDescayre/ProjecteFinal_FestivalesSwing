@@ -2,19 +2,16 @@ import React, { useTransition } from "react";
 import { months } from "../data/months";
 import { useTranslation } from "react-i18next";
 
-const DateFestival = ({ date }) => {
+const DateFestival = ({ dateStart }) => {
   const { t } = useTranslation("global");
-  const arrayDate = date.split("-");
-  const positionMonth = arrayDate[1];
-  const dayTotal = arrayDate[2];
-  const day = +dayTotal.slice(0, 2);
-  const year = arrayDate[0];
-  const month = months[+positionMonth - 1];
+  dateStart = new Date(dateStart);
+  const dayStart = dateStart.getDate();
+  const monthStart = t(`months.${months[dateStart.getMonth() + 1]}`);
+  const yearStart = dateStart.getFullYear();
 
   return (
     <div className="flex gap-2 ">
-      {day}
-      {t("date.th")} {t("date.of")} {t(`months.${month}`)}, {year}
+      {t("date.cardDate", { dayStart, monthStart, yearStart })}
     </div>
   );
 };

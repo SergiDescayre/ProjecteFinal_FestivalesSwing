@@ -11,7 +11,6 @@ const CardFestival = ({
   showButtonDeleteFavorite,
   showButtonAddFavorite,
 }) => {
-  const auth = JSON.parse(localStorage.getItem("uid"));
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -52,7 +51,7 @@ const CardFestival = ({
 
           <div className="flex gap-2 text-xs">
             <img className="w-4" src={calendar} alt="" />
-            <DateFestival date={fest.data_start} />
+            <DateFestival dateStart={fest.data_start} />
           </div>
 
           <div className="flex gap-2">
