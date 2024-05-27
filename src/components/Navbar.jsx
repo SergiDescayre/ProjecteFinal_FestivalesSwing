@@ -56,7 +56,7 @@ function Navbar() {
       <div className="container mx-auto flex justify-between items-center max-w-[1440px] lg:px-16">
         {/* Logo */}
         <div className="flex-shrink-0 lg:justify-center lg:w-auto hidden md:block">
-          <img className="h-[60px]  " src={logo} alt="Logo" />
+          <img className="h-[60px] " src={logo} alt="Logo" />
         </div>
 
         {/* Icono de hamburguesa (solo visible en dispositivos móviles) */}

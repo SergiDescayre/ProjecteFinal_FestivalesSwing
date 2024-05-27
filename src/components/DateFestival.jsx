@@ -1,4 +1,4 @@
-import React, { useTransition } from "react";
+
 import { months } from "../data/months";
 import { useTranslation } from "react-i18next";
 
@@ -6,7 +6,7 @@ const DateFestival = ({ dateStart }) => {
   const { t } = useTranslation("global");
   dateStart = new Date(dateStart);
   const dayStart = dateStart.getDate();
-  const monthStart = t(`months.${months[dateStart.getMonth() + 1]}`);
+  const monthStart = t(`months.${months[dateStart.getMonth()]}`);
   const yearStart = dateStart.getFullYear();
 
   return (

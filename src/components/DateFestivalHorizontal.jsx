@@ -7,13 +7,13 @@ const DateFestivalHorizontal = ({ dateStart, dateEnd }) => {
   dateStart = new Date(dateStart);
 
   const dayStart = dateStart.getDate();
-  const monthStart = t(`months.${months[dateStart.getMonth() + 1]}`);
+  const monthStart = t(`months.${months[dateStart.getMonth()]}`);
   const yearStart = dateStart.getFullYear();
 
   dateEnd = new Date(dateEnd);
 
   const dayEnd = dateEnd.getDate();
-  const monthEnd = t(`months.${months[dateEnd.getMonth() + 1]}`);
+  const monthEnd = t(`months.${months[dateEnd.getMonth()]}`);
   const yearEnd = dateEnd.getFullYear();
 
   return (
