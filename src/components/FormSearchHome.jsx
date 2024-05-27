@@ -1,4 +1,4 @@
-import { useEffect, useState,useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useFestivalContext } from "../context/FestivalContext";
 import { useTranslation } from "react-i18next";
 
@@ -31,10 +31,10 @@ const FormSearchHome = () => {
 
   const refresForm = () => {
     getFestivals()
-    inputRefStart.current.value=""
-    inputRefEnd.current.value=""
-    inputRefCity.current.value=""
-   
+    inputRefStart.current.value = ""
+    inputRefEnd.current.value = ""
+    inputRefCity.current.value = ""
+
   }
   console.log(isRefresh)
 
@@ -65,16 +65,16 @@ const FormSearchHome = () => {
     <form onSubmit={handleSubmit}>
 
       <div className="join w-[80%] mx-auto  join-vertical  md:join-horizontal  flex items-center justify-center pb-10 md:pb-10">
-        <label className="input flex join-item w-full md:w-44 justify-start">
-        <img onClick={refresForm} src={refresh} className="w-5 cursor-pointer" />
-        <input
-          name="city"
-          className="input join-item w-full  "
-          placeholder={t("search.where")}
-          ref={inputRefCity}
-          onChange={(e) => setCity(e.target.value)}
-        />
-        
+        <label className="input flex md:flex-row-reverse join-item w-full md:w-44 justify">  
+          <input
+            name="city"
+            className="input join-item w-full"
+            placeholder={t("search.where")}
+            ref={inputRefCity}
+            onChange={(e) => setCity(e.target.value)}
+          />
+          <img onClick={refresForm} src={refresh} className="w-5 cursor-pointer" />
+
         </label>
         <label htmlFor="data_start" className="bg-white p-3 w-full md:w-[70px] join-item">
           {t("search.from")}:
