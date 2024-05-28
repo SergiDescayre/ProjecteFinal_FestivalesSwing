@@ -68,7 +68,7 @@ const FormSearchHome = () => {
         <label className="input flex md:flex-row-reverse join-item w-full md:w-44 justify">  
           <input
             name="city"
-            className="input join-item w-full"
+            className="input join-item w-full -me-3"
             placeholder={t("search.where")}
             ref={inputRefCity}
             onChange={(e) => setCity(e.target.value)}
@@ -86,7 +86,7 @@ const FormSearchHome = () => {
           type="date"
           onChange={(e) => setDataStart(e.target.value)}
           ref={inputRefStart}
-          required
+          // required
         />
         <label htmlFor="data_end" className="bg-white p-3 w-full md:w-16 join-item">
           {t("search.to")}:
@@ -97,7 +97,7 @@ const FormSearchHome = () => {
           type="date"
           onChange={(e) => setDataEnd(e.target.value)}
           ref={inputRefEnd}
-          required
+          // required
         />
         <input
           type="submit"
