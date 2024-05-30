@@ -18,8 +18,14 @@ import Modal from "./Modal";
 const ButtonAddFavorite = ({ fest }) => {
   const { isLogin } = useSelector((state) => state.authUser);
   const [isFavorite, setIsFavorite] = useState(false);
-  const { favorites, deleteFavorite, addFavorite, setMessageModal,getFavorites } = useFestivalContext();
-  const {t} = useTranslation("global")
+  const {
+    favorites,
+    deleteFavorite,
+    addFavorite,
+    setMessageModal,
+    getFavorites,
+  } = useFestivalContext();
+  const { t } = useTranslation("global");
   useEffect(() => {
     checkFavoriteStatus();
   }, [favorites]);
@@ -30,7 +36,6 @@ const ButtonAddFavorite = ({ fest }) => {
     if (isLogin) {
       addFavorite(id, fest);
       setIsFavorite(!isFavorite);
-
     } else {
       document.getElementById("my_modal_5").showModal();
       setMessageModal(t("modal.saveFavorites"));
@@ -57,7 +62,6 @@ const ButtonAddFavorite = ({ fest }) => {
 
       if (!querySnapshot.empty) {
         setIsFavorite(true);
-      
       } else setIsFavorite(false);
     } catch (error) {
       console.error("Error al verificar el estado del favorito:", error);

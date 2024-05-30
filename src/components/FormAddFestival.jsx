@@ -45,7 +45,6 @@ const formAddFestival = () => {
 
   const handleChange = (e) => {
     setFestivalInfo({ ...festivalInfo, [e.target.name]: e.target.value });
-    console.log(festivalInfo);
   };
 
   const handleCheckBox = (e) => {

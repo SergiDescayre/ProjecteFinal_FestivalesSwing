@@ -2,14 +2,14 @@ import { useEffect, useState, useRef } from "react";
 import { useFestivalContext } from "../context/FestivalContext";
 import { useTranslation } from "react-i18next";
 
-import refresh from "../assets/refresh.svg"
+import refresh from "../assets/refresh.svg";
 
 const FormSearchHome = () => {
   const { t } = useTranslation("global");
 
-  const inputRefStart = useRef()
-  const inputRefEnd = useRef()
-  const inputRefCity = useRef()
+  const inputRefStart = useRef();
+  const inputRefEnd = useRef();
+  const inputRefCity = useRef();
   const {
     setFestivals,
     festivals,
@@ -20,7 +20,6 @@ const FormSearchHome = () => {
   const [city, setCity] = useState("");
   const [dataStart, setDataStart] = useState("");
   const [dataEnd, setDataEnd] = useState("");
-  const [isRefresh, setIsRefresh] = useState(false)
 
   useEffect(() => {
     return () => {
@@ -30,13 +29,11 @@ const FormSearchHome = () => {
   }, [city, dataStart, dataEnd]);
 
   const refresForm = () => {
-    getFestivals()
-    inputRefStart.current.value = ""
-    inputRefEnd.current.value = ""
-    inputRefCity.current.value = ""
-
-  }
-  console.log(isRefresh)
+    getFestivals();
+    inputRefStart.current.value = "";
+    inputRefEnd.current.value = "";
+    inputRefCity.current.value = "";
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,12 +57,10 @@ const FormSearchHome = () => {
     setFestivals(festivalFiltered);
   };
 
-
   return (
     <form onSubmit={handleSubmit}>
-
       <div className="join w-[80%] mx-auto  join-vertical  md:join-horizontal  flex items-center justify-center pb-10 md:pb-10">
-        <label className="input flex md:flex-row-reverse join-item w-full md:w-44 justify">  
+        <label className="input flex md:flex-row-reverse join-item w-full md:w-44 justify">
           <input
             name="city"
             className="input join-item w-full -me-3"
@@ -73,10 +68,16 @@ const FormSearchHome = () => {
             ref={inputRefCity}
             onChange={(e) => setCity(e.target.value)}
           />
-          <img onClick={refresForm} src={refresh} className="w-5 cursor-pointer" />
-
+          <img
+            onClick={refresForm}
+            src={refresh}
+            className="w-5 cursor-pointer"
+          />
         </label>
-        <label htmlFor="data_start" className="bg-white p-3 w-full md:w-[70px] join-item">
+        <label
+          htmlFor="data_start"
+          className="bg-white p-3 w-full md:w-[70px] join-item"
+        >
           {t("search.from")}:
         </label>
 
@@ -86,9 +87,12 @@ const FormSearchHome = () => {
           type="date"
           onChange={(e) => setDataStart(e.target.value)}
           ref={inputRefStart}
-          // required
+          required
         />
-        <label htmlFor="data_end" className="bg-white p-3 w-full md:w-16 join-item">
+        <label
+          htmlFor="data_end"
+          className="bg-white p-3 w-full md:w-16 join-item"
+        >
           {t("search.to")}:
         </label>
         <input
@@ -97,7 +101,7 @@ const FormSearchHome = () => {
           type="date"
           onChange={(e) => setDataEnd(e.target.value)}
           ref={inputRefEnd}
-          // required
+          required
         />
         <input
           type="submit"

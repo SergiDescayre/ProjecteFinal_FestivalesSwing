@@ -15,8 +15,6 @@ import MultiLanguages from "./MultiLanguages";
 
 import { useTranslation } from "react-i18next";
 
-// Componente de la barra de navegación
-
 function Navbar() {
   const { t } = useTranslation("global");
 
@@ -28,20 +26,14 @@ function Navbar() {
 
   const { user, isLogin } = useSelector((state) => state.authUser);
 
-  const getUsernName = (email) => {
-    const ArrayUserName = email.split("");
-    const userName = ArrayUserName[0].toUpperCase();
-    return userName;
-  };
-
   const navigate = useNavigate();
-
-  const handleLogin = () => {
-    navigate("/login");
-  };
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  const handleLogin = () => {
+    navigate("/login");
   };
 
   const handleLogOut = async () => {
@@ -49,6 +41,12 @@ function Navbar() {
     dispatch(setIsLogin(false));
     localStorage.removeItem("uid");
     navigate("/login");
+  };
+
+  const getUsernName = (email) => {
+    const ArrayUserName = email.split("");
+    const userName = ArrayUserName[0].toUpperCase();
+    return userName;
   };
 
   return (
@@ -81,7 +79,7 @@ function Navbar() {
           </NavLink>
         </div>
 
-        {/* Icono de login (alineado a la derecha) */}
+        {/* Icono de login  */}
         <div className="flex items-center gap-2 relative">
           <MultiLanguages />
           {isLogin ? (

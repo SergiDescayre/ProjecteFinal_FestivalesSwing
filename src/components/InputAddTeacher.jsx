@@ -28,8 +28,8 @@ const InputAddTeacher = ({
         {listOfTeachers.length > 0 && (
           <div className="flex flex-col border border-zinc-900 rounded-md mt-5 px-5 py-2 bg-zinc-100">
             {listOfTeachers.map((teacher) => (
-              <div className="flex justify-between">
-                <span key={teacher}>{teacher}</span>
+              <div key={teacher} className="flex justify-between">
+                <span>{teacher}</span>
                 <span
                   className="cursor-pointer text-dark50"
                   onClick={() => deleteTeacher(teacher)}
