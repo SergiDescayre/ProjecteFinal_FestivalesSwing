@@ -23,12 +23,9 @@ const Login = () => {
   const auth = getAuth(appFirebase);
   const { t } = useTranslation("global");
   useEffect(() => {
-    //document.querySelector("nav").style.display="none"
     document.querySelector("footer").style.display = "none";
     return () => {
-      // Acciones a realizar al desmontar el componente
       document.querySelector("footer").style.display = "block";
-      //document.querySelector("nav").style.display="block"
     };
   }, []);
   const { isRegister } = useSelector((state) => state.authUser);
@@ -176,7 +173,6 @@ const Login = () => {
           >
             {error}
           </div>
-          {user.email}
         </div>
       </div>
     </section>

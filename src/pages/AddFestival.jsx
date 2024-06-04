@@ -8,7 +8,7 @@ import { useEffect } from "react";
 const AddFestival = () => {
   const { setMessageModal } = useFestivalContext();
   const { isLogin } = useSelector((state) => state.authUser);
-  const {t} = useTranslation("global")
+  const { t } = useTranslation("global");
   useEffect(() => {
     JSON.parse(localStorage.getItem("uid"))
       ? isLogin === true

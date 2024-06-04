@@ -22,10 +22,8 @@ const FormSearchHome = () => {
   const [dataEnd, setDataEnd] = useState("");
 
   useEffect(() => {
-    return () => {
-      getFestivals();
-      setError("");
-    };
+    getFestivals();
+    setError("");
   }, [city, dataStart, dataEnd]);
 
   const refresForm = () => {

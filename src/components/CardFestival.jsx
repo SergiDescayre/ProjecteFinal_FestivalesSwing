@@ -1,7 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 import ButtonDeleteFav from "./ButtonDeleteFav";
 import DateFestival from "./DateFestival";
 import ButtonAddFavorite from "./ButtonAddFavorite";
-import { useNavigate } from "react-router-dom";
 import price from "../assets/price.svg";
 import location from "../assets/location.svg";
 import calendar from "../assets/calendar.svg";

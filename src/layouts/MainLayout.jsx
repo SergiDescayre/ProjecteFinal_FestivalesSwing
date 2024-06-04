@@ -13,11 +13,11 @@ import Footer from "../components/Footer";
 import { useFestivalContext } from "../context/FestivalContext";
 
 const MainLayout = () => {
-  const { getFestivals, festivals } = useFestivalContext();
+  // const { getFestivals } = useFestivalContext();
 
-  useEffect(() => {
-    getFestivals();
-  }, []);
+  // useEffect(() => {
+  //   getFestivals();
+  // }, []);
 
   const dispatch = useDispatch();
   const auth = getAuth(appFirebase);
@@ -36,8 +36,6 @@ const MainLayout = () => {
         );
       }
     });
-
-    // Realiza la limpieza del listener cuando el componente se desmonte
     return () => unsubscribe();
   }, [auth]);
 

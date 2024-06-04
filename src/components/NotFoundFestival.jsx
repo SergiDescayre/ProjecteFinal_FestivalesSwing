@@ -6,16 +6,12 @@ const NotFoundFestival = () => {
   const { t } = useTranslation("global");
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate("/");
-  };
-
   return (
     <div className="card bg-dark75 shadow-xl flex flex-col items-center m-5 p-8 text-secondary max-w-[450px] w-[80%] mx-auto">
       <span className="text-center">{t("favorites.noFavorites")}</span>
       <button
         className=" mt-10 btn btn-sm bg-primary border-none hover:bg-orange-100"
-        onClick={handleClick}
+        onClick={() => navigate("/")}
       >
         {t("favorites.add")}
       </button>

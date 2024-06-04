@@ -12,9 +12,11 @@ const ListFestivalsModality = ({ title, modality }) => {
   const { t } = useTranslation("global");
   const showButtonAddFavorite = true;
   const { isFoundFestival } = useFestivalContext();
+
   const [scrollable, setScrollable] = useState(false);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(false);
+
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -87,11 +89,7 @@ const ListFestivalsModality = ({ title, modality }) => {
         >
           {modality.length === 0 && <NotMatchesFestival />}
           {modality.map((fest) => (
-            <CardFestival
-              key={fest.id}
-              fest={fest}
-              showButtonAddFavorite={showButtonAddFavorite}
-            />
+            <CardFestival key={fest.id} fest={fest} showButtonAddFavorite />
           ))}
         </div>
       )}

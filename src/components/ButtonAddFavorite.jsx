@@ -18,17 +18,14 @@ import Modal from "./Modal";
 const ButtonAddFavorite = ({ fest }) => {
   const { isLogin } = useSelector((state) => state.authUser);
   const [isFavorite, setIsFavorite] = useState(false);
-  const {
-    favorites,
-    deleteFavorite,
-    addFavorite,
-    setMessageModal,
-    getFavorites,
-  } = useFestivalContext();
-  const { t } = useTranslation("global");
+  const { favorites, deleteFavorite, addFavorite, setMessageModal } =
+    useFestivalContext();
+
   useEffect(() => {
     checkFavoriteStatus();
   }, [favorites]);
+
+  const { t } = useTranslation("global");
 
   const handleFavorites = (id, e) => {
     e.stopPropagation();
