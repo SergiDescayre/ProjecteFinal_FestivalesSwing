@@ -74,7 +74,8 @@
   "calendar": {
     "language": "ca",
     "favorites": "Favorits",
-    "all": "Tots"
+    "all": "Tots",
+    "go": "Anar"
   },
   "login": {
     "login": "Inicia sessió",

@@ -10,7 +10,7 @@ const Home = () => {
       <div className="paralax ">
         <div className="bg-zinc-950 min-h-[500px] bg-opacity-70">
           <div className=" flex flex-col md:py-[60px]">
-            <span className="leading-[50px] text-4xl text-primary m-9 md:text-center md:text-5xl">
+            <span className="leading-[50px] text-4xl font-semibold text-primary m-9 md:text-center md:text-5xl">
               {t("home.text")}
             </span>
           </div>

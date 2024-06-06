@@ -74,7 +74,8 @@
   "calendar": {
     "language": "en",
     "favorites": "Favorites",
-    "all": "All"
+    "all": "All",
+    "go": "Go"
   },
   "login": {
     "login": "Login",
